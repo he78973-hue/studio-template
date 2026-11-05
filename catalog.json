@@ -203,6 +203,22 @@
       "dir": "apps/pocket-planet",
       "tone": "night",
       "cover": "apps/pocket-planet/preview/cover.svg"
+    },
+    {
+      "id": "stepcode-iphone-duo",
+      "scene": "marketing",
+      "title": {
+        "zh": "StepCode iPhone Duo 发布短片",
+        "en": "StepCode iPhone Duo launch film"
+      },
+      "description": {
+        "zh": "用 LaunchMotion skill 复刻的 6.8 秒发布短片：StepCode 移动版跑在真机比例的 Apple iPhone Duo 上——铰链处微拍拉远露出整机、标志性折叠时封面屏接力对话、展开后双屏分屏（左屏会话列表、右屏当前任务）。StepFun 品牌风格：Signal Blue 单一强调色、Ink Black 深色画布、PT Mono 结构化数据。",
+        "en": "A 6.8-second launch film built with the LaunchMotion skill: the StepCode mobile app on a true-to-scale Apple iPhone Duo — a macro pull-back at the hinge, the cover screen picking up the chat through the signature fold, then a split view (sessions left, current task right). StepFun brand language: one Signal Blue accent, ink-black canvas, PT Mono for structured data."
+      },
+      "dir": "sites/stepcode-iphone-duo",
+      "tone": "night",
+      "cover": "sites/stepcode-iphone-duo/preview/cover.png",
+      "previewVideo": "sites/stepcode-iphone-duo/preview/video.mp4"
     }
   ]
 }

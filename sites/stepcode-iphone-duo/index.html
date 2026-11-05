@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=1920, height=1080" />
+<title>StepCode · iPhone Duo</title>
+<script src="vendor/gsap.min.js"></script>
+<style>
+@font-face { font-family: "Inter LM"; src: url("assets/inter.woff2") format("woff2"); font-weight: 100 900; }
+@font-face { font-family: "Lora"; src: url("assets/lora.woff2") format("woff2"); font-weight: 400 700; font-display: block; }
+@font-face { font-family: "PT Mono"; src: url("assets/pt-mono.woff2") format("woff2"); font-weight: 400; font-display: block; }
+:root {
+  --bg: #040506; --surface: #0E0F11; --raised: #161719; --hair: rgba(255,255,255,0.09); --ink: #F6F7F8; --muted: #909395;
+  --blue: #00A9FF; --blue-1: #ECF7FF; --blue-2: #D1ECFF; --blue-3: #A2D8FF; --blue-4: #5BBBFF;
+  --ok: #7FB069; --bad: #E8756A;
+  --ti-1: #6E7072; --ti-2: #2C2E30; --ti-3: #1C1E20; --ti-4: #535557;
+  --font: "Inter LM", Inter, system-ui, sans-serif;
+  --font-cn: "PingFang SC", "Noto Sans SC", "Source Han Sans SC", "Helvetica Neue", sans-serif;
+  --font-mono: "PT Mono", monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+#main { position: relative; width: 1920px; height: 1080px; overflow: hidden; font-family: var(--font); color: var(--ink);
+  background: var(--bg); -webkit-font-smoothing: antialiased; }
+.abs { position: absolute; }
+.layer { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+.num { font-variant-numeric: tabular-nums; }
+#grid { background-image: linear-gradient(rgba(255,255,255,0.055) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.055) 1px, transparent 1px);
+  background-size: 48px 48px; background-position: -1px -1px;
+  -webkit-mask-image: radial-gradient(1000px 620px at 50% 50%, black, transparent 78%); mask-image: radial-gradient(1000px 620px at 50% 50%, black, transparent 78%); opacity: 0; }
+#bloom { left: 460px; top: 140px; width: 1000px; height: 800px; background: radial-gradient(closest-side, rgba(255,255,255,0.11), transparent); }
+
+/* ═══ iPhone Duo — real proportions: each panel 84.1×117.8mm, unfolded 164.6×117.8mm ═══ */
+#scene { perspective: 2600px; }
+#dev { left: 460px; top: 190px; width: 1000px; height: 700px; transform-style: preserve-3d; }
+.panel { position: absolute; top: 0; width: 500px; height: 700px; transform-style: preserve-3d; }
+#panelL { left: 0; }
+#panelR { left: 500px; transform-origin: left center; }
+.slab { position: absolute; inset: 0; backface-visibility: hidden; }
+#frontL, #backL { border-radius: 56px 10px 10px 56px; }
+#frontR, #backR { border-radius: 10px 56px 56px 10px; }
+.edge { position: absolute; inset: 0; background: linear-gradient(90deg, #2B2D2F, #5D5F61 40%, #2B2D2F 70%, #17181A); }
+#panelL .edge { border-radius: 56px 10px 10px 56px; }
+#panelR .edge { border-radius: 10px 56px 56px 10px; }
+#frontL { background: linear-gradient(150deg, var(--ti-1), var(--ti-2) 30%, var(--ti-3) 70%, var(--ti-4)); transform: translateZ(20px); box-shadow: inset 0 0 0 1.5px rgba(255,255,255,0.18); }
+#frontR { background: linear-gradient(150deg, var(--ti-1), var(--ti-2) 30%, var(--ti-3) 70%, var(--ti-4)); transform: translateZ(20px); box-shadow: inset 0 0 0 1.5px rgba(255,255,255,0.18); }
+#backL { transform: rotateY(180deg) translateZ(20px); background: linear-gradient(140deg, #4C4E50 0%, #242628 45%, #1A1B1D 70%, #3D3F41 100%); box-shadow: inset 0 0 0 1.5px rgba(255,255,255,0.16); }
+#backR { transform: rotateY(180deg) translateZ(20px); background: linear-gradient(140deg, #4C4E50 0%, #242628 45%, #1A1B1D 70%, #3D3F41 100%); box-shadow: inset 0 0 0 1.5px rgba(255,255,255,0.16); }
+#crease { left: 499.25px; top: 0; width: 1.5px; height: 700px; transform: translateZ(23px);
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.38) 10%, rgba(0,0,0,0.38) 90%, rgba(0,0,0,0) 100%); }
+.disp { position: absolute; inset: 14px; border-radius: 44px; background: #070809; overflow: hidden; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06); }
+/* screens are direct 3D children of the panels so depth sorting stays correct through the fold.
+   Inner edges run almost to the crease with square corners — the Duo's fold is one continuous surface. */
+#screenL, #screenR { transform: translateZ(22px); backface-visibility: hidden; }
+#screenL { inset: 14px 2px 14px 14px; border-radius: 44px 0 0 44px; }
+#screenR { inset: 14px 14px 14px 2px; border-radius: 0 44px 44px 0; }
+#cover { transform: translateZ(-22px) rotateY(180deg); backface-visibility: hidden; }
+
+/* ── screen L · session list (472×672) ── */
+#l-head { left: 0; top: 0; width: 100%; height: 84px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+#l-logo { left: 22px; top: 21px; width: 34px; height: 34px; border-radius: 10px; background: #101215; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12); }
+#l-logo svg { position: absolute; left: 8px; top: 9px; }
+#l-title { left: 66px; top: 26px; font-family: var(--font-cn); font-size: 20px; font-weight: 600; letter-spacing: 0.01em; }
+#l-count { right: 22px; top: 31px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; color: var(--muted); }
+#l-new { left: 20px; top: 96px; width: 432px; height: 52px; border-radius: 26px; display: flex; align-items: center; gap: 12px; padding: 0 20px;
+  background: radial-gradient(120% 80% at 20% 0%, rgba(255,255,255,0.16), transparent 55%), rgba(0,169,255,0.2);
+  box-shadow: inset 0 0 0 1px rgba(162,216,255,0.35); font-family: var(--font-cn); font-size: 16px; font-weight: 500; color: var(--ink); }
+#l-new b { font-family: var(--font); font-size: 21px; font-weight: 400; color: var(--blue-3); }
+#l-search { left: 20px; top: 158px; width: 432px; height: 42px; border-radius: 21px; background: #131418; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.07);
+  font-family: var(--font-cn); font-size: 14px; color: var(--muted); line-height: 42px; padding: 0 18px; }
+#l-tabs { left: 24px; top: 212px; display: flex; gap: 24px; font-family: var(--font-cn); font-size: 15px; }
+#l-tabs .on { font-weight: 600; color: var(--ink); box-shadow: 0 2px 0 0 var(--blue); padding-bottom: 4px; }
+#l-tabs .off { color: var(--muted); padding-bottom: 4px; }
+#l-list { left: 10px; top: 252px; width: 452px; }
+#l-list .row { position: relative; height: 62px; border-radius: 15px; display: flex; align-items: center; gap: 11px; padding: 0 14px; }
+#l-list .row + .row { margin-top: 3px; }
+#l-list .row + .row::after { content: ''; position: absolute; left: 33px; right: 14px; top: -2px; border-top: 1px solid rgba(255,255,255,0.05); }
+#l-list .row.on { background: #1A1D22; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05); }
+#l-list .row.on::before { content: ''; position: absolute; left: 0; top: 18px; width: 3px; height: 24px; border-radius: 2px; background: var(--blue); }
+#l-list .dot { width: 8px; height: 8px; border-radius: 50%; flex: none; background: #55585E; }
+#l-list .dot.run { background: var(--blue); box-shadow: 0 0 8px rgba(0,169,255,0.8); }
+#l-list .dot.done { background: var(--ok); }
+#l-list .rt { font-family: var(--font-cn); font-size: 15px; color: #C9CDD4; white-space: nowrap; overflow: hidden; }
+#l-list .row.on .rt { color: var(--ink); font-weight: 500; }
+#l-list .rm { margin-left: auto; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.06em; color: var(--muted); }
+#l-foot { left: 22px; bottom: 18px; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.14em; color: rgba(255,255,255,0.28); }
+
+/* ── screen R · the live conversation (472×672) ── */
+#r-head { left: 0; top: 0; width: 100%; height: 80px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+#r-title { left: 22px; top: 22px; font-family: var(--font-cn); font-size: 18px; font-weight: 600; }
+#r-meta { right: 22px; top: 29px; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.1em; color: var(--muted); }
+#r-chat { left: 20px; top: 92px; width: 432px; }
+.bub { max-width: 86%; margin-left: auto; background: #22242A; border-radius: 19px 19px 6px 19px; padding: 12px 16px;
+  font-family: var(--font-cn); font-size: 15px; line-height: 24px; color: #E8EAEE; }
+.acard { margin-top: 20px; background: #14161B; border-radius: 19px 19px 19px 6px; padding: 16px 18px; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06); }
+.acard .toolrow { display: flex; align-items: center; gap: 8px; font-family: var(--font-cn); font-size: 14px; color: #D7DBE2; }
+.acard .tick { font-family: var(--font); color: var(--ok); font-size: 15px; }
+.acard .tmono { margin-left: auto; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.08em; color: var(--muted); }
+.acard .atext { margin-top: 10px; font-family: var(--font-cn); font-size: 15px; line-height: 27px; color: #C9CDD4; }
+.acard .acursor { display: inline-block; width: 9px; height: 17px; background: var(--blue); margin-left: 6px; vertical-align: -2px; animation: lmbink 1s steps(2, start) infinite; }
+.dcard { margin-top: 16px; background: #0B0D10; border-radius: 15px; padding: 12px 16px; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05); }
+.dcard .dhead { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; color: var(--muted); }
+.dcard .dline { font-family: var(--font-mono); font-size: 12.5px; line-height: 25px; white-space: nowrap; }
+.dcard .del { color: var(--bad); }
+.dcard .add { color: var(--ok); }
+#r-files { margin-top: 16px; display: flex; gap: 8px; }
+#r-files .fchip { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.02em; color: var(--blue-3);
+  padding: 6px 11px; border-radius: 9px; box-shadow: inset 0 0 0 1px rgba(162,216,255,0.2); }
+#r-files .fchip.sum { color: var(--ok); box-shadow: inset 0 0 0 1px rgba(127,176,105,0.28); }
+#rglow { left: 20px; top: 210px; width: 432px; height: 310px; background: radial-gradient(closest-side, rgba(91,187,255,0.30), transparent 70%); }
+#r-input { left: 20px; bottom: 62px; width: 432px; height: 52px; border-radius: 26px; background: #1A1D22; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
+  display: flex; align-items: center; padding: 0 7px 0 20px; }
+#r-input .field { font-family: var(--font-cn); font-size: 14.5px; color: var(--muted); }
+#r-input .send { margin-left: auto; width: 38px; height: 38px; border-radius: 50%; background: radial-gradient(120% 80% at 30% 0%, rgba(255,255,255,0.28), transparent 55%), var(--blue);
+  display: flex; align-items: center; justify-content: center; }
+#r-model { left: 20px; bottom: 18px; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em; color: var(--blue-3);
+  padding: 6px 12px; border-radius: 9px; box-shadow: inset 0 0 0 1px rgba(162,216,255,0.22); }
+
+/* ── the cover screen · compact continuation (472×672) ── */
+#cv-status { right: 26px; top: 46px; display: flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.12em; color: var(--blue-3); }
+#cv-status i { width: 7px; height: 7px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 8px rgba(0,169,255,0.9); }
+#cv-user { left: 28px; top: 150px; width: 420px; font-family: var(--font-cn); font-size: 14.5px; color: #8B919B; }
+#cv-reply { left: 28px; top: 186px; width: 420px; font-family: var(--font-cn); font-size: 16.5px; line-height: 29px; color: #E4E7EC; }
+#cv-reply .cvcur { display: inline-block; width: 9px; height: 17px; background: var(--blue); margin-left: 6px; vertical-align: -2px; animation: lmbink 1s steps(2, start) infinite; }
+#cv-prev { left: 28px; top: 306px; width: 420px; font-family: var(--font-cn); font-size: 13.5px; line-height: 24px; color: rgba(255,255,255,0.32); }
+#cv-input { left: 28px; bottom: 100px; width: 420px; height: 50px; border-radius: 25px; background: #1A1D22; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
+  font-family: var(--font-cn); font-size: 14.5px; color: var(--muted); line-height: 50px; padding: 0 20px; }
+#cv-model { left: 28px; bottom: 56px; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; color: var(--blue-3);
+  padding: 5px 11px; border-radius: 8px; box-shadow: inset 0 0 0 1px rgba(162,216,255,0.2); }
+#cv-brand { right: 28px; bottom: 54px; font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.3em; color: rgba(255,255,255,0.4); }
+#cv-cap { left: 28px; bottom: 22px; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.14em; color: rgba(255,255,255,0.26); }
+@keyframes lmbink { 50% { opacity: 0; } }
+
+/* ── copy ── */
+#eyebrow { left: 1060px; top: 296px; opacity: 0; }
+#eyebrow div { display: inline-flex; align-items: center; gap: 10px; height: 52px; padding: 0 20px; border-radius: 999px; background: var(--raised); border: 1px solid var(--hair);
+  font-size: 22px; font-weight: 500; box-shadow: inset 0 1px 0 rgba(255,255,255,0.06); font-family: var(--font-ui); }
+#eyebrow .dot { width: 8px; height: 8px; border-radius: 50%; background: #F9B845; flex: none; }
+#head { left: 1060px; top: 376px; width: 800px; font-size: 108px; line-height: 116px; font-weight: 600; letter-spacing: -0.045em; font-family: "Lora", Georgia, serif; }
+#head .w { display: inline-block; opacity: 0; }
+.grad { color: var(--lm-accent-text); }
+.feat { left: 1060px; display: flex; align-items: center; gap: 18px; font-size: 30px; color: #CACDCF; letter-spacing: -0.015em; opacity: 0; font-family: var(--font); }
+.feat .ic { width: 52px; height: 52px; border-radius: 16px; background: rgba(0,169,255,0.14); border: 1px solid rgba(162,216,255,0.22); display: flex; align-items: center; justify-content: center; }
+#meta { left: 1060px; top: 918px; font-family: var(--font-mono); font-size: 14px; letter-spacing: 0.12em; color: rgba(255,255,255,0.34); opacity: 0; }
+
+/* ── StepFun brand layer: ink-black page, mono metadata ── */
+:root { --bg: #1A1A1A; }
+html, body { background: #1A1A1A; }
+#main { background: #1A1A1A; }
+
+:root { --lm-accent: #00A9FF; --lm-on-accent: #FFFFFF; --lm-accent-text: #4DB7FF; --lm-accent-glow: rgba(0,169,255,0.55); }
+#lm-amb { pointer-events: none; }
+#lm-amb i { position: absolute; border-radius: 50%; }
+#lm-amb i:nth-child(1) { left: 260px; top: -440px; width: 1240px; height: 1240px; background: radial-gradient(closest-side, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.032) 48%, transparent 100%); }
+#lm-amb i:nth-child(2) { left: -300px; top: 340px; width: 1120px; height: 1120px; background: radial-gradient(closest-side, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.023) 48%, transparent 100%); }
+#lm-amb i:nth-child(3) { left: 760px; top: 340px; width: 840px; height: 840px; background: radial-gradient(closest-side, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.018) 48%, transparent 100%); }
+#eyebrow div { position: relative; }
+#eyebrow div {
+  background: radial-gradient(120% 70% at 18% 0%, rgba(255,255,255,0.10), transparent 60%), linear-gradient(165deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03)) !important;
+  -webkit-backdrop-filter: blur(26px) saturate(185%); backdrop-filter: blur(26px) saturate(185%);
+  border: 0 !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.22), 0 24px 60px -24px rgba(0,0,0,0.7) !important;
+}
+#eyebrow div::after { content:''; position:absolute; inset:0; border-radius:inherit; padding:1.5px; pointer-events:none;
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; background: linear-gradient(140deg, rgba(255,255,255,0.55), rgba(255,255,255,0.08) 38%, rgba(255,255,255,0.02) 62%, rgba(255,255,255,0.28)); }
+</style>
+</head>
+<body>
+<div id="main" data-composition-id="main" data-start="0" data-duration="6.8" data-width="1920" data-height="1080">
+  <div id="lm-amb" class="layer"><i></i><i></i><i></i></div>
+  <div id="grid" class="layer"></div>
+  <div id="bloom" class="abs"></div>
+
+  <div id="scene" class="layer">
+    <div id="dev" class="abs" data-layout-allow-overflow>
+      <div id="crease" class="abs"></div>
+      <div id="panelL" class="panel">
+        <div class="edge" style="transform:translateZ(-16px)"></div>
+        <div class="edge" style="transform:translateZ(-8px)"></div>
+        <div class="edge" style="transform:translateZ(0px)"></div>
+        <div class="edge" style="transform:translateZ(8px)"></div>
+        <div class="edge" style="transform:translateZ(16px)"></div>
+        <div id="backL" class="slab"></div>
+        <div id="frontL" class="slab"></div>
+        <div id="screenL" class="disp">
+          <div id="l-head" class="abs">
+            <div id="l-logo" class="abs"><svg width="18" height="16" viewBox="0 0 18 16" fill="none"><rect x="0" y="9" width="4.6" height="7" rx="1.4" fill="rgba(255,255,255,0.35)"/><rect x="6.7" y="5.5" width="4.6" height="10.5" rx="1.4" fill="rgba(255,255,255,0.6)"/><rect x="13.4" y="1" width="4.6" height="15" rx="1.4" fill="#00A9FF"/></svg></div>
+            <div id="l-title" class="abs">StepCode</div>
+            <div id="l-count" class="abs">06 ACTIVE</div>
+          </div>
+          <div id="l-new" class="abs"><b>+</b>新建会话</div>
+          <div id="l-search" class="abs">搜索会话</div>
+          <div id="l-tabs" class="abs"><span class="on">项目</span><span class="off">分组</span></div>
+          <div id="l-list" class="abs">
+            <div class="row on"><i class="dot run"></i><span class="rt">iPhone Duo 双屏适配</span><span class="rm">RUN · 2 MIN</span></div>
+            <div class="row"><i class="dot run"></i><span class="rt">Connect Skilly…</span><span class="rm">RUN · NOW</span></div>
+            <div class="row"><i class="dot run"></i><span class="rt">夹染扎染网页小样</span><span class="rm">RUN · 4 MIN</span></div>
+            <div class="row"><i class="dot done"></i><span class="rt">sf brand 色板抽取</span><span class="rm">DONE · 20 H</span></div>
+            <div class="row"><i class="dot done"></i><span class="rt">复刻 launchmotion 场景</span><span class="rm">DONE · 1 D</span></div>
+            <div class="row"><i class="dot"></i><span class="rt">九款产品 demo 配色</span><span class="rm">ARCHIVED</span></div>
+          </div>
+          <div id="l-foot" class="abs">STEPCODE MOBILE · V0.9</div>
+        </div>
+      </div>
+      <div id="panelR" class="panel">
+        <div class="edge" style="transform:translateZ(-16px)"></div>
+        <div class="edge" style="transform:translateZ(-8px)"></div>
+        <div class="edge" style="transform:translateZ(0px)"></div>
+        <div class="edge" style="transform:translateZ(8px)"></div>
+        <div class="edge" style="transform:translateZ(16px)"></div>
+        <div id="backR" class="slab"></div>
+        <div id="cover" class="disp">
+          <div id="cv-status" class="abs"><i></i>AGENT · LIVE</div>
+          <div id="cv-user" class="abs">把 StepCode 装进 iPhone Duo…</div>
+          <div id="cv-reply" class="abs">外屏接着聊。折起来也不打断——<span class="cvcur"></span></div>
+          <div id="cv-prev" class="abs">更早 · 把 StepCode 装进 iPhone Duo，双屏怎么分工？</div>
+          <div id="cv-input" class="abs">描述一个任务…</div>
+          <div id="cv-model" class="abs">step-5-preview</div>
+          <div id="cv-brand" class="abs">STEPCODE</div>
+          <div id="cv-cap" class="abs">COVER · COMPACT</div>
+        </div>
+        <div id="frontR" class="slab"></div>
+        <div id="screenR" class="disp">
+          <div id="rglow" class="abs"></div>
+          <div id="r-head" class="abs">
+            <div id="r-title" class="abs">iPhone Duo 双屏适配</div>
+            <div id="r-meta" class="abs">3 TOOLS · 12.4K TOK</div>
+          </div>
+          <div id="r-chat" class="abs">
+            <div class="bub">把 StepCode 装进 iPhone Duo，双屏怎么分工？</div>
+            <div class="acard">
+              <div class="toolrow"><span class="tick">✓</span>已完成 · 工具调用 3 项<span class="tmono">READ 2 · EDIT 1</span></div>
+              <div class="atext">左屏放会话列表，右屏跟当前任务；折起来，外屏接着聊。<span class="acursor"></span></div>
+            </div>
+            <div class="dcard">
+              <div class="dhead">src/duo/layout.ts</div>
+              <div class="dline del">- split: 'single'</div>
+              <div class="dline add">+ split: 'list | chat'</div>
+            </div>
+            <div id="r-files"><span class="fchip">session.ts</span><span class="fchip">layout.ts</span><span class="fchip sum">+48 −12</span></div>
+          </div>
+          <div id="r-input" class="abs"><span class="field">描述一个任务…</span><span class="send"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+          <div id="r-model" class="abs">step-5-preview</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="meta" class="abs">STEPCODE · IPHONE DUO · 6.8S · 1920×1080 · 30FPS</div>
+  <div id="eyebrow" class="abs"><div><i class="dot"></i><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A2D8FF" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="8" height="16" rx="2.2"/><rect x="13.5" y="4" width="8" height="16" rx="2.2"/></svg><span data-slot="product">StepCode</span></div></div>
+  <div id="head" class="abs" data-slot="headline">Two screens. <span class="grad">One agent.</span></div>
+  <div class="feat abs" style="top:640px"><div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#A2D8FF" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="8" height="16" rx="2.2"/><rect x="13.5" y="4" width="8" height="16" rx="2.2"/></svg></div><span data-slot="feature-1">Sessions left, work right</span></div>
+  <div class="feat abs" style="top:718px"><div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#A2D8FF" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="3" width="10" height="18" rx="2.6"/><path d="M12 3v18"/></svg></div><span data-slot="feature-2">Folds to keep chatting</span></div>
+</div>
+
+<script>(function(){var v={"product":"StepCode","headline":"Two screens. [[One agent.]]","feature-1":"Sessions left, work right","feature-2":"Folds to keep chatting"};
+Object.keys(v).forEach(function(k){document.querySelectorAll('[data-slot="'+k+'"]').forEach(function(el){var val=v[k];
+if(/^(IMG|VIDEO|SOURCE|IMAGE)$/i.test(el.tagName)){el.setAttribute(el.tagName.toLowerCase()==='image'?'href':'src',val);return;}
+var hi=el.firstElementChild,m=val.match(/^([\s\S]*?)\[\[([\s\S]*?)\]\]([\s\S]*)$/);
+if(m&&hi){var s=hi.cloneNode(false);s.textContent=m[2];el.textContent='';el.append(m[1],s,m[3]);}else{el.textContent=val.replace(/\[\[|\]\]/g,'');}});});})();</script>
+<script>Promise.resolve().then(function(){
+
+const DUR = 6.8;
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const tl = gsap.timeline({ paused: true });
+window.__timelines = window.__timelines || {};
+window.__timelines["main"] = tl;
+tl.set({}, {}, DUR);
+
+gsap.set('#dev', { transformOrigin: '50% 50%' });
+gsap.set('#panelR', { transformOrigin: 'left center' });
+// open on a tilted macro of the hinge, both screens alive
+gsap.set('#dev', { scale: 2.5, rotationX: 38, rotationY: -12, rotationZ: -24, x: 140, y: 260 });
+
+// ── S1 · 0–2.0 · macro on the hinge, camera pulls back to the whole Duo
+tl.fromTo('#bloom', { opacity: 0 }, { opacity: 1, duration: 1.4 }, 0);
+tl.to('#dev', { scale: 0.92, rotationX: 14, rotationY: -26, rotationZ: -6, x: 0, y: 0, duration: 2.0, ease: 'expo.inOut' }, 0.15);
+tl.fromTo('#grid', { opacity: 0 }, { opacity: 1, duration: 1.0 }, 1.2);
+tl.fromTo('#rglow', { opacity: 0 }, { opacity: 0.9, duration: 1.2 }, 0.4);
+
+// ── S2 · 2.0–3.5 · the Duo folds shut; the cover screen takes over
+tl.to('#dev', { rotationY: -14, rotationX: 10, rotationZ: -3, scale: 0.9, duration: 0.7, ease: 'power2.in' }, 2.0);
+tl.to('#dev', { rotationY: -20, rotationX: 11, rotationZ: -2, duration: 0.5, ease: 'none' }, 2.7);
+tl.to('#panelR', { rotationY: 194, z: 64, duration: 0.7, ease: 'power2.in' }, 2.0);
+tl.to('#panelR', { rotationY: 196, duration: 0.5, ease: 'none' }, 2.7);
+tl.to('#rglow', { opacity: 0.2, duration: 0.4 }, 2.6);
+
+// ── S3 · 3.2–6.8 · it opens back up, eases left and back, the promise reads beside it
+tl.to('#dev', { rotationY: -8, rotationX: 7, rotationZ: -2, duration: 0.8, ease: 'expo.out' }, 3.2);
+tl.to('#panelR', { rotationY: 0, z: 0, duration: 0.8, ease: 'expo.out' }, 3.2);
+tl.to('#dev', { x: -460, y: 10, scale: 0.95, rotationY: 0, rotationX: 6, rotationZ: 0, duration: 1.1, ease: 'expo.inOut' }, 3.85);
+tl.to('#bloom', { x: -460, duration: 1.1, ease: 'expo.inOut' }, 3.85);
+tl.to('#dev', { rotationY: -6, duration: 1.85, ease: 'power1.inOut' }, 4.95);
+tl.to('#rglow', { opacity: 0.9, duration: 0.8 }, 4.2);
+tl.fromTo('#eyebrow', { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: 'expo.out' }, 4.25);
+const hw = []; [...$('#head').childNodes].forEach(n => { const isT = n.nodeType === 3; const f = document.createDocumentFragment();
+  n.textContent.split(/(\s+)/).forEach(p => { if (!p) return; if (/^\s+$/.test(p)) { f.append(' '); return; } const s = document.createElement('span'); s.className = 'w' + (isT ? '' : ' grad'); s.textContent = p; f.append(s); hw.push(s); });
+  $('#head').replaceChild(f, n); });
+tl.fromTo(hw, { opacity: 0, y: 30, filter: 'blur(14px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.75, ease: 'expo.out', stagger: 0.08 }, 4.35);
+tl.fromTo('.feat', { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.6, ease: 'expo.out', stagger: 0.12 }, 4.9);
+tl.fromTo('#meta', { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5, ease: 'expo.out' }, 5.1);
+
+});</script>
+<script>Promise.resolve().then(function(){
+var tl=(window.__timelines||{}).main; if(tl){var d=tl.duration(); document.querySelectorAll('#lm-amb i').forEach(function(el,k){tl.fromTo(el,{x:0,y:0,scale:1},{x:[90,-80,60][k%3],y:[-50,40,-70][k%3],scale:[1.08,0.94,1.1][k%3],duration:d,ease:'none'},0);});}
+function lum(c){var m=c.match(/[\d.]+/g);if(!m)return null;var a=m.length>3?+m[3]:1;if(a<0.6)return null;var f=function(v){v/=255;return v<=0.04045?v/12.92:Math.pow((v+0.055)/1.055,2.4);};return 0.2126*f(m[0])+0.7152*f(m[1])+0.0722*f(m[2]);}
+function cr(a,b){var x=Math.max(a,b),y=Math.min(a,b);return (x+0.05)/(y+0.05);}
+function gradLum(img){var m=img.indexOf('url(')>=0?null:img.match(/rgba?\([^)]*\)/g);if(!m)return null;var s=0,n=0;m.forEach(function(x){var l=lum(x);if(l!==null){s+=l;n++;}});return n?s/n:null;}
+function bgOf(el){while(el&&el!==document.body){var c=getComputedStyle(el);var l=lum(c.backgroundColor);if(l!==null)return l;if(c.backgroundImage!=='none')return gradLum(c.backgroundImage);el=el.parentElement;}return null;}
+document.querySelectorAll('#main *').forEach(function(el){var cs=getComputedStyle(el);var bg=lum(cs.backgroundColor);if(bg===null){var fg0=lum(cs.color);var own=[].some.call(el.childNodes,function(n){return n.nodeType===3&&n.textContent.trim();});if(own&&fg0!==null&&fg0>0.8){var p=el.parentElement;for(var k=0;k<2&&p&&p.id!=='main';k++,p=p.parentElement){var pc=getComputedStyle(p);var pl=lum(pc.backgroundColor);if(pl!==null){if(pl>0.6)el.style.color='#111111';break;}if(pc.backgroundImage!=='none')break;}}return;}var fg=lum(cs.color);if(fg!==null&&cr(fg,bg)<1.7){el.style.color=bg>0.4?'#111111':'#FFFFFF';}});
+document.querySelectorAll('#main [stroke="#fff"],#main [stroke="#FFF"],#main [stroke="#FFFFFF"],#main [fill="#fff"],#main [fill="#FFFFFF"]').forEach(function(s){var b=bgOf(s.parentElement);if(b!==null&&b>0.6){if(s.getAttribute('stroke'))s.setAttribute('stroke','#111111');if(/^#f/i.test(s.getAttribute('fill')||''))s.setAttribute('fill','#111111');}});
+});</script>
+<script>
+// Standalone playback: when opened directly (no HyperFrames runtime injected), loop the film.
+(function () {
+  setTimeout(function () {
+    if (document.querySelector('script[src*="hyperframe"]')) return;
+    var tl = (window.__timelines || {}).main;
+    if (!tl || typeof tl.play !== 'function') return;
+    if (!tl.paused() || tl.time() > 0) return;
+    tl.repeat(-1);
+    tl.play();
+  }, 600);
+})();
+</script>
+</body>
+</html>
