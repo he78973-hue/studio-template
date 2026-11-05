@@ -158,6 +158,38 @@
       "previewVideo": "sites/step-studio/preview/video.mp4"
     },
     {
+      "id": "meridian-ops",
+      "scene": "tools",
+      "title": {
+        "zh": "Meridian · 全球运营指挥中心",
+        "en": "Meridian Ops"
+      },
+      "description": {
+        "zh": "全球运营数据看板：KPI、大区达成、营收趋势、贸易网络、告警与订单明细，支持深浅主题、区域下钻和搜索排序。",
+        "en": "A global operations dashboard with KPIs, regional performance, revenue trends, trade networks, alerts, and searchable orders, plus light/dark themes and regional drill-down."
+      },
+      "dir": "sites/meridian-ops",
+      "tone": "ink",
+      "cover": "sites/meridian-ops/preview/cover.png",
+      "previewVideo": "sites/meridian-ops/preview/video.mp4"
+    },
+    {
+      "id": "aurelle",
+      "scene": "marketing",
+      "title": {
+        "zh": "AURELLE · 静奢护肤与高定美妆",
+        "en": "AURELLE"
+      },
+      "description": {
+        "zh": "静奢美妆品牌电商演示：品牌与产品展示、实时搜索、快速查看和本地购物袋，支持响应式布局；不包含真实订单或支付服务。",
+        "en": "A luxury beauty storefront demo with brand storytelling, product search, quick view, and a local shopping bag in a responsive layout; no real ordering or payment services."
+      },
+      "dir": "sites/aurelle",
+      "tone": "sand",
+      "cover": "sites/aurelle/preview/cover.png",
+      "previewVideo": "sites/aurelle/preview/video.mp4"
+    },
+    {
       "id": "pocket-planet",
       "scene": "app",
       "title": {

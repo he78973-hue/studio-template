@@ -37,7 +37,7 @@ python3 -m http.server 8080 --bind 127.0.0.1
 
 - 封面：2878 × 1558，约 364 KiB。
 - 视频：1280 × 694，30 fps，约 28.63 秒，8.66 MiB。
-- Studio 画廊素材路径：`/workspace-templates/covers/meridian-ops.png` 与 `/workspace-templates/videos/meridian-ops.mp4`。本仓库不自动发布 Studio 资源或更新其模板目录。
+- 本模板通过仓库根 [catalog.json](../../catalog.json) 登记到 Studio 的“工具”分类；标题、描述和素材路径均由该清单维护。素材路径为 `sites/meridian-ops/preview/cover.png` 与 `sites/meridian-ops/preview/video.mp4`，不复制到 Studio 的 public 目录。添加模板目录或 README 本身不会自动登记到画廊；清单变更合并后，再更新 Studio 的 `STUDIO_TEMPLATE_REF` 为包含清单、源码和素材的已合并完整 commit SHA。
 
 ## 已知演示限制
 

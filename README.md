@@ -35,7 +35,8 @@ The exact schema is:
 - `dir`, `cover`, `coverHover`, and `previewVideo` are repository-root-relative POSIX paths, with no leading slash, traversal, local filesystem paths, or URLs. Media lives in the respective template's `preview/` directory; `previewUrl`, when present, is a public HTTPS live-demo URL, not a local preview URL.
 - Entries contain no `repo` or `ref`. Studio's server supplies one fixed repository and one selected **published, merged, immutable commit** for the catalog, template source, and preview media together. Readers resolve every relative path against that same commit; do not combine source from one revision with media from another.
 - Studio owns only loading, rendering, playback, and selection; this repository owns the catalog, content, and media. There is no manual copying to Studio's public assets and no separate Studio-maintained title/category/order list. Studio's generic placeholder remains a renderer fallback, not template-owned media.
-- A template PR or branch change does **not** automatically roll out to Studio. After merge and publication, update only Studio's configured template version to the selected fixed commit, then validate the gallery. Do not read preview/catalog data from an open PR branch or follow a moving `main`/release tag at runtime.
+- Adding a template directory or a README table entry alone does not register it in the gallery: add its entry to root [catalog.json](./catalog.json) in the same PR.
+- A template PR or branch change does **not** automatically roll out to Studio. After merge and publication, update Studio's server `STUDIO_TEMPLATE_REF` to the selected full commit SHA, then validate the gallery. Do not read preview/catalog data from an open PR branch or follow a moving `main`/release tag at runtime.
 
 ## Sites
 
@@ -48,7 +49,7 @@ The exact schema is:
 | `stepfun-3d` | Creative | 3D digital pavilion |
 | `step-studio` | Sites | Brand & digital design studio ([demo notes](./sites/step-studio/README.md)) |
 | `meridian-ops` | Tools | Global operations dashboard ([template notes](./sites/meridian-ops/README.md)) |
-| `aurelle` | Sites | Beauty brand storefront ([template notes](./sites/aurelle/README.md)) |
+| `aurelle` | Marketing | Beauty brand storefront ([template notes](./sites/aurelle/README.md)) |
 
 Paths: `sites/<id>/` with `index.html` entry.
 
