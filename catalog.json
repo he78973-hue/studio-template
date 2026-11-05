@@ -203,6 +203,22 @@
       "dir": "apps/pocket-planet",
       "tone": "night",
       "cover": "apps/pocket-planet/preview/cover.svg"
+    },
+    {
+      "id": "cais",
+      "scene": "sites",
+      "title": {
+        "zh": "Cais 工作室作品集",
+        "en": "Cais studio portfolio"
+      },
+      "description": {
+        "zh": "复刻 Porto Rocha 设计语言的工作室作品集：左侧固定栏含纽约/伦敦双城实时时钟、About 卡与项目索引，右侧 Hero 大图加三列瀑布流新闻；白底、#007aff 单一强调色、sf-pro 紧凑排版，含暗色模式与项目详情覆盖层。",
+        "en": "A studio portfolio in the Porto Rocha design language: a fixed sidebar with a live New York/London clock, an about card, and a project index beside a hero image and three-column news masonry. White canvas, a single #007aff accent, compact sf-pro type, dark mode, and project detail overlays."
+      },
+      "dir": "sites/cais",
+      "tone": "ink",
+      "cover": "sites/cais/preview/cover.png",
+      "previewVideo": "sites/cais/preview/video.mp4"
     }
   ]
 }

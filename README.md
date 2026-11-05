@@ -50,6 +50,7 @@ The exact schema is:
 | `step-studio` | Sites | Brand & digital design studio ([demo notes](./sites/step-studio/README.md)) |
 | `meridian-ops` | Tools | Global operations dashboard ([template notes](./sites/meridian-ops/README.md)) |
 | `aurelle` | Marketing | Beauty brand storefront ([template notes](./sites/aurelle/README.md)) |
+| `cais` | Sites | Porto Rocha 形式语言工作室作品集（[template notes](./sites/cais/README.md)） |
 
 Paths: `sites/<id>/` with `index.html` entry.
 
