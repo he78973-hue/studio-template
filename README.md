@@ -2,6 +2,10 @@
 
 Curated front-end and mobile templates for StepFun Studio workspace gallery and agent init flows.
 
+## Template publishing
+
+See the [上架流程 / publishing guide](./docs/template-publishing.md) for registration, validation, PR review, fixed-commit configuration, browser acceptance, troubleshooting, and rollback. Passing validation or merging a PR does not automatically publish templates in Studio.
+
 ## Catalog: source of truth
 
 The root [catalog.json](./catalog.json) owns all gallery content: scene/category IDs and localized titles, template IDs, localized titles and descriptions, ordering, source directories, tones, preview-media paths, and optional live-demo URLs. The `scenes` and `templates` arrays define display order; readers must preserve that order. The tables below are documentation, not a second catalog.
