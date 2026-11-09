@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" role="img">
+  <title>电池模组与补能：「魔方 Block」标准化模组 + 换电桩</title>
+  <!--
+    Brief（动笔前落注释）：
+    用途  技术页配图：标准化「魔方 Block」电池模组 + 补能设施
+    主体  5 个标准模组（4 个在托盘上成 2×2 + 1 个落地单件）+ 右侧换电/充电桩
+    场景  纸面清晨：地面 + 地平线 + 极淡地面参考线
+    情绪  克制、工程感、印刷感（标准件的秩序美）
+    风格  等距（isometric，30°）扁平插画 + 立体四件套，描边三档 4/3/2.5/1.5
+
+    画布  viewBox 0 0 960 640；安全区 48
+    光源  左上 → 顶面最亮、左面中调、右面暗调
+    等距参数  s=62 → 轴向量 U(53.7,31) / V(-53.7,31) / W(0,-62)
+      模组  1.6 × 1.6 × 1.05（half-w 0.8 / half-d 0.8）→ 屏幕宽 171.8 / 高 164.3
+      托盘  4.2 × 3.6 × 0.32，模组抬升 0.845 单位
+      桩    1.1 × 1.1 × 2.6
+
+    构图图层表：
+      L0 background : 地面带 y560–640 + 地平线 + 参考虚线
+      L1 far        : 三处落地投影（#000@0.10 的等距菱形）
+      L2 mid        : 落地单件模组（左）→ 托盘（中）→ 充电桩（右）
+      L3 subject    : 托盘上 4 个模组（按等距深度排序：远 → 近）
+      L4 details    : 模组散热棱 ×3 / 顶面端子 ×2 / 电量格 ×3；桩顶蓝指示灯 + 左侧闪电
+    配色  SPEC.md：mist=模组 / beige=托盘 / ink=描边 / 蓝=桩顶指示灯唯一焦点(≤3%)
+  -->
+  <defs>
+    <!-- 标准模组：局部原点 = 底面中心（等距） -->
+    <g id="bt-mod">
+      <!-- 左面（中调） -->
+      <path d="M-85.92 -65.1 L0 -15.5 L0 49.6 L-85.92 0 Z" fill="#D8E2EC"/>
+      <!-- 右面（暗调） -->
+      <path d="M85.92 -65.1 L0 -15.5 L0 49.6 L85.92 0 Z" fill="#B8C0C9"/>
+      <!-- 顶面（最亮） -->
+      <path d="M0 -114.7 L85.92 -65.1 L0 -15.5 L-85.92 -65.1 Z" fill="#EDF2F7"/>
+      <!-- 描边（三档：轮廓 3 / 结构 1.5） -->
+      <g fill="none" stroke="#1A1A1A" stroke-width="3" stroke-linejoin="round">
+        <path d="M0 -114.7 L85.92 -65.1 L0 -15.5 L-85.92 -65.1 Z"/>
+        <path d="M-85.92 -65.1 L0 -15.5 L0 49.6 L-85.92 0 Z"/>
+        <path d="M85.92 -65.1 L0 -15.5 L0 49.6 L85.92 0 Z"/>
+      </g>
+      <!-- 散热棱：左面 3 道 -->
+      <g stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" opacity="0.75">
+        <line x1="-75.6" y1="-39.6" x2="-10.3" y2="-2"/>
+        <line x1="-75.6" y1="-26.6" x2="-10.3" y2="11"/>
+        <line x1="-75.6" y1="-13.6" x2="-10.3" y2="24"/>
+        <!-- 右面 3 道 -->
+        <line x1="75.6" y1="-39.6" x2="10.3" y2="-2"/>
+        <line x1="75.6" y1="-26.6" x2="10.3" y2="11"/>
+        <line x1="75.6" y1="-13.6" x2="10.3" y2="24"/>
+      </g>
+      <!-- 顶面端子 ×2 -->
+      <g fill="#1A1A1A">
+        <circle cx="0" cy="-98" r="4.5"/>
+        <circle cx="0" cy="-32" r="4.5"/>
+      </g>
+      <!-- 电量格 ×3（左面下部） -->
+      <g fill="#FFFFFF" stroke="#1A1A1A" stroke-width="1.5">
+        <rect x="-72" y="-4" width="9" height="9" rx="1.5"/>
+        <rect x="-54.8" y="5.8" width="9" height="9" rx="1.5"/>
+        <rect x="-37.6" y="15.6" width="9" height="9" rx="1.5"/>
+      </g>
+    </g>
+
+    <!-- 托盘：局部原点 = 底面中心 -->
+    <g id="bt-pallet">
+      <path d="M-209.5 -29.14 L16.1 101.06 L16.1 120.9 L-209.5 -9.3 Z" fill="#E3D5C4"/>
+      <path d="M209.5 -10.54 L16.1 101.06 L16.1 120.9 L209.5 9.3 Z" fill="#DCC9B4"/>
+      <path d="M-16.1 -140.74 L209.5 -10.54 L16.1 101.06 L-209.5 -29.14 Z" fill="#F3EBE1"/>
+      <g fill="none" stroke="#1A1A1A" stroke-width="3" stroke-linejoin="round">
+        <path d="M-16.1 -140.74 L209.5 -10.54 L16.1 101.06 L-209.5 -29.14 Z"/>
+        <path d="M-209.5 -29.14 L16.1 101.06 L16.1 120.9 L-209.5 -9.3 Z"/>
+        <path d="M209.5 -10.54 L16.1 101.06 L16.1 120.9 L209.5 9.3 Z"/>
+      </g>
+      <!-- 托盘板条：左面 2 道 -->
+      <g stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" opacity="0.6">
+        <line x1="-160" y1="-12" x2="-40" y2="52"/>
+        <line x1="-110" y1="6" x2="10" y2="70"/>
+      </g>
+    </g>
+
+    <!-- 充电桩：局部原点 = 底面中心（1.5 × 1.2 × 2.0） -->
+    <g id="bt-post">
+      <path d="M-80.55 -124 L0 -86.8 L0 37.2 L-80.55 0 Z" fill="#D8E2EC"/>
+      <path d="M80.55 -124 L0 -86.8 L0 37.2 L80.55 0 Z" fill="#B8C0C9"/>
+      <path d="M0 -161.2 L80.55 -124 L0 -86.8 L-80.55 -124 Z" fill="#EDF2F7"/>
+      <g fill="none" stroke="#1A1A1A" stroke-width="3" stroke-linejoin="round">
+        <path d="M0 -161.2 L80.55 -124 L0 -86.8 L-80.55 -124 Z"/>
+        <path d="M-80.55 -124 L0 -86.8 L0 37.2 L-80.55 0 Z"/>
+        <path d="M80.55 -124 L0 -86.8 L0 37.2 L80.55 0 Z"/>
+      </g>
+      <!-- 左侧面显示屏 + 闪电符号 + 线缆插座（用等距面矩阵把单位盒映射到左面平行四边形） -->
+      <g transform="matrix(80.55,37.2,0,124,-80.55,-124)">
+        <rect x="0.30" y="0.10" width="0.40" height="0.22" rx="0.03" fill="#1A1A1A"/>
+        <rect x="0.34" y="0.145" width="0.20" height="0.035" rx="0.02" fill="#D8E2EC" opacity="0.85"/>
+        <rect x="0.34" y="0.205" width="0.12" height="0.035" rx="0.02" fill="#D8E2EC" opacity="0.5"/>
+        <path d="M0.62 0.42 L0.40 0.70 L0.50 0.70 L0.42 0.94 L0.64 0.64 L0.54 0.64 L0.66 0.42 Z" fill="#1A1A1A"/>
+        <rect x="0.36" y="0.845" width="0.28" height="0.10" rx="0.025" fill="#1A1A1A"/>
+      </g>
+      <!-- 桩顶状态灯：全幅唯一 Signal Blue 焦点 -->
+      <circle cx="0" cy="-124" r="7.5" fill="#00A9FF" stroke="#1A1A1A" stroke-width="2.5"/>
+      <circle cx="0" cy="-124" r="2.6" fill="#FFFFFF" opacity="0.9"/>
+    </g>
+  </defs>
+
+  <!-- L0 背景：地面带 + 地平线 -->
+  <g id="ground">
+    <rect x="0" y="560" width="960" height="80" fill="#B6B6B6" opacity="0.10"/>
+    <line x1="0" y1="560" x2="960" y2="560" stroke="#B6B6B6" stroke-width="1.5" opacity="0.5"/>
+    <line x1="0" y1="596" x2="960" y2="596" stroke="#B6B6B6" stroke-width="1.5" stroke-dasharray="34 26" opacity="0.35"/>
+  </g>
+
+  <!-- L1 落地投影（等距菱形，画在物体之前） -->
+  <g id="shadows" fill="#000000" opacity="0.10">
+    <path d="M413.9 294.1 L639.5 424.3 L446.1 535.9 L220.5 405.7 Z"/>
+    <path d="M150 415.4 L235.9 465 L150 514.6 L64.1 465 Z"/>
+    <path d="M790 445.9 L870.55 480 L790 514.1 L709.45 480 Z"/>
+  </g>
+
+  <!-- L2 落地单件模组（左） -->
+  <use href="#bt-mod" transform="translate(150 465)"/>
+
+  <!-- L2 托盘（中） -->
+  <use href="#bt-pallet" transform="translate(430 415)"/>
+
+  <!-- L3 托盘上 4 个模组（等距深度：远 → 近） -->
+  <use href="#bt-mod" transform="translate(424.6 333.06)"/>
+  <use href="#bt-mod" transform="translate(322.6 392.06)"/>
+  <use href="#bt-mod" transform="translate(537.4 398.26)"/>
+  <use href="#bt-mod" transform="translate(435.4 457.26)"/>
+
+  <!-- L2 充电桩（右） -->
+  <use href="#bt-post" transform="translate(790 480)"/>
+</svg>
