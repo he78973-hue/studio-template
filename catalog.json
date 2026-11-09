@@ -190,6 +190,22 @@
       "previewVideo": "sites/aurelle/preview/video.mp4"
     },
     {
+      "id": "fourier-pelican",
+      "scene": "creative",
+      "title": {
+        "zh": "傅里叶鹈鹕",
+        "en": "Fourier pelican"
+      },
+      "description": {
+        "zh": "双坐标傅里叶圆链从椭圆逐级描绘鹈鹕的长嘴、翘尾和双脚，支持播放暂停、重播与键盘跳转；无需依赖的数学可视化演示。",
+        "en": "Two Fourier epicycle chains reconstruct a pelican's bill, tail, and feet from an ellipse, with playback, replay, and keyboard seeking. A dependency-free math visualization demo."
+      },
+      "dir": "sites/fourier-pelican",
+      "tone": "ink",
+      "cover": "sites/fourier-pelican/preview/cover.png",
+      "previewVideo": "sites/fourier-pelican/preview/video.mp4"
+    },
+    {
       "id": "pocket-planet",
       "scene": "app",
       "title": {
