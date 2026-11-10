@@ -190,6 +190,22 @@
       "previewVideo": "sites/aurelle/preview/video.mp4"
     },
     {
+      "id": "periodic-table-3d",
+      "scene": "creative",
+      "title": {
+        "zh": "ELEMENTA · 3D 原子图谱",
+        "en": "ELEMENTA · Atomic atlas"
+      },
+      "description": {
+        "zh": "可探索的 118 元素周期表与玻尔原子示意模型：点击飞入原子、旋转缩放、核特写，并在同一页面切换浅色与暗色；支持离线运行和 Canvas 降级。",
+        "en": "Explore 118 elements and illustrative Bohr atom models with camera flight, orbit/zoom, nucleus close-ups, and light/dark switching in one page. Works offline with a Canvas fallback."
+      },
+      "dir": "sites/periodic-table-3d",
+      "tone": "forest",
+      "cover": "sites/periodic-table-3d/preview/cover.png",
+      "previewVideo": "sites/periodic-table-3d/preview/video.mp4"
+    },
+    {
       "id": "pocket-planet",
       "scene": "app",
       "title": {
