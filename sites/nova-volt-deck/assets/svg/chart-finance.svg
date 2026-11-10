@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" role="img">
+  <title>财务图表：营收与毛利率预测</title>
+  <!--
+    Brief（动笔前落注释）：
+    主体  营收柱状图（2027–2030，亿元，左轴）+ 毛利率折线（右轴 %，盈亏平衡叙事）
+    用途  财务预测页配图；数据为企划案演示用虚构值，页面附等价 mono 数据表
+    风格  brand 05-data-viz：柱状无圆角、网格 #B6B6B6@40%、mono 标注、
+          主序列 Signal Blue 实线、数据点不描边、蓝线不做文字色
+    画布  viewBox 0 0 960 640；安全区 48px（内容限 x48–912 / y48–592）
+    调色板 SPEC.md：ink=营收柱 / 蓝=毛利率主序列；无第三种彩灰
+
+    数据表（一个数字都未改，先读出原文件核对）：
+      年份      2027   2028   2029   2030
+      营收亿元    42     96    178    265
+      毛利率%    2.1    6.8   12.4   18.2
+      性质      全部为预测（标题已声明「预测」，故不设实际/预测分界线）
+
+    构图图层表（与 chart-market 同一套网格，便于跨页对齐）：
+    标题   serif 22px ink，基线 y=80，x=48（安全区左缘起）
+    副标/图例 mono 16px，基线 y=108；副标左起 x=48，图例右端收于 x=907
+    绘图区 x112–852（宽 740，占画宽 77%）／y132–552（高 420，占画高 66%）
+            → 落在「绘图区占画面 65–75%」区间
+    基线   y=552（ink 1.5px 加重，与左右轴 0 刻度同一水平线）
+    左轴   0/100/200/300 亿元 → y552/425.3/298.7/172（步长 126.7），右对齐 x=92
+    右轴   0/5/10/15/20/25%  → 同一垂直标尺，左对齐 x=872（0% 对齐 0）
+    网格   #B6B6B6 @0.4 1px，仅画 3 条中间线，基线用 ink
+    柱     宽 120 间距 60（=柱宽 50%），柱心 x=212/392/572/752
+            ink：42/96/178/265 → 高 53.2/121.6/225.5/335.7
+    折线   蓝 1.5px，点 r=4.5 不描边：y520.1/448.6/363.5/275.4
+    数值标签 柱顶上方固定 −14px；毛利率全程低于柱顶（差 21.3–59.1px），
+            标签与折线点永不相叠，故无需避让抬升——与 chart-market 的
+            「min(柱顶, 折线点) − 14」规则同源，此处恒等于柱顶 −14
+    年份标签 mono 16px #656565，基线 y=580，与柱心对齐
+    L0 background : 无（透明，纸底 #F7F7F7 由页面提供）
+    L1 far        : 网格 + 双轴刻度 + 基线
+    L2 mid        : 柱 ×4
+    L3 subject    : 毛利率折线 + 数据点
+    L4 foreground : 营收数值标签 + 年份标签
+    L5 details    : 标题 + 副标（单位）+ 图例
+  -->
+  <defs></defs>
+
+  <!-- L1 网格与双轴刻度 -->
+  <g id="grid-f">
+    <g stroke="#B6B6B6" stroke-width="1" opacity="0.4">
+      <line x1="112" y1="425.3" x2="852" y2="425.3"/>
+      <line x1="112" y1="298.7" x2="852" y2="298.7"/>
+      <line x1="112" y1="172" x2="852" y2="172"/>
+    </g>
+    <line x1="112" y1="552" x2="852" y2="552" stroke="#1A1A1A" stroke-width="1.5"/>
+    <g font-family="PT Mono, ui-monospace, Menlo, monospace" font-size="16" fill="#656565">
+      <text x="92" y="558" text-anchor="end">0</text>
+      <text x="92" y="431.3" text-anchor="end">100</text>
+      <text x="92" y="304.7" text-anchor="end">200</text>
+      <text x="92" y="178" text-anchor="end">300</text>
+      <text x="872" y="558">0%</text>
+      <text x="872" y="482">5%</text>
+      <text x="872" y="406">10%</text>
+      <text x="872" y="330">15%</text>
+      <text x="872" y="254">20%</text>
+      <text x="872" y="178">25%</text>
+    </g>
+  </g>
+
+  <!-- L2 营收柱（ink，无圆角） -->
+  <g id="bars-f" fill="#1A1A1A">
+    <rect x="152" y="498.8" width="120" height="53.2"/>
+    <rect x="332" y="430.4" width="120" height="121.6"/>
+    <rect x="512" y="326.5" width="120" height="225.5"/>
+    <rect x="692" y="216.3" width="120" height="335.7"/>
+  </g>
+
+  <!-- L3 毛利率折线（主序列：Signal Blue 实线） -->
+  <g id="margin-f">
+    <path d="M212 520.1 L392 448.6 L572 363.5 L752 275.4"
+          fill="none" stroke="#00A9FF" stroke-width="1.5" stroke-linejoin="round"/>
+    <g fill="#00A9FF">
+      <circle cx="212" cy="520.1" r="4.5"/>
+      <circle cx="392" cy="448.6" r="4.5"/>
+      <circle cx="572" cy="363.5" r="4.5"/>
+      <circle cx="752" cy="275.4" r="4.5"/>
+    </g>
+  </g>
+
+  <!-- L4 数值标签 + 年份标签 -->
+  <g id="labels-f" font-family="PT Mono, ui-monospace, Menlo, monospace" font-size="16">
+    <g fill="#1A1A1A" text-anchor="middle">
+      <text x="212" y="484.8">42</text>
+      <text x="392" y="416.4">96</text>
+      <text x="572" y="312.5">178</text>
+      <text x="752" y="202.3">265</text>
+    </g>
+    <g fill="#656565" text-anchor="middle">
+      <text x="212" y="580">2027</text>
+      <text x="392" y="580">2028</text>
+      <text x="572" y="580">2029</text>
+      <text x="752" y="580">2030</text>
+    </g>
+  </g>
+
+  <!-- L5 标题 / 副标（单位）/ 图例 -->
+  <g id="title-legend-f">
+    <text x="48" y="80" font-family="Source Han Serif CN, Noto Serif SC, Songti SC, serif"
+          font-size="22" fill="#1A1A1A">营收与毛利率预测 · 2027–2030</text>
+    <text x="48" y="108" font-family="PT Mono, ui-monospace, Menlo, monospace"
+          font-size="16" fill="#656565">营收（亿元，左轴）｜毛利率（%，右轴）</text>
+    <g font-family="PT Mono, ui-monospace, Menlo, monospace" font-size="16" fill="#656565">
+      <rect x="753" y="95" width="14" height="14" fill="#1A1A1A"/>
+      <text x="775" y="108">营收</text>
+      <line x1="831" y1="101" x2="853" y2="101" stroke="#00A9FF" stroke-width="1.5" stroke-linecap="round"/>
+      <text x="861" y="108">毛利率</text>
+    </g>
+  </g>
+</svg>

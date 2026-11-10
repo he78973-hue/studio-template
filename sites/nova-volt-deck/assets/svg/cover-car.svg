@@ -1,0 +1,208 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img">
+  <title>封面插图：城市通勤智能电车侧视</title>
+  <!--
+    Brief（动笔前落注释）：
+    用途  商业企划案封面 / 产品页主插图（NOVA VOLT NV-01）
+    主体  城市通勤纯电轿车侧视（快背轿车、双轮、充电口指示灯）
+    场景  纸面清晨：淡化城市天际线 + 道路 + 云 + 飞鸟 + 灌木
+    情绪  克制、安静、印刷感（数字网格的精确秩序 × 纸张印刷的人文触感）
+    风格  扁平插画 + 立体四件套（底色/阴影面/高光/落地投影），描边三档 4/2.5/1.5
+
+    画布  viewBox 0 0 640 480；安全区 40；主体外留白 ≥20%
+    光源  左上 → 阴影朝右下
+
+    比例核算（按 4,280mm 实车折算，车长 560px = 4,280mm → 1px ≈ 7.64mm）：
+      车长 560px（x 40–600）｜车高 186px（车顶 94 / 腰线 172 / 离地 18）
+      轴距 355px（前轮心 151 / 后轮心 506）｜前后悬 111 / 94
+      轮径 88px（r=44，轮心 y=236，接地点 y=280）｜轮拱半径 54（拱顶 182）
+      车顶弧 最高点 y=94（x 322–350）｜A 柱角 22°｜C 柱角 41°
+      门缝 x=212 / 336 / 444（均避开轮拱开口 97–205、452–560）
+
+    构图图层表：
+      L0 background : 云 ×2（mist 底 + 暗色底带）、飞鸟 ×3
+      L1 far        : 天际线两层 #D8E2EC@0.75 / #B6B6B6@0.40，y 150–280，带窗格点
+      L2 mid        : 地面 #B6B6B6@0.22 y280–480 + 车道虚线
+      L3 subject    : 落地投影 → 车身(mist + clipPath 阴影面) → 玻璃带 → 车轮 ×2
+                      → 后视镜 → 门缝把手 → 前灯(黄) → 尾灯(灰) → 充电口(蓝点)
+      L4 foreground : 灌木 ×2（有机轮廓）#B6B6B6@0.45
+      L5 details    : 机盖高光弧、肩线高光、轮毂螺栓点
+    配色  SPEC.md：mist 车身 / ink 描边 / 蓝=充电口唯一焦点(≤3%) / 黄=前灯(≤1%)
+  -->
+  <defs>
+    <clipPath id="cr-body">
+      <path d="M40 262 L34 238 C30 222 38 210 56 204 L106 194 C134 186 158 180 178 172 L270 108
+               C296 98 322 94 350 94 L415 96 C458 100 498 118 532 146
+               C556 164 574 182 586 200 L596 222 C602 238 602 252 596 262 Z"/>
+    </clipPath>
+    <clipPath id="cr-glass-a">
+      <path d="M185 172 L262 112 L286 110 L268 172 Z"/>
+    </clipPath>
+    <clipPath id="cr-glass-c">
+      <path d="M340 104 L394 110 L416 128 L412 172 L340 172 Z"/>
+    </clipPath>
+    <clipPath id="cr-glass-d">
+      <path d="M426 116 L466 128 L482 146 L478 172 L426 172 Z"/>
+    </clipPath>
+
+    <g id="cr-cloud">
+      <circle cx="0" cy="0" r="15" fill="#D8E2EC"/>
+      <circle cx="18" cy="-8" r="20" fill="#D8E2EC"/>
+      <circle cx="40" cy="-2" r="14" fill="#D8E2EC"/>
+      <rect x="-7" y="0" width="55" height="14" rx="7" fill="#D8E2EC"/>
+      <rect x="-5" y="8" width="51" height="7" rx="3.5" fill="#B8C0C9"/>
+    </g>
+
+    <g id="cr-bird">
+      <path d="M-7 0 Q-3.5 -5 0 0 Q3.5 -5 7 0" fill="none" stroke="#656565" stroke-width="1.5" stroke-linecap="round"/>
+    </g>
+
+    <g id="cr-wheel">
+      <circle cx="0" cy="0" r="44" fill="#1A1A1A"/>
+      <circle cx="0" cy="0" r="37" fill="none" stroke="#656565" stroke-width="1.5" opacity="0.85"/>
+      <circle cx="0" cy="0" r="32" fill="#1A1A1A"/>
+      <g fill="#C7C7C7" stroke="#1A1A1A" stroke-width="1.5" stroke-linejoin="round">
+        <path d="M-6 0 L-4.4 -28 L4.4 -28 L6 0 Z"/>
+        <path d="M-6 0 L-4.4 -28 L4.4 -28 L6 0 Z" transform="rotate(72)"/>
+        <path d="M-6 0 L-4.4 -28 L4.4 -28 L6 0 Z" transform="rotate(144)"/>
+        <path d="M-6 0 L-4.4 -28 L4.4 -28 L6 0 Z" transform="rotate(216)"/>
+        <path d="M-6 0 L-4.4 -28 L4.4 -28 L6 0 Z" transform="rotate(288)"/>
+      </g>
+      <circle cx="0" cy="0" r="9" fill="#F7F7F7" stroke="#1A1A1A" stroke-width="2"/>
+      <circle cx="0" cy="0" r="3" fill="#B6B6B6"/>
+      <g fill="#656565">
+        <circle cx="0" cy="-19" r="1.6"/><circle cx="18" cy="-6" r="1.6"/>
+        <circle cx="11" cy="15" r="1.6"/><circle cx="-11" cy="15" r="1.6"/><circle cx="-18" cy="-6" r="1.6"/>
+      </g>
+    </g>
+  </defs>
+
+  <!-- L0 背景 -->
+  <g id="background">
+    <use href="#cr-cloud" transform="translate(474 66) scale(0.92)"/>
+    <use href="#cr-cloud" transform="translate(166 52) scale(0.55)" opacity="0.9"/>
+    <use href="#cr-bird" transform="translate(292 96)"/>
+    <use href="#cr-bird" transform="translate(316 82) scale(0.72)"/>
+    <use href="#cr-bird" transform="translate(338 100) scale(0.55)"/>
+  </g>
+
+  <!-- L1 远景：天际线两层（空气透视）+ 窗格 -->
+  <g id="far">
+    <g fill="#D8E2EC" opacity="0.75">
+      <rect x="34" y="176" width="40" height="104"/>
+      <rect x="80" y="196" width="30" height="84"/>
+      <rect x="118" y="160" width="46" height="120"/>
+      <rect x="172" y="188" width="34" height="92"/>
+      <rect x="238" y="198" width="44" height="82"/>
+      <rect x="330" y="180" width="36" height="100"/>
+      <rect x="392" y="168" width="50" height="112"/>
+      <rect x="452" y="192" width="32" height="88"/>
+      <rect x="500" y="176" width="44" height="104"/>
+      <rect x="556" y="196" width="30" height="84"/>
+      <rect x="588" y="184" width="40" height="96"/>
+    </g>
+    <g fill="#B6B6B6" opacity="0.40">
+      <rect x="60" y="212" width="32" height="68"/>
+      <rect x="150" y="222" width="26" height="58"/>
+      <rect x="276" y="216" width="38" height="64"/>
+      <rect x="420" y="220" width="28" height="60"/>
+      <rect x="530" y="214" width="34" height="66"/>
+    </g>
+    <g stroke="#B6B6B6" stroke-width="1.5" stroke-linecap="round" opacity="0.7">
+      <line x1="141" y1="160" x2="141" y2="142"/>
+      <line x1="417" y1="168" x2="417" y2="150"/>
+    </g>
+    <g fill="#FFFFFF" opacity="0.5">
+      <rect x="128" y="176" width="6" height="8"/><rect x="142" y="176" width="6" height="8"/>
+      <rect x="128" y="194" width="6" height="8"/><rect x="142" y="194" width="6" height="8"/>
+      <rect x="404" y="184" width="7" height="9"/><rect x="421" y="184" width="7" height="9"/>
+      <rect x="404" y="204" width="7" height="9"/><rect x="421" y="204" width="7" height="9"/>
+      <rect x="510" y="192" width="6" height="8"/><rect x="526" y="192" width="6" height="8"/>
+      <rect x="510" y="210" width="6" height="8"/><rect x="526" y="210" width="6" height="8"/>
+    </g>
+  </g>
+
+  <!-- L2 中景：地面 + 车道虚线 -->
+  <g id="mid">
+    <rect x="0" y="280" width="640" height="200" fill="#B6B6B6" opacity="0.22"/>
+    <line x1="0" y1="280" x2="640" y2="280" stroke="#B6B6B6" stroke-width="1.5" opacity="0.6"/>
+    <line x1="0" y1="356" x2="640" y2="356" stroke="#B6B6B6" stroke-width="1.5" stroke-dasharray="30 22" opacity="0.5"/>
+  </g>
+
+  <!-- L3 主体：电车 -->
+  <g id="subject">
+    <ellipse cx="320" cy="284" rx="252" ry="11" fill="#000000" opacity="0.12"/>
+
+    <!-- 车身底色 -->
+    <path d="M40 262 L34 238 C30 222 38 210 56 204 L106 194 C134 186 158 180 178 172 L270 108
+             C296 98 322 94 350 94 L415 96 C458 100 498 118 532 146
+             C556 164 574 182 586 200 L596 222 C602 238 602 252 596 262
+             L560 262 A54 54 0 0 0 452 262 L205 262 A54 54 0 0 0 97 262 Z"
+          fill="#D8E2EC" stroke="#1A1A1A" stroke-width="4" stroke-linejoin="round"/>
+
+    <!-- 阴影面：右下背光侧（clipPath 裁在车身内部，斜边避免硬接） -->
+    <g clip-path="url(#cr-body)">
+      <path d="M400 88 L640 88 L640 300 L480 300 Z" fill="#B8C0C9"/>
+      <rect x="20" y="252" width="600" height="26" fill="#B8C0C9" opacity="0.5"/>
+      <!-- 侧围第二层阴影，增强落地感 -->
+      <path d="M440 226 L600 248 L600 262 L440 262 Z" fill="#B8C0C9" opacity="0.45"/>
+      <!-- 门槛下沿暗面 -->
+      <path d="M205 250 L452 250 L452 262 L205 262 Z" fill="#B8C0C9" opacity="0.6"/>
+    </g>
+
+    <!-- 高光：机盖迎光弧 + 肩线高光（均画在门板/机盖实体上，不压玻璃） -->
+    <path d="M72 198 C114 188 154 178 188 170" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" opacity="0.9"/>
+    <path d="M198 182 C260 172 332 170 406 176" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" opacity="0.75"/>
+    <path d="M424 182 C476 188 522 202 558 220" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity="0.45"/>
+
+    <!-- 玻璃带 -->
+    <g stroke="#1A1A1A" stroke-width="2.5" stroke-linejoin="round">
+      <path d="M185 172 L262 112 L286 110 L268 172 Z" fill="#B6B6B6"/>
+      <path d="M296 110 L330 106 L330 172 L296 172 Z" fill="#B6B6B6"/>
+      <path d="M340 104 L394 110 L416 128 L412 172 L340 172 Z" fill="#B6B6B6"/>
+      <path d="M426 116 L466 128 L482 146 L478 172 L426 172 Z" fill="#B6B6B6"/>
+    </g>
+    <g clip-path="url(#cr-glass-a)">
+      <path d="M179 102 L300 102 L300 182 L179 182 Z" fill="#9B9B9B" opacity="0.5"/>
+    </g>
+    <g clip-path="url(#cr-glass-c)">
+      <path d="M334 100 L442 100 L442 182 L334 182 Z" fill="#9B9B9B" opacity="0.45"/>
+    </g>
+    <g clip-path="url(#cr-glass-d)">
+      <path d="M420 112 L492 112 L492 182 L420 182 Z" fill="#9B9B9B" opacity="0.4"/>
+    </g>
+
+    <!-- B/C 柱 + 门缝（x=212/336/444 均在轮拱开口之外） -->
+    <line x1="336" y1="108" x2="336" y2="172" stroke="#1A1A1A" stroke-width="2.5"/>
+    <line x1="421" y1="116" x2="421" y2="172" stroke="#1A1A1A" stroke-width="2.5"/>
+    <line x1="212" y1="174" x2="212" y2="256" stroke="#1A1A1A" stroke-width="2.5"/>
+    <line x1="336" y1="172" x2="336" y2="256" stroke="#1A1A1A" stroke-width="2.5"/>
+    <line x1="444" y1="174" x2="444" y2="240" stroke="#1A1A1A" stroke-width="2.5"/>
+
+    <!-- 门把手 -->
+    <rect x="252" y="188" width="22" height="6" rx="3" fill="#1A1A1A"/>
+    <rect x="366" y="190" width="22" height="6" rx="3" fill="#1A1A1A"/>
+
+    <!-- 后视镜 -->
+    <path d="M204 170 L194 158 L210 154 L220 168 Z" fill="#D8E2EC" stroke="#1A1A1A" stroke-width="2.5" stroke-linejoin="round"/>
+
+    <!-- 前灯（Marker Yellow 局部标记：日行灯 + 主灯一体） -->
+    <path d="M46 228 L78 212 L92 220 L88 236 L52 242 Z" fill="#F9B845" stroke="#1A1A1A" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M56 224 L78 214" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity="0.9"/>
+    <!-- 尾灯（深灰条，不引入第三种彩色） -->
+    <rect x="584" y="196" width="9" height="24" rx="4.5" fill="#656565" stroke="#1A1A1A" stroke-width="2"/>
+    <!-- 充电口：全幅唯一 Signal Blue 焦点（后翼子板） -->
+    <circle cx="570" cy="224" r="6.5" fill="#00A9FF" stroke="#1A1A1A" stroke-width="2.5"/>
+
+    <!-- 车轮 -->
+    <use href="#cr-wheel" transform="translate(151 236)"/>
+    <use href="#cr-wheel" transform="translate(506 236)"/>
+  </g>
+
+  <!-- L4 前景：灌木（压低对比） -->
+  <g id="foreground">
+    <path d="M76,352 C82,351.8 90,353.8 95,356.5 C100,359.2 105,364.2 105.6,368.5 C106.2,372.8 101,377 98,381.5 C95,386 93,392.8 86.6,395.4 C80.2,398 67,399 61,396.6 C55,394.2 54.4,386 50.4,381.4 C46.4,376.8 37.2,372 38.2,368 C39.2,364 49.6,360.6 55,358.2 C60.4,355.8 70,352.2 76,352Z"
+          fill="#B6B6B6" opacity="0.45"/>
+    <path d="M566,360 C573,360.2 580,361.4 584.6,364.2 C589.2,367 593.2,372.4 593.4,376.8 C593.6,381.2 589,386.4 584.4,389.8 C579.8,393.2 572.4,396.4 566,396.6 C559.6,396.8 550,394.4 545.8,391 C541.6,387.6 542.6,380.8 542.8,376 C543,371.2 542.4,364.4 546.4,361.4 C550.4,358.4 559,359.8 566,360Z"
+          fill="#B6B6B6" opacity="0.45"/>
+  </g>
+</svg>

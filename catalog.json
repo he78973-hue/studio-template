@@ -219,6 +219,22 @@
       "dir": "apps/pocket-planet",
       "tone": "night",
       "cover": "apps/pocket-planet/preview/cover.svg"
+    },
+    {
+      "id": "nova-volt-deck",
+      "scene": "marketing",
+      "title": {
+        "zh": "星潮电动 · 商业企划案",
+        "en": "NOVA VOLT · Business Plan Deck"
+      },
+      "description": {
+        "zh": "16:9 HTML 幻灯片模版：1920×1080 画布、12 页商业企划案、键盘导航与 PDF 导出；思源宋体 + Lora 字体系统、品牌点阵章号与 7 张原创 SVG 插画。内容为虚构演示数据。",
+        "en": "A 16:9 HTML slide-deck template on a 1920x1080 canvas: 12 business-plan pages, keyboard navigation and PDF export, with a Source Han Serif + Lora type system, brand dot-matrix chapter marks and seven original SVG illustrations. All content is fictional demo data."
+      },
+      "dir": "sites/nova-volt-deck",
+      "tone": "ink",
+      "cover": "sites/nova-volt-deck/preview/cover.png",
+      "previewVideo": "sites/nova-volt-deck/preview/video.mp4"
     }
   ]
 }
