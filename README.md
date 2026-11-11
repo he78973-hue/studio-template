@@ -51,6 +51,7 @@ The exact schema is:
 | `meridian-ops` | Tools | Global operations dashboard ([template notes](./sites/meridian-ops/README.md)) |
 | `aurelle` | Marketing | Beauty brand storefront ([template notes](./sites/aurelle/README.md)) |
 | `fourier-pelican` | Creative | Dual-coordinate Fourier epicycle animation ([template notes](./sites/fourier-pelican/README.md)) |
+| `periodic-table-3d` | Creative | Offline atomic atlas with light/dark themes and Canvas fallback ([template notes](./sites/periodic-table-3d/README.md)) |
 
 Paths: `sites/<id>/` with `index.html` entry.
 

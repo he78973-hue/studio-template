@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" role="img">
+  <title>市场图表：中国新能源乘用车销量与渗透率</title>
+  <!--
+    Brief（动笔前落注释）：
+    主体  中国新能源乘用车年销量柱状图（2022–2030E，万辆，左轴）+ 渗透率折线（右轴 %）
+    用途  市场机遇页配图；数据为企划案演示用虚构值，页面附等价 mono 数据表
+    风格  brand 05-data-viz：柱状无圆角、间距=柱宽 50%、网格 #B6B6B6@40%、
+          轴标签/数值标签 mono、主序列 Signal Blue 实线、数据点不描边
+    画布  viewBox 0 0 960 640；安全区 48px（内容限 x48–912 / y48–592）
+    调色板 SPEC.md：ink=实际柱 / mist=预测柱（E）/ 蓝=渗透率主序列；无第三种彩灰
+
+    数据表（一个数字都未改）：
+      年份      2022  2023  2024  2025  2026E 2027E 2028E 2029E 2030E
+      销量万辆   688   949  1288  1580  1860  2180  2520  2860  3200
+      渗透率%   27.6  34.7  47.6  58.0  63.5  68.0  72.0  75.5  78.0
+      性质      实际 ←——————————→ 预测（2026E 起，竖向虚线分界 x=441.5）
+
+    构图图层表：
+    标题   serif 22px ink，基线 y=80，x=48（安全区左缘起）
+    副标/图例 mono 16px，基线 y=108；副标左起 x=48，图例右端收于 x=907
+    绘图区 x112–852（宽 740，占画宽 77%）／y132–552（高 420，占画高 66%）
+            → 落在「绘图区占画面 65–75%」区间
+    基线   y=552（ink 1.5px 加重，与左右轴 0 刻度同一水平线）
+    左轴   0/800/1600/2400/3200 → y552/457/362/267/172（步长 95），右对齐 x=92
+    右轴   0/25/50/75/100%    → 与左轴同一组水平线，左对齐 x=872（0% 对齐 0）
+    网格   #B6B6B6 @0.4 1px，仅画 4 条中间线，基线用 ink
+    柱     宽 54 间距 27（=柱宽 50%），柱心 x=158/239/320/401/482/563/644/725/806
+            实际 ink：688/949/1288/1580 → 高 81.7/112.7/153.0/187.6
+            预测 mist+ink1.5 描边：1860/2180/2520/2860/3200 → 高 220.9/258.9/299.3/339.6/380.0
+    折线   蓝 1.5px，点 r=4.5 不描边：y447.1/420.1/371.1/331.6/310.7/293.6/278.4/265.1/255.6
+    数值标签 基线 = min(柱顶, 折线点) − 14。
+            2022–2026 渗透率点高于柱顶（差 19.4–32.8px），标签若贴柱顶必与数据点相撞，
+            故统一抬到折线点上方 14px；2027–2030 柱顶反超折线，标签贴柱顶上方 14px。
+            偏移量恒定 14px，仅锚点取「该列两个标记中较高的那个」，绝不相叠。
+    年份标签 mono 16px #656565，基线 y=580，与柱心对齐
+    L0 background : 无（透明，纸底 #F7F7F7 由页面提供）
+    L1 far        : 网格 + 双轴刻度 + 基线
+    L2 mid        : 柱 ×9 + 实际/预测分隔虚线 + 「E = 预测」小标注
+    L3 subject    : 渗透率折线 + 数据点
+    L4 foreground : 销量数值标签 + 年份标签
+    L5 details    : 标题 + 副标（单位）+ 图例
+  -->
+  <defs></defs>
+
+  <!-- L1 网格与双轴刻度 -->
+  <g id="grid">
+    <g stroke="#B6B6B6" stroke-width="1" opacity="0.4">
+      <line x1="112" y1="457" x2="852" y2="457"/>
+      <line x1="112" y1="362" x2="852" y2="362"/>
+      <line x1="112" y1="267" x2="852" y2="267"/>
+      <line x1="112" y1="172" x2="852" y2="172"/>
+    </g>
+    <line x1="112" y1="552" x2="852" y2="552" stroke="#1A1A1A" stroke-width="1.5"/>
+    <g font-family="PT Mono, ui-monospace, Menlo, monospace" font-size="16" fill="#656565">
+      <text x="92" y="558" text-anchor="end">0</text>
+      <text x="92" y="463" text-anchor="end">800</text>
+      <text x="92" y="368" text-anchor="end">1600</text>
+      <text x="92" y="273" text-anchor="end">2400</text>
+      <text x="92" y="178" text-anchor="end">3200</text>
+      <text x="872" y="558">0%</text>
+      <text x="872" y="463">25%</text>
+      <text x="872" y="368">50%</text>
+      <text x="872" y="273">75%</text>
+      <text x="872" y="178">100%</text>
+    </g>
+  </g>
+
+  <!-- L2 柱状 -->
+  <g id="bars">
+    <!-- 实际（ink） -->
+    <g fill="#1A1A1A">
+      <rect x="131" y="470.3" width="54" height="81.7"/>
+      <rect x="212" y="439.3" width="54" height="112.7"/>
+      <rect x="293" y="399.0" width="54" height="153.0"/>
+      <rect x="374" y="364.4" width="54" height="187.6"/>
+    </g>
+    <!-- 预测（mist + ink 发丝描边） -->
+    <g fill="#D8E2EC" stroke="#1A1A1A" stroke-width="1.5">
+      <rect x="455" y="331.1" width="54" height="220.9"/>
+      <rect x="536" y="293.1" width="54" height="258.9"/>
+      <rect x="617" y="252.7" width="54" height="299.3"/>
+      <rect x="698" y="212.4" width="54" height="339.6"/>
+      <rect x="779" y="172.0" width="54" height="380.0"/>
+    </g>
+    <!-- 实际/预测分界：落在 2025 与 2026E 柱间空隙（x=441.5），不压柱体 -->
+    <line x1="441.5" y1="150" x2="441.5" y2="552" stroke="#B6B6B6" stroke-width="1.5"
+          stroke-dasharray="7 7" stroke-linecap="round"/>
+  </g>
+
+  <!-- L3 渗透率折线（主序列：Signal Blue 实线） -->
+  <g id="penetration">
+    <path d="M158 447.1 L239 420.1 L320 371.1 L401 331.6 L482 310.7 L563 293.6 L644 278.4 L725 265.1 L806 255.6"
+          fill="none" stroke="#00A9FF" stroke-width="1.5" stroke-linejoin="round"/>
+    <g fill="#00A9FF">
+      <circle cx="158" cy="447.1" r="4.5"/>
+      <circle cx="239" cy="420.1" r="4.5"/>
+      <circle cx="320" cy="371.1" r="4.5"/>
+      <circle cx="401" cy="331.6" r="4.5"/>
+      <circle cx="482" cy="310.7" r="4.5"/>
+      <circle cx="563" cy="293.6" r="4.5"/>
+      <circle cx="644" cy="278.4" r="4.5"/>
+      <circle cx="725" cy="265.1" r="4.5"/>
+      <circle cx="806" cy="255.6" r="4.5"/>
+    </g>
+  </g>
+
+  <!-- L4 数值标签 + 年份标签 -->
+  <g id="labels" font-family="PT Mono, ui-monospace, Menlo, monospace" font-size="16">
+    <g fill="#1A1A1A" text-anchor="middle">
+      <text x="158" y="433.1">688</text>
+      <text x="239" y="406.1">949</text>
+      <text x="320" y="357.1">1288</text>
+      <text x="401" y="317.6">1580</text>
+      <text x="482" y="296.7">1860</text>
+      <text x="563" y="279.1">2180</text>
+      <text x="644" y="238.7">2520</text>
+      <text x="725" y="198.4">2860</text>
+      <text x="806" y="158.0">3200</text>
+    </g>
+    <g fill="#656565" text-anchor="middle">
+      <text x="158" y="580">2022</text>
+      <text x="239" y="580">2023</text>
+      <text x="320" y="580">2024</text>
+      <text x="401" y="580">2025</text>
+      <text x="482" y="580">2026E</text>
+      <text x="563" y="580">2027E</text>
+      <text x="644" y="580">2028E</text>
+      <text x="725" y="580">2029E</text>
+      <text x="806" y="580">2030E</text>
+    </g>
+  </g>
+
+  <!-- L5 标题 / 副标（单位）/ 图例 / 分界标注 -->
+  <g id="title-legend">
+    <text x="48" y="80" font-family="Source Han Serif CN, Noto Serif SC, Songti SC, serif"
+          font-size="22" fill="#1A1A1A">中国新能源乘用车销量与渗透率</text>
+    <text x="48" y="108" font-family="PT Mono, ui-monospace, Menlo, monospace"
+          font-size="16" fill="#656565">销量（万辆，左轴）｜渗透率（%，右轴）</text>
+    <text x="449.5" y="158" font-family="PT Mono, ui-monospace, Menlo, monospace"
+          font-size="16" fill="#656565">E = 预测</text>
+    <g font-family="PT Mono, ui-monospace, Menlo, monospace" font-size="16" fill="#656565">
+      <rect x="674" y="95" width="14" height="14" fill="#1A1A1A"/>
+      <text x="696" y="108">实际</text>
+      <rect x="753" y="95" width="14" height="14" fill="#D8E2EC" stroke="#1A1A1A" stroke-width="1.5"/>
+      <text x="775" y="108">预测</text>
+      <line x1="831" y1="101" x2="853" y2="101" stroke="#00A9FF" stroke-width="1.5" stroke-linecap="round"/>
+      <text x="861" y="108">渗透率</text>
+    </g>
+  </g>
+</svg>

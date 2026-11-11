@@ -14,5 +14,6 @@ Curated **StepFun Studio** front-end demos. No third-party template bundles exce
 | `meridian-ops` | Meridian global operations dashboard | Code license not specified; Google Fonts: Archivo, Noto Sans SC and PT Mono, SIL OFL 1.1 (see [template notes](./sites/meridian-ops/README.md)) |
 | `aurelle` | AURELLE beauty brand storefront | Code license not specified; preserve page attribution; Font Awesome Free 7.3.1 SVG icons CC BY 4.0, fonts SIL OFL 1.1, code MIT (see [template notes](./sites/aurelle/README.md)) |
 | `fourier-pelican` | Dual-coordinate Fourier epicycle pelican demo | Code license not specified; user-supplied character reference redrawn as paths, original raster not bundled; no third-party runtime libraries or font files (see [template notes](./sites/fourier-pelican/README.md#许可与署名)) |
+| `periodic-table-3d` | ELEMENTA dual-theme periodic table and illustrative atom models | App code license not specified; Three.js r160 and OrbitControls MIT; PT Mono SIL OFL 1.1. Full dependency notices are included in the vendor directory and generated HTML (see [template notes](./sites/periodic-table-3d/README.md#许可与署名)). |
 
 Refresh curated demos manually; `scripts/import-vendors.sh` is deprecated for OSS bulk import.

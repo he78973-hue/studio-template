@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" role="img" stroke-linecap="round" stroke-linejoin="round">
+  <title>竞争格局插图：2×2 定位矩阵</title>
+  <!--
+    Brief（动笔前落注释）：
+    用途  商业企划案「竞争格局」章节配图：竞争定位矩阵（卡位低成本 × 高便利的空档）
+    主体  2×2 定位矩阵：3 个竞品气泡 + NOVA VOLT 目标空位（信号蓝唯一焦点）
+    场景  战略示意图；象限底色极淡区分，纸面，标题由幻灯片提供（图内不重复标题）
+    情绪  清醒、有依据的卡位；留白即论据
+    风格  扁平印刷感图表：ink 轴线 + 暖灰虚线象限分隔 + 灰阶气泡 + mono 标签
+    画布  viewBox 0 0 960 640，安全区 48（内容 48–912 × 48–592），背景透明，纸底 #F7F7F7
+    规约  assets/svg/SPEC.md + 本次硬性规约：
+          色板 墨 #1A1A1A｜灰 #656565｜暖灰 #B6B6B6｜雾蓝 #D8E2EC｜米 #F3EBE1｜白 #FFFFFF
+               信号蓝 #00A9FF（仅 NOVA VOLT 气泡，≈0.9%）｜标记黄 #F9B845（仅目标环，≈0.2%）
+          阴影面 = 基色降亮度 15% 偏冷（灰气泡→#656565@20% 月牙，蓝气泡→#1A1A1A@14% 月牙）
+          线宽 4 / 2.5 / 1.5 三档；圆角 2–8；单幅颜色 9 种；无渐变、无 CSS 投影
+          光源统一左上 → 气泡阴影面与落地投影均朝右下
+    字体  PT Mono / ui-monospace / Menlo，全部标签 ≥16px，色 #1A1A1A / #656565
+
+    坐标定义：
+          矩阵区 x150–870 × y96–500（720×404）；象限分隔 x510 / y298（暖灰虚线 1.5）
+          象限底色 左上雾蓝@0.32｜右上米@0.32｜左下米@0.32｜右下雾蓝@0.32（对角两色）
+          X 轴 y536（150→902 箭头）= 购车与用车成本，左低右高
+          Y 轴 x130（500→66 箭头）= 补能便利性，下低上高
+          气泡 高端新势力 (720,175) r60｜传统主力 (655,390) r54｜低价代步 (310,420) r50
+          目标 NOVA VOLT (330,205) r42 + 目标环 r56（黄 2.5）+ 下方 mono 标签
+          象限标注 目标空位(黄小方, 左上)｜高端溢价(右上)｜低价妥协(左下)｜成本高地(右下)
+
+    构图图层表：
+          L0 纸底        : 无（透明）
+          L1 远·坐标系   : 四象限淡底色 + 象限分隔虚线 + X/Y 轴（墨 2.5 + 箭头）+ 轴端 低/高
+          L2 中·竞品     : 3 个灰阶气泡（落地投影 / 底色 / 右下阴影面 / 左上高光弧 / 内置标签）
+          L3 主体·目标   : 目标环（黄）+ NOVA VOLT 气泡（蓝）+ 「NOVA VOLT」标签 + 目标空位引线
+          L4 前景·文字层 : 象限标注 + 轴标题「购车与用车成本」「补能便利性」
+          L5 details     : 无
+  -->
+  <defs>
+    <clipPath id="mx-bub-clip">
+      <circle cx="0" cy="0" r="50"/>
+    </clipPath>
+    <clipPath id="mx-tgt-clip">
+      <circle cx="0" cy="0" r="42"/>
+    </clipPath>
+  </defs>
+
+  <!-- L1 远景：象限底色（对角两色，极淡） + 分隔虚线 -->
+  <g id="quadrants">
+    <rect x="150" y="96"  width="360" height="202" fill="#D8E2EC" opacity="0.35"/>
+    <rect x="510" y="96"  width="360" height="202" fill="#F3EBE1" opacity="0.35"/>
+    <rect x="150" y="298" width="360" height="202" fill="#F3EBE1" opacity="0.35"/>
+    <rect x="510" y="298" width="360" height="202" fill="#D8E2EC" opacity="0.35"/>
+    <line x1="510" y1="96"  x2="510" y2="500" stroke="#B6B6B6" stroke-width="1.5" stroke-dasharray="9 8"/>
+    <line x1="150" y1="298" x2="870" y2="298" stroke="#B6B6B6" stroke-width="1.5" stroke-dasharray="9 8"/>
+  </g>
+
+  <!-- L1 坐标轴：墨色 2.5px 带箭头 -->
+  <g id="axes">
+    <line x1="150" y1="536" x2="890" y2="536" stroke="#1A1A1A" stroke-width="2.5"/>
+    <polygon points="902,536 884,528 884,544" fill="#1A1A1A"/>
+    <line x1="130" y1="500" x2="130" y2="74" stroke="#1A1A1A" stroke-width="2.5"/>
+    <polygon points="130,62 122,80 138,80" fill="#1A1A1A"/>
+  </g>
+
+  <!-- L2 中景：竞品气泡 ×3（灰阶圆 + 内置标签） -->
+  <g id="rivals" font-family="PT Mono, ui-monospace, Menlo, monospace" font-size="16" fill="#1A1A1A">
+    <!-- 高端新势力：高便利 / 高成本 -->
+    <ellipse cx="723" cy="181" rx="58" ry="54" fill="#000" opacity="0.10"/>
+    <circle cx="720" cy="175" r="60" fill="#B6B6B6" stroke="#1A1A1A" stroke-width="2.5"/>
+    <g clip-path="url(#mx-bub-clip)" transform="translate(720 175) scale(1.2)">
+      <circle cx="9" cy="9" r="50" fill="#656565" opacity="0.20"/>
+    </g>
+    <path d="M-47 -17 A50 50 0 0 1 17 -47" fill="none" stroke="#FFFFFF" stroke-width="3.5" opacity="0.85"
+          vector-effect="non-scaling-stroke" transform="translate(720 175) scale(1.2)"/>
+    <text x="720" y="181" text-anchor="middle">高端新势力</text>
+
+    <!-- 传统主力：中便利 / 高成本 -->
+    <ellipse cx="658" cy="396" rx="52" ry="48" fill="#000" opacity="0.10"/>
+    <circle cx="655" cy="390" r="54" fill="#B6B6B6" fill-opacity="0.85" stroke="#1A1A1A" stroke-width="2.5"/>
+    <g clip-path="url(#mx-bub-clip)" transform="translate(655 390) scale(1.08)">
+      <circle cx="9" cy="9" r="50" fill="#656565" opacity="0.20"/>
+    </g>
+    <path d="M-47 -17 A50 50 0 0 1 17 -47" fill="none" stroke="#FFFFFF" stroke-width="3.5" opacity="0.85"
+          vector-effect="non-scaling-stroke" transform="translate(655 390) scale(1.08)"/>
+    <text x="655" y="396" text-anchor="middle">传统主力</text>
+
+    <!-- 低价代步：低便利 / 低成本 -->
+    <ellipse cx="313" cy="426" rx="48" ry="44" fill="#000" opacity="0.10"/>
+    <circle cx="310" cy="420" r="50" fill="#B6B6B6" fill-opacity="0.68" stroke="#1A1A1A" stroke-width="2.5"/>
+    <g clip-path="url(#mx-bub-clip)" transform="translate(310 420)">
+      <circle cx="9" cy="9" r="50" fill="#656565" opacity="0.20"/>
+    </g>
+    <path d="M-47 -17 A50 50 0 0 1 17 -47" fill="none" stroke="#FFFFFF" stroke-width="3.5" opacity="0.85"
+          vector-effect="non-scaling-stroke" transform="translate(310 420)"/>
+    <text x="310" y="426" text-anchor="middle">低价代步</text>
+  </g>
+
+  <!-- L3 主体：目标空位 NOVA VOLT（高便利 / 低成本） -->
+  <g id="target">
+    <ellipse cx="333" cy="191" rx="45" ry="41" fill="#000" opacity="0.10"/>
+    <circle cx="330" cy="185" r="56" fill="none" stroke="#F9B845" stroke-width="2.5"/>
+    <circle cx="330" cy="185" r="42" fill="#00A9FF" stroke="#1A1A1A" stroke-width="3.5"/>
+    <g clip-path="url(#mx-tgt-clip)" transform="translate(330 185)">
+      <circle cx="7.5" cy="7.5" r="42" fill="#1A1A1A" opacity="0.14"/>
+    </g>
+    <path d="M-39 -14 A42 42 0 0 1 14 -39" fill="none" stroke="#FFFFFF" stroke-width="3" opacity="0.5"
+          transform="translate(330 185)"/>
+    <text x="330" y="268" text-anchor="middle" font-family="PT Mono, ui-monospace, Menlo, monospace"
+          font-size="18" fill="#1A1A1A">NOVA VOLT</text>
+  </g>
+
+  <!-- L4 前景：象限标注 + 轴标签 -->
+  <g id="labels" font-family="PT Mono, ui-monospace, Menlo, monospace" font-size="16" fill="#656565">
+    <!-- 象限角标 -->
+    <rect x="168" y="104" width="11" height="11" rx="2" fill="#F9B845"/>
+    <text x="188" y="115">目标空位</text>
+    <path d="M244 124 L298 138" fill="none" stroke="#B6B6B6" stroke-width="1.5" stroke-dasharray="6 6"/>
+    <text x="862" y="115" text-anchor="end">高端溢价</text>
+    <text x="168" y="486">低价妥协</text>
+    <text x="862" y="486" text-anchor="end">成本高地</text>
+    <!-- 轴端刻度 -->
+    <text x="150" y="560">低</text>
+    <text x="890" y="560" text-anchor="end">高</text>
+    <text x="118" y="80" text-anchor="end">高</text>
+    <text x="118" y="512" text-anchor="end">低</text>
+    <!-- 轴标题 -->
+    <text x="510" y="580" text-anchor="middle" fill="#1A1A1A">购车与用车成本</text>
+    <text x="76" y="298" text-anchor="middle" fill="#1A1A1A" transform="rotate(-90 76 298)">补能便利性</text>
+  </g>
+</svg>
