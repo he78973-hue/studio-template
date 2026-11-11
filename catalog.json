@@ -190,6 +190,22 @@
       "previewVideo": "sites/aurelle/preview/video.mp4"
     },
     {
+      "id": "periodic-table-3d",
+      "scene": "creative",
+      "title": {
+        "zh": "ELEMENTA · 3D 原子图谱",
+        "en": "ELEMENTA · Atomic atlas"
+      },
+      "description": {
+        "zh": "可探索的 118 元素周期表与玻尔原子示意模型：点击飞入原子、旋转缩放、核特写，并在同一页面切换浅色与暗色；支持离线运行和 Canvas 降级。",
+        "en": "Explore 118 elements and illustrative Bohr atom models with camera flight, orbit/zoom, nucleus close-ups, and light/dark switching in one page. Works offline with a Canvas fallback."
+      },
+      "dir": "sites/periodic-table-3d",
+      "tone": "forest",
+      "cover": "sites/periodic-table-3d/preview/cover.png",
+      "previewVideo": "sites/periodic-table-3d/preview/video.mp4"
+    },
+    {
       "id": "pocket-planet",
       "scene": "app",
       "title": {
@@ -219,6 +235,22 @@
       "tone": "ink",
       "cover": "sites/cais/preview/cover.png",
       "previewVideo": "sites/cais/preview/video.mp4"
+    },
+    {
+      "id": "nova-volt-deck",
+      "scene": "marketing",
+      "title": {
+        "zh": "星潮电动 · 商业企划案",
+        "en": "NOVA VOLT · Business Plan Deck"
+      },
+      "description": {
+        "zh": "16:9 HTML 幻灯片模版：1920×1080 画布、12 页商业企划案、键盘导航与 PDF 导出；思源宋体 + Lora 字体系统、品牌点阵章号与 7 张原创 SVG 插画。内容为虚构演示数据。",
+        "en": "A 16:9 HTML slide-deck template on a 1920x1080 canvas: 12 business-plan pages, keyboard navigation and PDF export, with a Source Han Serif + Lora type system, brand dot-matrix chapter marks and seven original SVG illustrations. All content is fictional demo data."
+      },
+      "dir": "sites/nova-volt-deck",
+      "tone": "ink",
+      "cover": "sites/nova-volt-deck/preview/cover.png",
+      "previewVideo": "sites/nova-volt-deck/preview/video.mp4"
     }
   ]
 }

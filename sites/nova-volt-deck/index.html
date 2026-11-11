@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>星潮电动 · 商业企划案 — NOVA VOLT Business Plan</title>
+<meta name="description" content="星潮电动 NOVA VOLT 商业企划案演示模版：车电分离的城市通勤电动化方案。基于 StepFun 品牌视觉系统与 SVG 系列插画资产。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='2' y='2' width='28' height='28' rx='7' fill='%231A1A1A'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%2300A9FF'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/deck.css">
+</head>
+<body>
+<!-- ============================================================================
+     NOVA VOLT · 商业企划案 Deck（可复用 PPT 模版）
+     ----------------------------------------------------------------------------
+     【如何复用】
+     1. 换内容：每个 <section class="slide"> 是一页，中文文案直接在 HTML 中改；
+        数字在 .stat-num / .spec-list / .data-table 中，均为纯文本。
+     2. 增删页：整块复制一个 <section class="slide">，改 slide-index 编号即可；
+        导航圆点与页码由 deck.js 自动生成，无需改脚本。
+     3. 换插图：把 assets/svg/ 下的 .svg 换成你的图（保持 960×640 viewBox 最稳），
+        改 <img class="art" src="..."> 的路径；SVG 是唯一设计源，PNG 由脚本生成。
+     4. 改配色/字体：assets/tokens.css（StepFun 品牌三层 token）。
+     5. 导出 PDF：点右下角 EXPORT PDF，或浏览器打印（已配置 1920×1080 分页）。
+     6. 操作：→ / 空格 / PgDn 下一页，← / PgUp 上一页，Home/End 首末页，
+        数字键 1-9 跳页，点击屏幕右 1/3 下一页、左 1/3 上一页。
+     7. 图表数据等价物：图表页 <details> 内有 mono 数据表（可访问性要求）。
+     说明：页内数据均为商业企划案演示用虚构值。
+     ========================================================================== -->
+
+<div class="deck-progress" aria-hidden="true"></div>
+
+<main class="deck-stage" id="deck">
+  <div class="deck-scale">
+
+  <!-- ============================ 01 · 封面 ============================ -->
+  <section class="slide slide--cover is-active" aria-label="封面">
+    <div class="cover-grid">
+      <div>
+        <p class="cover-eyebrow sf-label">BUSINESS PLAN · 2026.11 · CONFIDENTIAL</p>
+        <!-- 点阵标题（dotmatrix.js 渲染；canvas 不可用时回落常规字体） -->
+        <span class="dot-title" data-dotmatrix="星潮电动" data-h="140" data-color="#1A1A1A">
+          <span class="dot-fallback">星潮电动</span>
+        </span>
+        <h1 class="cover-title">商业企划案</h1>
+        <p class="cover-sub">NOVA VOLT · Battery-as-a-Service for Urban Commuting<br>车电分离的城市通勤电动化方案</p>
+        <div class="cover-meta tag-row">
+          <span class="tag">版本 v0.9</span>
+          <span class="tag">上海</span>
+          <span class="tag">内部评审用</span>
+        </div>
+      </div>
+      <figure class="art-figure" style="margin:0">
+        <img class="art" src="assets/svg/cover-car.svg" alt="NV-01 城市通勤智能电车侧视插图" width="960" height="640">
+        <figcaption class="art-cap"><span>FIG.01 · NV-01 侧视（预研造型）</span><span>assets/svg/cover-car.svg</span></figcaption>
+      </figure>
+    </div>
+    <div class="cover-stats">
+      <div class="stat"><p class="stat-num">90<span class="stat-unit">秒</span></p><p class="stat-label">换电时间</p></div>
+      <div class="stat"><p class="stat-num">420<span class="stat-unit">km</span></p><p class="stat-label">CLTC 续航</p></div>
+      <div class="stat"><p class="stat-num">6<span class="stat-unit">城</span></p><p class="stat-label">首批城市</p></div>
+      <div class="stat"><p class="stat-num">2027<span class="stat-unit">Q2</span></p><p class="stat-label">量产交付</p></div>
+    </div>
+  </section>
+
+  <!-- ============================ 02 · 目录 ============================ -->
+  <section class="slide" aria-label="目录">
+    <header class="slide-head">
+      <p class="slide-index sf-label"><span class="idx">{00}</span><span>目录 · CONTENTS</span></p>
+      <span class="dot-chapter" data-dotmatrix="00" data-h="33"></span>
+      <h2 class="slide-title">六章，讲清一本账</h2>
+      <p class="slide-sub">约 20 分钟 · 每章一页 · 数据均为演示用虚构值</p>
+      <hr class="slide-head-rule">
+    </header>
+    <div class="slide-body">
+      <ol class="agenda">
+        <li><span class="no">01</span><span class="t">市场机遇</span><span class="d">MARKET · 城市通勤是电动化最后一块洼地</span></li>
+        <li><span class="no">02</span><span class="t">产品与技术</span><span class="d">PRODUCT · NV-01 与「魔方 Block」电池包</span></li>
+        <li><span class="no">03</span><span class="t">商业模式</span><span class="d">MODEL · 卖车、租电池、收服务费三本账</span></li>
+        <li><span class="no">04</span><span class="t">竞争与制造</span><span class="d">COMPETE · 卡位空档、产能与供应链</span></li>
+        <li><span class="no">05</span><span class="t">市场进入</span><span class="d">GO-TO-MARKET · 6 城 B 端切入，C 端随后</span></li>
+        <li><span class="no">06</span><span class="t">财务与里程碑</span><span class="d">FINANCE · 2027–2030 路径与融资需求</span></li>
+      </ol>
+    </div>
+    <footer class="slide-foot sf-label"><span>NOVA VOLT · BUSINESS PLAN 2026</span><span data-page>02 / 12</span></footer>
+  </section>
+
+  <!-- ============================ 03 · 市场机遇 ============================ -->
+  <section class="slide" aria-label="市场机遇">
+    <header class="slide-head">
+      <p class="slide-index sf-label"><span class="idx">{01}</span><span>市场机遇 · MARKET</span></p>
+      <span class="dot-chapter" data-dotmatrix="01" data-h="33"></span>
+      <h2 class="slide-title">渗透率过半之后，增量来自补能便利</h2>
+      <p class="slide-sub">续航参数已经够用；城市通勤用户缺的是"随时能走"的确定性</p>
+      <hr class="slide-head-rule">
+    </header>
+    <div class="slide-body cols cols--art-left">
+      <figure style="margin:0">
+        <img class="art" src="assets/svg/chart-market.svg" alt="中国新能源乘用车销量与渗透率图表" width="960" height="640">
+        <figcaption class="art-cap"><span>图 1 · 销量与渗透率（演示数据）</span><span>chart-market.svg</span></figcaption>
+      </figure>
+      <div class="stack">
+        <div class="card stat">
+          <p class="stat-num">58<span class="stat-unit">%</span></p>
+          <p class="stat-label">2025 年新能源乘用车渗透率</p>
+          <p class="stat-note">电动化从"要不要买"进入"好不好用"阶段</p>
+        </div>
+        <div class="card stat">
+          <p class="stat-num">78<span class="stat-unit">%</span></p>
+          <p class="stat-label">城市通勤占日常行驶里程比例</p>
+          <p class="stat-note">日均 42 km · 单程 30 km 以内场景占 71%</p>
+        </div>
+        <div class="card stat card--cool">
+          <p class="stat-num">¥0.06<span class="stat-unit">/km</span></p>
+          <p class="stat-label">每公里补能成本目标</p>
+          <p class="stat-note">换电 + 谷电组合；同级燃油车约 ¥0.52/km</p>
+        </div>
+        <details class="data-details">
+          <summary>数据表 · CHART DATA</summary>
+          <table class="data-table">
+            <caption>中国新能源乘用车销量（万辆）与渗透率（%）· 演示数据</caption>
+            <thead><tr><th>年份</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th><th>2026E</th><th>2027E</th><th>2028E</th><th>2029E</th><th>2030E</th></tr></thead>
+            <tbody>
+              <tr><td>销量</td><td>688</td><td>949</td><td>1288</td><td>1580</td><td>1860</td><td>2180</td><td>2520</td><td>2860</td><td>3200</td></tr>
+              <tr><td>渗透率</td><td>27.6</td><td>34.7</td><td>47.6</td><td>58.0</td><td>63.5</td><td>68.0</td><td>72.0</td><td>75.5</td><td>78.0</td></tr>
+            </tbody>
+          </table>
+        </details>
+      </div>
+    </div>
+    <footer class="slide-foot sf-label"><span>NOVA VOLT · BUSINESS PLAN 2026</span><span data-page>03 / 12</span></footer>
+  </section>
+
+  <!-- ============================ 04 · 产品定义 ============================ -->
+  <section class="slide" aria-label="产品定义">
+    <header class="slide-head">
+      <p class="slide-index sf-label"><span class="idx">{02}</span><span>产品与技术 · PRODUCT</span></p>
+      <span class="dot-chapter" data-dotmatrix="02" data-h="33"></span>
+      <h2 class="slide-title">NV-01：车电分离的城市通勤轿车</h2>
+      <p class="slide-sub">不造"参数冠军"，造"补能最顺的日常车"——买车身不买电池，90 秒换电</p>
+      <hr class="slide-head-rule">
+    </header>
+    <div class="slide-body cols cols--art-right">
+      <div class="stack">
+        <ul class="spec-list">
+          <li><span class="k">车型定位</span><span>紧凑型纯电轿车 · 车电分离架构 · 家用 / 网约双场景</span></li>
+          <li><span class="k">续航补能</span><span>CLTC 420 km · 换电 90 秒 · 家充 7 kW · 快充 10–80% 18 分钟</span></li>
+          <li><span class="k">车身尺寸</span><span>4,280 / 1,820 / 1,550 mm · 轴距 2,750 mm · 整备 1,480 kg</span></li>
+          <li><span class="k">电耗风阻</span><span>11.2 kWh/100km · 风阻系数 Cd 0.24 · 600V 平台（可升级 900V）</span></li>
+          <li><span class="k">购买方式</span><span>整车 12.98 万起；电池租电 399 元/月（含 1,200 km 换电额度）</span></li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag tag--accent">车电分离</span>
+          <span class="tag">90s 换电</span>
+          <span class="tag">420 km</span>
+          <span class="tag">11.2 kWh/100km</span>
+        </div>
+      </div>
+      <figure style="margin:0">
+        <img class="art" src="assets/svg/cover-car.svg" alt="NV-01 侧视插图" width="960" height="640">
+        <figcaption class="art-cap"><span>图 2 · NV-01 侧视（预研造型）</span><span>cover-car.svg</span></figcaption>
+      </figure>
+    </div>
+    <footer class="slide-foot sf-label"><span>NOVA VOLT · BUSINESS PLAN 2026</span><span data-page>04 / 12</span></footer>
+  </section>
+
+  <!-- ============================ 05 · 核心技术 ============================ -->
+  <section class="slide" aria-label="核心技术">
+    <header class="slide-head">
+      <p class="slide-index sf-label"><span class="idx">{02}</span><span>核心技术 · TECHNOLOGY</span></p>
+      <span class="dot-chapter" data-dotmatrix="02" data-h="33"></span>
+      <h2 class="slide-title">把电池做成城市公共设施</h2>
+      <p class="slide-sub">标准化模组，可换、可充、可升级；换电是主线，快充是兜底</p>
+      <hr class="slide-head-rule">
+    </header>
+    <div class="slide-body cols cols--art-right">
+      <div class="stack">
+        <div class="card">
+          <p class="card-num">TECH 01</p>
+          <h3 class="card-title">标准化电池包「魔方 Block」</h3>
+          <p class="card-body">5 模组 · 51 kWh · 跨三款车型通用。电池产权归平台，用户按月租用；模组标准化让残值变成可经营的资产，而不是折旧尾数。</p>
+        </div>
+        <div class="card">
+          <p class="card-num">TECH 02</p>
+          <h3 class="card-title">车云协同 BMS</h3>
+          <p class="card-body">单体电压采样 200 ms，云端对齐 12 万辆车运行数据；衰减预警提前 14 天，年衰减承诺 ≤ 8%，超出部分由平台承担。</p>
+        </div>
+        <div class="card card--cool">
+          <p class="card-num">TECH 03</p>
+          <h3 class="card-title">900V 高压快充（兜底路径）</h3>
+          <p class="card-body">10–80% 18 分钟。换电站未覆盖的场景由快充兜底，保证"任何时候都能补能"，不为网络密度牺牲产品可用性。</p>
+        </div>
+      </div>
+      <figure style="margin:0">
+        <img class="art" src="assets/svg/battery-modules.svg" alt="标准化电池模组与补能插图" width="960" height="640">
+        <figcaption class="art-cap"><span>图 3 · 「魔方 Block」模组与补能</span><span>battery-modules.svg</span></figcaption>
+      </figure>
+    </div>
+    <footer class="slide-foot sf-label"><span>NOVA VOLT · BUSINESS PLAN 2026</span><span data-page>05 / 12</span></footer>
+  </section>
+
+  <!-- ============================ 06 · 商业模式 ============================ -->
+  <section class="slide" aria-label="商业模式">
+    <header class="slide-head">
+      <p class="slide-index sf-label"><span class="idx">{03}</span><span>商业模式 · BUSINESS MODEL</span></p>
+      <span class="dot-chapter" data-dotmatrix="03" data-h="33"></span>
+      <h2 class="slide-title">三本账：卖车、租电池、收服务费</h2>
+      <p class="slide-sub">单车全周期收入 4.6 万元，其中 61% 来自购车之后——收入结构不依赖一次性销售</p>
+      <hr class="slide-head-rule">
+    </header>
+    <div class="slide-body stack">
+      <div class="cols-4">
+        <div class="card">
+          <p class="card-num">REVENUE 01</p>
+          <h3 class="card-title">整车销售</h3>
+          <p class="card-body">12.98 万起，车身不含电池。毛利率 2028 年转正至 4%，2030 年随规模到 16%。</p>
+        </div>
+        <div class="card">
+          <p class="card-num">REVENUE 02</p>
+          <h3 class="card-title">电池租电</h3>
+          <p class="card-body">399 元/月，含 1,200 km 换电额度。目标续费率 82%；电池资产年周转 2.4 次。</p>
+        </div>
+        <div class="card">
+          <p class="card-num">REVENUE 03</p>
+          <h3 class="card-title">换电服务</h3>
+          <p class="card-body">0.35 元/kWh 服务费，站均日 42 次；单站投资 68 万，26 个月回本。</p>
+        </div>
+        <div class="card">
+          <p class="card-num">REVENUE 04</p>
+          <h3 class="card-title">数据与残值</h3>
+          <p class="card-body">电池健康度报告、梯次利用、保险与金融分成；退役模组进储能场景，残值率 ≥ 18%。</p>
+        </div>
+      </div>
+      <div class="card card--sunken">
+        <p class="card-num">UNIT ECONOMICS · 单车经济模型（演示值）</p>
+        <p class="card-body" style="font-family:var(--font-mono);font-size:var(--fs-h3)">LTV ¥46,000 · CAC ¥3,200 · 回收期 26 个月 · 电池资产年周转 2.4 次 · 服务费毛利 54%</p>
+      </div>
+    </div>
+    <footer class="slide-foot sf-label"><span>NOVA VOLT · BUSINESS PLAN 2026</span><span data-page>06 / 12</span></footer>
+  </section>
+
+  <!-- ============================ 07 · 竞争格局 ============================ -->
+  <section class="slide" aria-label="竞争格局">
+    <header class="slide-head">
+      <p class="slide-index sf-label"><span class="idx">{04}</span><span>竞争格局 · COMPETITION</span></p>
+      <span class="dot-chapter" data-dotmatrix="04" data-h="33"></span>
+      <h2 class="slide-title">卡位"低成本 × 高便利"的空档</h2>
+      <p class="slide-sub">高端阵营卖体验，低价阵营卖价格；通勤人群要的是"省心且不贵"</p>
+      <hr class="slide-head-rule">
+    </header>
+    <div class="slide-body cols cols--art-left">
+      <figure style="margin:0">
+        <img class="art" src="assets/svg/matrix-competition.svg" alt="竞争定位矩阵插图" width="960" height="640">
+        <figcaption class="art-cap"><span>图 4 · 定位矩阵（示意）</span><span>matrix-competition.svg</span></figcaption>
+      </figure>
+      <div class="stack">
+        <div class="card">
+          <p class="card-num">RIVAL 01</p>
+          <h3 class="card-title">高端新势力</h3>
+          <p class="card-body">服务 30 万以上人群，补能体验好，但购置门槛把主流通勤家庭挡在门外。</p>
+        </div>
+        <div class="card">
+          <p class="card-num">RIVAL 02</p>
+          <h3 class="card-title">低价代步</h3>
+          <p class="card-body">8 万以下走量，家充为主；补能时间成本转嫁给用户，日均 1.5 小时找桩排队。</p>
+        </div>
+        <div class="card card--cool">
+          <p class="card-num">OUR POSITION</p>
+          <h3 class="card-title">NOVA VOLT：13 万内 + 换电网络</h3>
+          <p class="card-body">车电分离把购置价压到 13 万内，用换电网络把便利性补回来——这是两派都没占住的位置。</p>
+        </div>
+      </div>
+    </div>
+    <footer class="slide-foot sf-label"><span>NOVA VOLT · BUSINESS PLAN 2026</span><span data-page>07 / 12</span></footer>
+  </section>
+
+  <!-- ============================ 08 · 制造与供应链 ============================ -->
+  <section class="slide" aria-label="制造与供应链">
+    <header class="slide-head">
+      <p class="slide-index sf-label"><span class="idx">{04}</span><span>制造与供应链 · MANUFACTURING</span></p>
+      <span class="dot-chapter" data-dotmatrix="04" data-h="33"></span>
+      <h2 class="slide-title">一期 10 万台，电池合资锁定成本</h2>
+      <p class="slide-sub">自建总装，电池与电驱以合资 / 二供方式锁定；产能跟着换电站密度走</p>
+      <hr class="slide-head-rule">
+    </header>
+    <div class="slide-body cols cols--art-right">
+      <div class="stack">
+        <ul class="spec-list">
+          <li><span class="k">产能爬坡</span><span>2026 Q4 试制线 0.3 万台 → 2027 Q2 一期 10 万台/年 → 2028 二期 25 万台/年</span></li>
+          <li><span class="k">电池供应</span><span>合资电池厂（持股 45%），模组自组；目标 Pack 成本 0.42 元/Wh</span></li>
+          <li><span class="k">电驱底盘</span><span>电驱二供 + 一体化压铸自建；单车工时较行业均值下降 31%</span></li>
+          <li><span class="k">品控红线</span><span>电池包 100% 下线检测；换电插拔寿命 ≥ 10,000 次，站端锁止双确认</span></li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag">一期 10 万台</span>
+          <span class="tag">Pack 0.42 元/Wh</span>
+          <span class="tag">插拔 10,000 次</span>
+        </div>
+      </div>
+      <figure style="margin:0">
+        <img class="art" src="assets/svg/factory-plant.svg" alt="总装工厂插图" width="960" height="640">
+        <figcaption class="art-cap"><span>图 5 · 总装工厂与产线（示意）</span><span>factory-plant.svg</span></figcaption>
+      </figure>
+    </div>
+    <footer class="slide-foot sf-label"><span>NOVA VOLT · BUSINESS PLAN 2026</span><span data-page>08 / 12</span></footer>
+  </section>
+
+  <!-- ============================ 09 · 市场进入 ============================ -->
+  <section class="slide" aria-label="市场进入">
+    <header class="slide-head">
+      <p class="slide-index sf-label"><span class="idx">{05}</span><span>市场进入 · GO-TO-MARKET</span></p>
+      <span class="dot-chapter" data-dotmatrix="05" data-h="33"></span>
+      <h2 class="slide-title">6 城 B 端切入，C 端随后</h2>
+      <p class="slide-sub">用车强度高的地方先建网络；换电站密度达标，再开放零售</p>
+      <hr class="slide-head-rule">
+    </header>
+    <div class="slide-body cols cols--art-right">
+      <div class="stack">
+        <div class="card">
+          <p class="card-num">GTM 01</p>
+          <h3 class="card-title">首批 6 城：长三角通勤圈</h3>
+          <p class="card-body">苏州、无锡、常州、南通、嘉兴、上海。城际 30–80 km 通勤密度高，家充条件差，换电价值最直接。</p>
+        </div>
+        <div class="card">
+          <p class="card-num">GTM 02</p>
+          <h3 class="card-title">B 端切入：车队保底</h3>
+          <p class="card-body">网约车与企业车队 3,000 台框架订单，站均日活保底 30 次——网络未冷启动，先有确定性流水。</p>
+        </div>
+        <div class="card card--cool">
+          <p class="card-num">GTM 03</p>
+          <h3 class="card-title">C 端跟进：密度达标再放开</h3>
+          <p class="card-body">换电站 ≥ 1.5 座/百平方公里后开放零售，2028 年起；避免"车卖了没站换"的口碑反噬。</p>
+        </div>
+        <div class="card card--sunken">
+          <p class="card-num">2027 KPI</p>
+          <p class="card-body" style="font-family:var(--font-mono);font-size:var(--fs-h3)">交付 30,000 台 · 换电站 120 座 · 站均日活 42 次 · NPS ≥ 45</p>
+        </div>
+      </div>
+      <figure style="margin:0">
+        <img class="art" src="assets/svg/city-network.svg" alt="首批城市补能网络示意图" width="960" height="640">
+        <figcaption class="art-cap"><span>图 6 · 首批城市补能网络（示意图，非真实地理）</span><span>city-network.svg</span></figcaption>
+      </figure>
+    </div>
+    <footer class="slide-foot sf-label"><span>NOVA VOLT · BUSINESS PLAN 2026</span><span data-page>09 / 12</span></footer>
+  </section>
+
+  <!-- ============================ 10 · 财务预测 ============================ -->
+  <section class="slide" aria-label="财务预测">
+    <header class="slide-head">
+      <p class="slide-index sf-label"><span class="idx">{06}</span><span>财务预测 · FINANCIALS</span></p>
+      <span class="dot-chapter" data-dotmatrix="06" data-h="33"></span>
+      <h2 class="slide-title">2028 年毛利转正，2030 年全年盈利</h2>
+      <p class="slide-sub">收入随交付爬坡；毛利率随换电占比上升与 Pack 成本下降改善</p>
+      <hr class="slide-head-rule">
+    </header>
+    <div class="slide-body cols cols--art-left">
+      <figure style="margin:0">
+        <img class="art" src="assets/svg/chart-finance.svg" alt="营收与毛利率预测图表" width="960" height="640">
+        <figcaption class="art-cap"><span>图 7 · 营收与毛利率（演示数据）</span><span>chart-finance.svg</span></figcaption>
+      </figure>
+      <div class="stack">
+        <div class="card">
+          <p class="card-num">FIN 01</p>
+          <h3 class="card-title">收入结构</h3>
+          <p class="card-body">2030 年营收 265 亿元中，服务性收入（租电 + 换电 + 数据）占 39%，一次性销售依赖持续下降。</p>
+        </div>
+        <div class="card">
+          <p class="card-num">FIN 02</p>
+          <h3 class="card-title">融资需求</h3>
+          <p class="card-body">B 轮 15 亿元，2027 Q3 关闭；投向二期产能（25 万台）与 300 座换电站，跑道延至 2029。</p>
+        </div>
+        <div class="card">
+          <p class="card-num">FIN 03</p>
+          <h3 class="card-title">敏感性</h3>
+          <p class="card-body">Pack 成本每降 0.02 元/Wh，毛利率 +1.4 pct；站均日活每 +5 次，单站回本缩短 3.1 个月。</p>
+        </div>
+        <details class="data-details">
+          <summary>数据表 · CHART DATA</summary>
+          <table class="data-table">
+            <caption>营收（亿元）· 销量（万台）· 毛利率（%）· 换电站（座）· 演示数据</caption>
+            <thead><tr><th>指标</th><th>2027</th><th>2028</th><th>2029</th><th>2030</th></tr></thead>
+            <tbody>
+              <tr><td>营收</td><td>42</td><td>96</td><td>178</td><td>265</td></tr>
+              <tr><td>销量</td><td>3.0</td><td>6.5</td><td>11.0</td><td>15.0</td></tr>
+              <tr><td>毛利率</td><td>2.1</td><td>6.8</td><td>12.4</td><td>18.2</td></tr>
+              <tr><td>换电站</td><td>120</td><td>300</td><td>560</td><td>900</td></tr>
+            </tbody>
+          </table>
+        </details>
+      </div>
+    </div>
+    <footer class="slide-foot sf-label"><span>NOVA VOLT · BUSINESS PLAN 2026</span><span data-page>10 / 12</span></footer>
+  </section>
+
+  <!-- ============================ 11 · 里程碑与团队 ============================ -->
+  <section class="slide" aria-label="里程碑与团队">
+    <header class="slide-head">
+      <p class="slide-index sf-label"><span class="idx">{06}</span><span>里程碑与团队 · ROADMAP &amp; TEAM</span></p>
+      <span class="dot-chapter" data-dotmatrix="06" data-h="33"></span>
+      <h2 class="slide-title">从工程样车到盈利，四年五步</h2>
+      <p class="slide-sub">每一步都有可对外验证的交付物，不把故事建立在假设上</p>
+      <hr class="slide-head-rule">
+    </header>
+    <div class="slide-body stack">
+      <ol class="roadmap" style="list-style:none;margin:0;padding:0">
+        <li class="roadmap-step roadmap-step--now">
+          <span class="roadmap-dot" aria-hidden="true"></span>
+          <p class="roadmap-when">2026 Q4</p>
+          <p class="roadmap-what">工程样车下线，风洞与碰撞仿真冻结</p>
+        </li>
+        <li class="roadmap-step">
+          <span class="roadmap-dot" aria-hidden="true"></span>
+          <p class="roadmap-when">2027 Q2</p>
+          <p class="roadmap-what">首批 6 城交付，换电站 120 座</p>
+        </li>
+        <li class="roadmap-step">
+          <span class="roadmap-dot" aria-hidden="true"></span>
+          <p class="roadmap-when">2028 Q2</p>
+          <p class="roadmap-what">二期产能 25 万台，B 端规模化</p>
+        </li>
+        <li class="roadmap-step">
+          <span class="roadmap-dot" aria-hidden="true"></span>
+          <p class="roadmap-when">2029</p>
+          <p class="roadmap-what">换电网络 560 站，毛利率 12.4%</p>
+        </li>
+        <li class="roadmap-step">
+          <span class="roadmap-dot" aria-hidden="true"></span>
+          <p class="roadmap-when">2030</p>
+          <p class="roadmap-what">全年盈利，15 万台，900 站</p>
+        </li>
+      </ol>
+      <div class="cols-3">
+        <div class="card">
+          <p class="member-role">整车与制造</p>
+          <h3 class="card-title">前主流车企平台负责人</h3>
+          <p class="member-meta">14 年 · 两款年销 10 万级车型平台</p>
+        </div>
+        <div class="card">
+          <p class="member-role">电池与补能</p>
+          <h3 class="card-title">前头部电池厂 BMS 负责人</h3>
+          <p class="member-meta">11 年 · 主持换电电池包量产</p>
+        </div>
+        <div class="card">
+          <p class="member-role">商业化</p>
+          <h3 class="card-title">前出行平台城市运营负责人</h3>
+          <p class="member-meta">9 年 · 管理 6 城运力池</p>
+        </div>
+      </div>
+    </div>
+    <footer class="slide-foot sf-label"><span>NOVA VOLT · BUSINESS PLAN 2026</span><span data-page>11 / 12</span></footer>
+  </section>
+
+  <!-- ============================ 12 · 封底 ============================ -->
+  <section class="slide slide--closing" aria-label="结语">
+    <div class="closing-grid">
+      <p class="slide-index sf-label"><span style="color:var(--text-secondary)">NOVA VOLT · BUSINESS PLAN · 2026.11</span></p>
+      <span class="dot-title" data-dotmatrix="星潮电动" data-h="140" data-color="#F7F7F7">
+        <span class="dot-fallback" style="color:#F7F7F7">星潮电动</span>
+      </span>
+      <h2 class="cover-title" style="font-size:88px">把补能做成城市公共服务。</h2>
+      <p class="cover-sub">Make charging a public utility.<br>谢谢评审。任何一本账，欢迎当场追问。</p>
+      <p class="closing-contact"><span>ir@novavolt.example</span><span>上海</span><span>版本 v0.9</span><span>数据均为演示用虚构值</span></p>
+    </div>
+  </section>
+
+  </div>
+</main>
+
+<nav class="deck-nav" aria-label="幻灯片导航">
+  <button type="button" data-nav="prev" aria-label="上一页">← PREV</button>
+  <span class="nav-dots" data-nav="dots" role="group" aria-label="页码"></span>
+  <span class="nav-count" data-nav="count">01 / 12</span>
+  <button type="button" data-nav="next" aria-label="下一页">NEXT →</button>
+  <button type="button" data-nav="print" aria-label="导出 PDF">EXPORT PDF</button>
+</nav>
+
+<script type="module" src="assets/deck.js"></script>
+</body>
+</html>

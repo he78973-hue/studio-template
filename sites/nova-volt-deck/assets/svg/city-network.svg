@@ -1,0 +1,332 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" role="img" stroke-linecap="round" stroke-linejoin="round">
+  <title>市场进入插图：首批城市补能网络（俯视示意图）</title>
+  <!--
+    Brief（动笔前落注释）：
+    用途  商业企划案「市场进入」章节配图：首批城市补能网络（plan view 城市切片）
+    主体  补能网络：5 座换电站节点 + 1 条补能服务动线（蓝虚线）+ 4 辆在网俯视车辆
+    场景  示意性城市规划图（非真实地理），街区—道路—节点—动线四层语义
+    情绪  安静、秩序、规划感；不画热力图，不做密集噪点
+    风格  扁平印刷感矢量插画：白底建筑 + ink 细线 + 灰阶道路；立体四件套（底色/阴影面/高光/落地投影）
+    画布  viewBox 0 0 960 640，安全区 48（内容 48–912 × 48–592），背景透明，纸底 #F7F7F7 由页面提供
+    规约  assets/svg/SPEC.md + 本次硬性规约：
+          色板 墨 #1A1A1A｜灰 #656565｜暖灰 #B6B6B6｜雾蓝 #D8E2EC｜米 #F3EBE1｜白 #FFFFFF
+               信号蓝 #00A9FF（仅首站节点 + 动线，≈1%）｜标记黄 #F9B845（仅首站外环，≈0.2%）
+          阴影面 = 基色降亮度 15% 偏冷（白建筑→#D8E2EC 18% 带，蓝首站→#1A1A1A@14% 月牙）
+          线宽 4 / 2.5 / 1.5 三档；圆角 2–8；单幅颜色 9 种；无渐变、无 CSS 投影
+          光源统一左上 → 阴影面与落地投影均朝右下
+    字体  PT Mono / ui-monospace / Menlo，仅图例与标注，≥16px，色 #1A1A1A / #656565
+
+    网格（道路中线）：
+          竖向主干 ×3：x150 / x480 / x815（带宽 48）｜竖向支路 ×2：x300 / x650（带宽 26）
+          横向主干 ×3：y120 / y284 / y448（带宽 44）
+          街区 4 行 × 6 列：行 y48–98 / 142–262 / 306–426 / 470–520
+                            列 x48–126 / 174–287 / 313–456 / 504–637 / 663–791 / 839–912
+          面色 米 #F3EBE1 与雾蓝 #D8E2EC 棋盘交替
+
+    构图图层表：
+          L0 纸底      : 无（透明）
+          L1 远·城市肌理 : 24 个街区地块（棋盘面色）+ 道路双线（暖灰描边 + 浅灰路面）
+          L2 中·建筑与软地 : 41 栋建筑轮廓（symbol 复用：白底 + 右/下阴影面 + 顶高光 + 落地投影）
+                             + 公园 6 树 + 广场水池 1 处（第 3 行中/右两块，留呼吸）
+          L3 主体·网络   : 补能服务动线（蓝虚线 2.5px，沿道路中线，2 个方向箭头）
+                             + 换电站节点 ×5（白底方牌 + 闪电；首站蓝底 + 黄环 + 「首批首站」引标）
+          L4 前景·车辆   : 俯视小汽车 ×4，分别位于动线四段上（首站北 / H1 / V3 / H3）
+          L5 图脚        : 图例卡（换电站 / 首批首站 / 补能服务动线）+ 比例尺 + 「示意图」注
+  -->
+  <defs>
+    <!-- 建筑：viewBox 100×100 非等比映射到任意地块，non-scaling-stroke 保证 1.5px 描边不变形 -->
+    <symbol id="cn-bld" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <rect x="3" y="6" width="100" height="100" fill="#000" opacity="0.10"/>
+      <rect x="0" y="0" width="100" height="100" fill="#FFFFFF"/>
+      <rect x="82" y="0" width="18" height="100" fill="#D8E2EC"/>
+      <rect x="0" y="82" width="100" height="18" fill="#D8E2EC"/>
+      <rect x="6" y="3" width="88" height="5" fill="#F3EBE1"/>
+      <g stroke="#B6B6B6" stroke-width="1.5" vector-effect="non-scaling-stroke" opacity="0.85">
+        <line x1="12" y1="35" x2="88" y2="35"/>
+        <line x1="12" y1="65" x2="88" y2="65"/>
+      </g>
+      <rect x="0.75" y="0.75" width="98.5" height="98.5" rx="5" fill="none" stroke="#1A1A1A" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+    </symbol>
+
+    <clipPath id="cn-node-clip">
+      <rect x="-22" y="-22" width="44" height="44" rx="8"/>
+    </clipPath>
+    <clipPath id="cn-first-clip">
+      <rect x="-22" y="-22" width="44" height="44" rx="8"/>
+    </clipPath>
+    <clipPath id="cn-car-clip">
+      <rect x="-20" y="-36" width="40" height="72" rx="8"/>
+    </clipPath>
+
+    <!-- 换电站节点（白底方牌 + 灰闪电，44×44，原点居中） -->
+    <g id="cn-node">
+      <rect x="-19" y="-16" width="44" height="44" rx="8" fill="#000" opacity="0.10"/>
+      <rect x="-22" y="-22" width="44" height="44" rx="8" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="4"/>
+      <g clip-path="url(#cn-node-clip)">
+        <rect x="11" y="-22" width="11" height="44" fill="#D8E2EC"/>
+        <rect x="-22" y="11" width="44" height="11" fill="#D8E2EC"/>
+      </g>
+      <rect x="-15" y="-18" width="30" height="3" rx="1.5" fill="#F3EBE1"/>
+      <path d="M3 -15 L-7 1 L0 1 L-3 15 L8 -2 L1 -2 Z" fill="#656565"/>
+    </g>
+
+    <!-- 俯视小汽车（车头朝北，72×40，原点居中） -->
+    <g id="cn-car">
+      <rect x="-17" y="-30" width="40" height="72" rx="8" fill="#000" opacity="0.12"/>
+      <rect x="-20" y="-36" width="40" height="72" rx="8" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="2.5"/>
+      <g clip-path="url(#cn-car-clip)">
+        <rect x="13" y="-36" width="7" height="72" fill="#D8E2EC"/>
+        <rect x="-20" y="24" width="40" height="12" fill="#D8E2EC"/>
+      </g>
+      <rect x="-14" y="-32" width="26" height="3" rx="1.5" fill="#F3EBE1"/>
+      <rect x="-13" y="-22" width="26" height="13" rx="5" fill="#B6B6B6"/>
+      <rect x="-11" y="-3" width="22" height="2.5" rx="1.25" fill="#F3EBE1"/>
+      <rect x="-12" y="12" width="24" height="10" rx="4" fill="#B6B6B6"/>
+      <rect x="-16" y="-35" width="8" height="3" rx="1.5" fill="#F3EBE1"/>
+      <rect x="8" y="-35" width="8" height="3" rx="1.5" fill="#F3EBE1"/>
+      <rect x="-25" y="-25" width="6" height="14" rx="2" fill="#1A1A1A"/>
+      <rect x="-25" y="12" width="6" height="14" rx="2" fill="#1A1A1A"/>
+      <rect x="19" y="-25" width="6" height="14" rx="2" fill="#1A1A1A"/>
+      <rect x="19" y="12" width="6" height="14" rx="2" fill="#1A1A1A"/>
+    </g>
+
+    <!-- 行道树（r 参数化困难，直接实例化） -->
+    <g id="cn-tree-a">
+      <circle cx="2" cy="4" r="12" fill="#000" opacity="0.10"/>
+      <circle cx="0" cy="0" r="12" fill="#B6B6B6" stroke="#1A1A1A" stroke-width="1.5"/>
+      <circle cx="-3.5" cy="-3.5" r="4" fill="#FFFFFF" opacity="0.8"/>
+    </g>
+    <g id="cn-tree-b">
+      <circle cx="2" cy="4" r="10" fill="#000" opacity="0.10"/>
+      <circle cx="0" cy="0" r="10" fill="#B6B6B6" stroke="#1A1A1A" stroke-width="1.5"/>
+      <circle cx="-3" cy="-3" r="3.2" fill="#FFFFFF" opacity="0.8"/>
+    </g>
+    <g id="cn-tree-c">
+      <circle cx="2" cy="4" r="11" fill="#000" opacity="0.10"/>
+      <circle cx="0" cy="0" r="11" fill="#B6B6B6" stroke="#1A1A1A" stroke-width="1.5"/>
+      <circle cx="-3.2" cy="-3.2" r="3.6" fill="#FFFFFF" opacity="0.8"/>
+    </g>
+    <g id="cn-tree-d">
+      <circle cx="1.5" cy="3" r="7" fill="#000" opacity="0.10"/>
+      <circle cx="0" cy="0" r="7" fill="#B6B6B6" stroke="#1A1A1A" stroke-width="1.5"/>
+      <circle cx="-2" cy="-2" r="2.4" fill="#FFFFFF" opacity="0.8"/>
+    </g>
+
+    <!-- 动线方向箭头（默认朝北） -->
+    <g id="cn-arrow">
+      <path d="M0 -9 L7 7 L-7 7 Z" fill="#00A9FF"/>
+    </g>
+  </defs>
+
+  <!-- L1 远景：街区地块（米/雾蓝棋盘交替） -->
+  <g id="blocks">
+    <g>
+      <rect x="48"  y="48"  width="78"  height="50"  rx="4" fill="#F3EBE1"/>
+      <rect x="174" y="48"  width="113" height="50"  rx="4" fill="#D8E2EC"/>
+      <rect x="313" y="48"  width="143" height="50"  rx="4" fill="#F3EBE1"/>
+      <rect x="504" y="48"  width="133" height="50"  rx="4" fill="#D8E2EC"/>
+      <rect x="663" y="48"  width="128" height="50"  rx="4" fill="#F3EBE1"/>
+      <rect x="839" y="48"  width="73"  height="50"  rx="4" fill="#D8E2EC"/>
+
+      <rect x="48"  y="142" width="78"  height="120" rx="4" fill="#D8E2EC"/>
+      <rect x="174" y="142" width="113" height="120" rx="4" fill="#F3EBE1"/>
+      <rect x="313" y="142" width="143" height="120" rx="4" fill="#D8E2EC"/>
+      <rect x="504" y="142" width="133" height="120" rx="4" fill="#F3EBE1"/>
+      <rect x="663" y="142" width="128" height="120" rx="4" fill="#D8E2EC"/>
+      <rect x="839" y="142" width="73"  height="120" rx="4" fill="#F3EBE1"/>
+
+      <rect x="48"  y="306" width="78"  height="120" rx="4" fill="#F3EBE1"/>
+      <rect x="174" y="306" width="113" height="120" rx="4" fill="#D8E2EC"/>
+      <rect x="313" y="306" width="143" height="120" rx="4" fill="#F3EBE1"/>
+      <rect x="504" y="306" width="133" height="120" rx="4" fill="#D8E2EC"/>
+      <rect x="663" y="306" width="128" height="120" rx="4" fill="#F3EBE1"/>
+      <rect x="839" y="306" width="73"  height="120" rx="4" fill="#D8E2EC"/>
+
+      <rect x="48"  y="470" width="78"  height="50"  rx="4" fill="#D8E2EC"/>
+      <rect x="174" y="470" width="113" height="50"  rx="4" fill="#F3EBE1"/>
+      <rect x="313" y="470" width="143" height="50"  rx="4" fill="#D8E2EC"/>
+      <rect x="504" y="470" width="133" height="50"  rx="4" fill="#F3EBE1"/>
+      <rect x="663" y="470" width="128" height="50"  rx="4" fill="#D8E2EC"/>
+      <rect x="839" y="470" width="73"  height="50"  rx="4" fill="#F3EBE1"/>
+    </g>
+  </g>
+
+  <!-- L1 街道网：浅灰路面 + 暖灰双线（主干宽 48 / 支路窄 26） -->
+  <g id="roads">
+    <g fill="#B6B6B6" opacity="0.32">
+      <rect x="126" y="48" width="48" height="472"/>
+      <rect x="456" y="48" width="48" height="472"/>
+      <rect x="791" y="48" width="48" height="472"/>
+      <rect x="287" y="48" width="26" height="472"/>
+      <rect x="637" y="48" width="26" height="472"/>
+      <rect x="48" y="98"  width="864" height="44"/>
+      <rect x="48" y="262" width="864" height="44"/>
+      <rect x="48" y="426" width="864" height="44"/>
+    </g>
+    <g stroke="#B6B6B6" stroke-width="1.5" opacity="0.9">
+      <line x1="126" y1="49" x2="126" y2="519"/>
+      <line x1="174" y1="49" x2="174" y2="519"/>
+      <line x1="456" y1="49" x2="456" y2="519"/>
+      <line x1="504" y1="49" x2="504" y2="519"/>
+      <line x1="791" y1="49" x2="791" y2="519"/>
+      <line x1="839" y1="49" x2="839" y2="519"/>
+      <line x1="287" y1="49" x2="287" y2="519"/>
+      <line x1="313" y1="49" x2="313" y2="519"/>
+      <line x1="637" y1="49" x2="637" y2="519"/>
+      <line x1="663" y1="49" x2="663" y2="519"/>
+      <line x1="49" y1="98"  x2="911" y2="98"/>
+      <line x1="49" y1="142" x2="911" y2="142"/>
+      <line x1="49" y1="262" x2="911" y2="262"/>
+      <line x1="49" y1="306" x2="911" y2="306"/>
+      <line x1="49" y1="426" x2="911" y2="426"/>
+      <line x1="49" y1="470" x2="911" y2="470"/>
+    </g>
+  </g>
+
+  <!-- L2 中景：建筑轮廓（白底 + 右下阴影面 + 顶部高光 + 落地投影） -->
+  <g id="buildings">
+    <!-- 第 1 行（沿街低层） -->
+    <use href="#cn-bld" x="62"  y="60"  width="50"  height="26"/>
+    <use href="#cn-bld" x="186" y="60"  width="42"  height="26"/>
+    <use href="#cn-bld" x="236" y="60"  width="42"  height="26"/>
+    <use href="#cn-bld" x="327" y="60"  width="52"  height="26"/>
+    <use href="#cn-bld" x="391" y="60"  width="52"  height="26"/>
+    <use href="#cn-bld" x="518" y="60"  width="46"  height="26"/>
+    <use href="#cn-bld" x="576" y="60"  width="46"  height="26"/>
+    <use href="#cn-bld" x="677" y="60"  width="44"  height="26"/>
+    <use href="#cn-bld" x="733" y="60"  width="44"  height="26"/>
+    <use href="#cn-bld" x="853" y="60"  width="45"  height="26"/>
+    <!-- 第 2 行（街区主体） -->
+    <use href="#cn-bld" x="62"  y="156" width="50"  height="40"/>
+    <use href="#cn-bld" x="62"  y="204" width="50"  height="40"/>
+    <use href="#cn-bld" x="188" y="156" width="84"  height="42"/>
+    <use href="#cn-bld" x="188" y="206" width="40"  height="40"/>
+    <use href="#cn-bld" x="236" y="206" width="36"  height="40"/>
+    <use href="#cn-bld" x="327" y="156" width="54"  height="42"/>
+    <use href="#cn-bld" x="389" y="156" width="54"  height="42"/>
+    <use href="#cn-bld" x="327" y="206" width="50"  height="40"/>
+    <use href="#cn-bld" x="389" y="206" width="54"  height="40"/>
+    <use href="#cn-bld" x="518" y="156" width="48"  height="42"/>
+    <use href="#cn-bld" x="574" y="156" width="48"  height="42"/>
+    <use href="#cn-bld" x="518" y="206" width="104" height="36"/>
+    <use href="#cn-bld" x="677" y="156" width="44"  height="42"/>
+    <use href="#cn-bld" x="729" y="156" width="44"  height="42"/>
+    <use href="#cn-bld" x="677" y="206" width="96"  height="36"/>
+    <use href="#cn-bld" x="853" y="156" width="45"  height="40"/>
+    <use href="#cn-bld" x="853" y="204" width="45"  height="40"/>
+    <!-- 第 3 行（街区主体） -->
+    <use href="#cn-bld" x="62"  y="320" width="50"  height="40"/>
+    <use href="#cn-bld" x="62"  y="368" width="50"  height="40"/>
+    <use href="#cn-bld" x="188" y="320" width="40"  height="42"/>
+    <use href="#cn-bld" x="236" y="320" width="36"  height="42"/>
+    <use href="#cn-bld" x="188" y="370" width="84"  height="38"/>
+    <use href="#cn-bld" x="518" y="320" width="48"  height="42"/>
+    <use href="#cn-bld" x="574" y="320" width="48"  height="42"/>
+    <use href="#cn-bld" x="518" y="370" width="104" height="38"/>
+    <use href="#cn-bld" x="853" y="320" width="45"  height="40"/>
+    <use href="#cn-bld" x="853" y="368" width="45"  height="40"/>
+    <!-- 第 4 行（沿街低层） -->
+    <use href="#cn-bld" x="62"  y="482" width="50"  height="26"/>
+    <use href="#cn-bld" x="186" y="482" width="42"  height="26"/>
+    <use href="#cn-bld" x="236" y="482" width="42"  height="26"/>
+    <use href="#cn-bld" x="327" y="482" width="52"  height="26"/>
+    <use href="#cn-bld" x="518" y="482" width="46"  height="26"/>
+    <use href="#cn-bld" x="576" y="482" width="46"  height="26"/>
+    <use href="#cn-bld" x="677" y="482" width="44"  height="26"/>
+    <use href="#cn-bld" x="733" y="482" width="44"  height="26"/>
+    <use href="#cn-bld" x="853" y="482" width="45"  height="26"/>
+  </g>
+
+  <!-- L2 软地：公园（第 3 行中块） -->
+  <g id="park">
+    <use href="#cn-tree-a" transform="translate(348 338)"/>
+    <use href="#cn-tree-b" transform="translate(386 330)"/>
+    <use href="#cn-tree-a" transform="translate(424 340)"/>
+    <use href="#cn-tree-c" transform="translate(352 384)"/>
+    <use href="#cn-tree-a" transform="translate(400 390)"/>
+    <use href="#cn-tree-b" transform="translate(432 378)"/>
+    <path d="M330 362 C366 348 396 372 442 358" fill="none" stroke="#B6B6B6" stroke-width="1.5" stroke-dasharray="7 6"/>
+  </g>
+
+  <!-- L2 软地：广场与水池（第 3 行右中块） -->
+  <g id="plaza">
+    <rect x="677" y="320" width="104" height="92" rx="8" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="1.5"/>
+    <rect x="684" y="327" width="90" height="78" rx="6" fill="none" stroke="#B6B6B6" stroke-width="1.5" stroke-dasharray="7 6"/>
+    <rect x="702" y="348" width="54" height="32" rx="8" fill="#D8E2EC" stroke="#1A1A1A" stroke-width="1.5"/>
+    <g stroke="#FFFFFF" stroke-width="2" stroke-dasharray="12 9" opacity="0.9">
+      <line x1="710" y1="358" x2="748" y2="358"/>
+      <line x1="710" y1="370" x2="748" y2="370"/>
+    </g>
+    <use href="#cn-tree-d" transform="translate(692 334)"/>
+    <use href="#cn-tree-d" transform="translate(766 334)"/>
+    <use href="#cn-tree-d" transform="translate(692 398)"/>
+    <use href="#cn-tree-d" transform="translate(766 398)"/>
+  </g>
+
+  <!-- L3 主体：补能服务动线（蓝虚线沿道路中线，自首站串联全部站点） -->
+  <g id="route">
+    <path d="M480 240 V120 H815 V448 H480 V380 V284 H150 V380"
+          fill="none" stroke="#00A9FF" stroke-width="2.5" stroke-dasharray="13 10"/>
+    <use href="#cn-arrow" transform="translate(815 302) rotate(180)"/>
+    <use href="#cn-arrow" transform="translate(300 284) rotate(270)"/>
+  </g>
+
+  <!-- L3 主体：换电站节点 ×4（白底） -->
+  <g id="stations">
+    <use href="#cn-node" transform="translate(815 200)"/>
+    <use href="#cn-node" transform="translate(815 370)"/>
+    <use href="#cn-node" transform="translate(480 380)"/>
+    <use href="#cn-node" transform="translate(150 380)"/>
+  </g>
+
+  <!-- L3 主体：首站（全幅唯一信号蓝焦点 + 标记黄外环） -->
+  <g id="station-first">
+    <circle cx="480" cy="240" r="32" fill="none" stroke="#F9B845" stroke-width="4"/>
+    <rect x="461" y="223" width="44" height="44" rx="8" fill="#000" opacity="0.10"/>
+    <rect x="458" y="216" width="44" height="44" rx="8" fill="#00A9FF" stroke="#1A1A1A" stroke-width="4"/>
+    <g clip-path="url(#cn-first-clip)">
+      <rect x="491" y="216" width="11" height="44" fill="#1A1A1A" opacity="0.18"/>
+      <rect x="458" y="249" width="44" height="11" fill="#1A1A1A" opacity="0.18"/>
+    </g>
+    <rect x="465" y="220" width="30" height="3" rx="1.5" fill="#FFFFFF" opacity="0.5"/>
+    <path d="M483 225 L473 241 L480 241 L477 255 L488 238 L481 238 Z" fill="#FFFFFF"/>
+    <!-- 引标：肘形引线 + mono 标注 -->
+    <path d="M503 240 H516 V288" fill="none" stroke="#1A1A1A" stroke-width="1.5"/>
+    <circle cx="503" cy="240" r="2.5" fill="#1A1A1A"/>
+    <text x="522" y="293" font-family="PT Mono, ui-monospace, Menlo, monospace" font-size="16" fill="#1A1A1A">首批首站</text>
+  </g>
+
+  <!-- L4 前景：在网车辆 ×4（车头朝向行进方向，均位于动线段上） -->
+  <g id="cars">
+    <use href="#cn-car" transform="translate(480 165) rotate(180)"/>
+    <use href="#cn-car" transform="translate(650 120) rotate(90)"/>
+    <use href="#cn-car" transform="translate(815 432)"/>
+    <use href="#cn-car" transform="translate(620 448) rotate(270)"/>
+  </g>
+
+  <!-- L5 图脚：图例 + 比例尺 -->
+  <g id="legend" font-family="PT Mono, ui-monospace, Menlo, monospace" font-size="16">
+    <rect x="53" y="530" width="860" height="54" rx="8" fill="#000" opacity="0.08"/>
+    <rect x="50" y="526" width="860" height="54" rx="8" fill="#FFFFFF" stroke="#B6B6B6" stroke-width="1.5"/>
+    <!-- 图例项 1：换电站 -->
+    <use href="#cn-node" transform="translate(78 553) scale(0.4)"/>
+    <text x="98" y="559" fill="#656565">换电站</text>
+    <!-- 图例项 2：首批首站 -->
+    <circle cx="182" cy="553" r="15" fill="none" stroke="#F9B845" stroke-width="3"/>
+    <rect x="173" y="544" width="18" height="18" rx="4" fill="#00A9FF" stroke="#1A1A1A" stroke-width="2.5"/>
+    <text x="206" y="559" fill="#656565">首批首站</text>
+    <!-- 图例项 3：补能服务动线 -->
+    <line x1="284" y1="553" x2="318" y2="553" stroke="#00A9FF" stroke-width="2.5" stroke-dasharray="11 8"/>
+    <use href="#cn-arrow" transform="translate(324 553) rotate(90) scale(0.72)"/>
+    <text x="336" y="559" fill="#656565">补能服务动线</text>
+    <!-- 分隔线 -->
+    <line x1="452" y1="538" x2="452" y2="568" stroke="#B6B6B6" stroke-width="1.5"/>
+    <!-- 比例尺 -->
+    <rect x="482" y="545" width="60" height="7" fill="#1A1A1A"/>
+    <rect x="542" y="545" width="60" height="7" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="1.5"/>
+    <text x="482" y="570" fill="#656565">0</text>
+    <text x="602" y="570" text-anchor="middle" fill="#656565">500 m</text>
+    <!-- 示意图注 -->
+    <text x="872" y="559" text-anchor="end" fill="#656565">示意图 · 非真实地理</text>
+  </g>
+</svg>

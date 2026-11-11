@@ -1,0 +1,243 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" role="img">
+  <title>总装工厂与产线：厂房、产线与整车下线</title>
+  <!--
+    Brief（动笔前落注释）：
+    用途  制造页配图：总装工厂 + 产线 + 整车下线
+    主体  左：锯齿屋顶总装厂房（3 跨天窗 + 办公带 + 2 座卷帘门，一门敞开可见内部车身）
+          右：下线整车（与封面车同源的简化侧视）+ 上方的工业机器人手臂
+    场景  纸面清晨：地面 + 地平线 + 云 + 飞鸟
+    情绪  克制、工程感、印刷感
+    风格  扁平插画 + 立体四件套，描边三档 4/2.5/1.5，光源左上
+
+    画布  viewBox 0 0 960 640；安全区 48
+    构图  左半厂房（x 80–560）｜右半产线（x 600–900）；地平线 y=470
+    配色  SPEC.md：mist=厂房主墙 / beige=办公带 / ink=描边 /
+                     蓝=下线车充电口唯一焦点(≤3%) / 黄=前灯(≤1%)
+
+    构图图层表：
+      L0 background : 云 ×2、飞鸟 ×3
+      L1 far        : 地面带 y470–640 + 地平线 + 车道虚线
+      L2 mid        : 落地投影 → 厂房（屋顶天窗 / 办公带 / 主墙 / 卷帘门 ×2）
+      L3 subject    : 机器人手臂（底座 + 两段臂 + 夹钳）→ 下线整车
+      L4 foreground : 灌木 ×2
+      L5 details    : 天窗高光、窗格、门板棱线、轮毂
+  -->
+  <defs>
+    <clipPath id="fc-body">
+      <path d="M620 461 L617 449 C615 441 619 435 628 432 L653 427 C667 423 679 420 689 416 L735 384
+               C748 379 761 377 775 377 L807 378 C829 380 849 389 866 403
+               C878 412 887 421 893 430 L898 441 C901 449 901 456 898 461 Z"/>
+    </clipPath>
+
+    <g id="fc-cloud">
+      <circle cx="0" cy="0" r="15" fill="#D8E2EC"/>
+      <circle cx="18" cy="-8" r="20" fill="#D8E2EC"/>
+      <circle cx="40" cy="-2" r="14" fill="#D8E2EC"/>
+      <rect x="-7" y="0" width="55" height="14" rx="7" fill="#D8E2EC"/>
+      <rect x="-5" y="8" width="51" height="7" rx="3.5" fill="#B8C0C9"/>
+    </g>
+    <g id="fc-bird">
+      <path d="M-7 0 Q-3.5 -5 0 0 Q3.5 -5 7 0" fill="none" stroke="#656565" stroke-width="1.5" stroke-linecap="round"/>
+    </g>
+  </defs>
+
+  <!-- L0 背景 -->
+  <g id="background">
+    <use href="#fc-cloud" transform="translate(150 96) scale(0.9)"/>
+    <use href="#fc-cloud" transform="translate(742 74) scale(0.62)" opacity="0.9"/>
+    <use href="#fc-bird" transform="translate(330 128)"/>
+    <use href="#fc-bird" transform="translate(354 114) scale(0.72)"/>
+    <use href="#fc-bird" transform="translate(376 130) scale(0.55)"/>
+  </g>
+
+  <!-- L1 地面 -->
+  <g id="ground">
+    <rect x="0" y="470" width="960" height="170" fill="#B6B6B6" opacity="0.12"/>
+    <line x1="0" y1="470" x2="960" y2="470" stroke="#B6B6B6" stroke-width="1.5" opacity="0.55"/>
+    <line x1="0" y1="548" x2="960" y2="548" stroke="#B6B6B6" stroke-width="1.5" stroke-dasharray="34 26" opacity="0.35"/>
+  </g>
+
+  <!-- L2 厂房 -->
+  <g id="building">
+    <!-- 落地投影 -->
+    <ellipse cx="320" cy="472" rx="290" ry="10" fill="#000000" opacity="0.10"/>
+
+    <!-- 主体：锯齿屋顶轮廓 + 墙体 -->
+    <path d="M80 262 L192 196 L192 262 L240 262 L352 196 L352 262 L400 262 L512 196 L512 262 L560 262
+             L560 470 L80 470 Z"
+          fill="#D8E2EC" stroke="#1A1A1A" stroke-width="4" stroke-linejoin="round"/>
+
+    <!-- 办公带（beige）+ 窗格 -->
+    <path d="M80 262 L560 262 L560 312 L80 312 Z" fill="#F3EBE1"/>
+    <line x1="80" y1="312" x2="560" y2="312" stroke="#1A1A1A" stroke-width="2.5"/>
+    <g fill="#FFFFFF" stroke="#1A1A1A" stroke-width="2">
+      <rect x="104" y="278" width="34" height="24" rx="2"/>
+      <rect x="152" y="278" width="34" height="24" rx="2"/>
+      <rect x="200" y="278" width="34" height="24" rx="2"/>
+      <rect x="248" y="278" width="34" height="24" rx="2"/>
+      <rect x="296" y="278" width="34" height="24" rx="2"/>
+      <rect x="344" y="278" width="34" height="24" rx="2"/>
+      <rect x="392" y="278" width="34" height="24" rx="2"/>
+      <rect x="440" y="278" width="34" height="24" rx="2"/>
+      <rect x="488" y="278" width="52" height="24" rx="2"/>
+    </g>
+    <g stroke="#B6B6B6" stroke-width="1.5">
+      <line x1="121" y1="278" x2="121" y2="302"/><line x1="169" y1="278" x2="169" y2="302"/>
+      <line x1="217" y1="278" x2="217" y2="302"/><line x1="265" y1="278" x2="265" y2="302"/>
+      <line x1="313" y1="278" x2="313" y2="302"/><line x1="361" y1="278" x2="361" y2="302"/>
+      <line x1="409" y1="278" x2="409" y2="302"/><line x1="457" y1="278" x2="457" y2="302"/>
+      <line x1="514" y1="278" x2="514" y2="302"/>
+    </g>
+
+    <!-- 锯齿天窗：玻璃斜面（白色采光带 + 竖向窗棂） -->
+    <g stroke="#FFFFFF" stroke-width="14" stroke-linecap="butt">
+      <line x1="80" y1="262" x2="192" y2="196"/>
+      <line x1="240" y1="262" x2="352" y2="196"/>
+      <line x1="400" y1="262" x2="512" y2="196"/>
+    </g>
+    <g stroke="#D8E2EC" stroke-width="3" stroke-linecap="round" opacity="0.9">
+      <line x1="92" y1="256" x2="186" y2="206"/>
+      <line x1="252" y1="256" x2="346" y2="206"/>
+      <line x1="412" y1="256" x2="506" y2="206"/>
+    </g>
+    <g stroke="#1A1A1A" stroke-width="1.5" opacity="0.7">
+      <line x1="118" y1="240" x2="132" y2="218"/>
+      <line x1="156" y1="218" x2="170" y2="196"/>
+      <line x1="278" y1="240" x2="292" y2="218"/>
+      <line x1="316" y1="218" x2="330" y2="196"/>
+      <line x1="438" y1="240" x2="452" y2="218"/>
+      <line x1="476" y1="218" x2="490" y2="196"/>
+    </g>
+    <g stroke="#1A1A1A" stroke-width="2.5" stroke-linecap="round">
+      <line x1="192" y1="196" x2="192" y2="262"/>
+      <line x1="352" y1="196" x2="352" y2="262"/>
+      <line x1="512" y1="196" x2="512" y2="262"/>
+    </g>
+
+    <!-- 主墙分格线 -->
+    <line x1="80" y1="352" x2="560" y2="352" stroke="#1A1A1A" stroke-width="2" opacity="0.5"/>
+
+    <!-- 卷帘门 ×2（左侧敞开，可见内部车身） -->
+    <g>
+      <rect x="112" y="360" width="118" height="110" rx="3" fill="#656565" stroke="#1A1A1A" stroke-width="3"/>
+      <!-- 门内窥见的白车身 -->
+      <path d="M132 452 L130 440 C129 433 133 429 140 427 L158 424 C168 421 177 419 184 416 L214 396
+               C223 392 232 391 241 391 L258 392 C272 393 285 399 296 408 L304 418 C308 424 308 430 306 436
+               L304 452 Z" fill="#B6B6B6" stroke="#1A1A1A" stroke-width="2.5" stroke-linejoin="round"/>
+      <circle cx="152" cy="440" r="9" fill="#1A1A1A"/>
+      <circle cx="286" cy="440" r="9" fill="#1A1A1A"/>
+      <path d="M188 418 L212 400 L222 399 L216 418 Z" fill="#9B9B9B" stroke="#1A1A1A" stroke-width="2"/>
+      <path d="M230 399 L252 400 L262 410 L259 418 L230 418 Z" fill="#9B9B9B" stroke="#1A1A1A" stroke-width="2"/>
+    </g>
+    <g>
+      <rect x="262" y="360" width="118" height="110" rx="3" fill="#B6B6B6" stroke="#1A1A1A" stroke-width="3"/>
+      <g stroke="#1A1A1A" stroke-width="1.5" opacity="0.65">
+        <line x1="262" y1="376" x2="380" y2="376"/>
+        <line x1="262" y1="392" x2="380" y2="392"/>
+        <line x1="262" y1="408" x2="380" y2="408"/>
+        <line x1="262" y1="424" x2="380" y2="424"/>
+        <line x1="262" y1="440" x2="380" y2="440"/>
+        <line x1="262" y1="456" x2="380" y2="456"/>
+      </g>
+      <rect x="330" y="418" width="20" height="6" rx="3" fill="#1A1A1A"/>
+    </g>
+
+    <!-- 右侧办公 annexe -->
+    <path d="M470 340 L560 340 L560 470 L470 470 Z" fill="#F3EBE1" stroke="#1A1A1A" stroke-width="3" stroke-linejoin="round"/>
+    <g fill="#FFFFFF" stroke="#1A1A1A" stroke-width="2">
+      <rect x="486" y="358" width="30" height="24" rx="2"/>
+      <rect x="526" y="358" width="30" height="24" rx="2"/>
+      <rect x="486" y="396" width="30" height="24" rx="2"/>
+      <rect x="526" y="396" width="30" height="24" rx="2"/>
+    </g>
+    <rect x="500" y="436" width="30" height="34" rx="2" fill="#D8E2EC" stroke="#1A1A1A" stroke-width="2.5"/>
+  </g>
+
+  <!-- L3 机器人手臂（画在下线车之前，呈"在车后作业"） -->
+  <g id="robot">
+    <g fill="none" stroke="#1A1A1A" stroke-width="20" stroke-linecap="round">
+      <path d="M604 452 L604 296"/>
+      <path d="M604 296 L694 244"/>
+      <path d="M694 244 L784 292"/>
+    </g>
+    <g fill="none" stroke="#C7C7C7" stroke-width="13" stroke-linecap="round">
+      <path d="M604 452 L604 296"/>
+      <path d="M604 296 L694 244"/>
+      <path d="M694 244 L784 292"/>
+    </g>
+    <g fill="#C7C7C7" stroke="#1A1A1A" stroke-width="3">
+      <circle cx="604" cy="452" r="15"/>
+      <circle cx="604" cy="296" r="11"/>
+      <circle cx="694" cy="244" r="11"/>
+      <circle cx="784" cy="292" r="9"/>
+    </g>
+    <!-- 夹钳 -->
+    <g stroke="#1A1A1A" stroke-width="4" stroke-linecap="round">
+      <line x1="784" y1="292" x2="776" y2="316"/>
+      <line x1="792" y1="292" x2="800" y2="316"/>
+    </g>
+  </g>
+
+  <!-- L3 产线传送带（画在下线车之前） -->
+  <g id="conveyor">
+    <rect x="596" y="456" width="344" height="14" rx="3" fill="#B6B6B6" stroke="#1A1A1A" stroke-width="2.5"/>
+    <line x1="596" y1="463" x2="940" y2="463" stroke="#1A1A1A" stroke-width="1.5" opacity="0.5"/>
+    <g fill="#FFFFFF" stroke="#1A1A1A" stroke-width="1.5">
+      <circle cx="616" cy="463" r="4"/><circle cx="652" cy="463" r="4"/><circle cx="688" cy="463" r="4"/>
+      <circle cx="724" cy="463" r="4"/><circle cx="760" cy="463" r="4"/><circle cx="796" cy="463" r="4"/>
+      <circle cx="832" cy="463" r="4"/><circle cx="868" cy="463" r="4"/><circle cx="904" cy="463" r="4"/>
+    </g>
+  </g>
+
+  <!-- L3 下线整车 -->
+  <g id="car">
+    <ellipse cx="760" cy="470" rx="140" ry="8" fill="#000000" opacity="0.12"/>
+    <path d="M620 461 L617 449 C615 441 619 435 628 432 L653 427 C667 423 679 420 689 416 L735 384
+             C748 379 761 377 775 377 L807 378 C829 380 849 389 866 403
+             C878 412 887 421 893 430 L898 441 C901 449 901 456 898 461 Z"
+          fill="#D8E2EC" stroke="#1A1A1A" stroke-width="3.5" stroke-linejoin="round"/>
+    <g clip-path="url(#fc-body)">
+      <path d="M790 372 L960 372 L960 470 L850 470 Z" fill="#B8C0C9"/>
+      <rect x="600" y="452" width="320" height="14" fill="#B8C0C9" opacity="0.5"/>
+    </g>
+    <path d="M632 428 C660 423 682 420 700 417" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" opacity="0.9"/>
+    <!-- 玻璃 -->
+    <g stroke="#1A1A1A" stroke-width="2" stroke-linejoin="round">
+      <path d="M692 416 L731 386 L743 385 L734 416 Z" fill="#B6B6B6"/>
+      <path d="M748 385 L765 383 L765 416 L748 416 Z" fill="#B6B6B6"/>
+      <path d="M770 382 L797 385 L808 394 L806 416 L770 416 Z" fill="#B6B6B6"/>
+      <path d="M813 388 L833 394 L841 403 L839 416 L813 416 Z" fill="#B6B6B6"/>
+    </g>
+    <!-- 门缝 + 把手 -->
+    <g stroke="#1A1A1A" stroke-width="2">
+      <line x1="706" y1="417" x2="706" y2="458"/>
+      <line x1="768" y1="416" x2="768" y2="458"/>
+      <line x1="822" y1="417" x2="822" y2="450"/>
+    </g>
+    <rect x="726" y="424" width="11" height="3" rx="1.5" fill="#1A1A1A"/>
+    <rect x="783" y="425" width="11" height="3" rx="1.5" fill="#1A1A1A"/>
+    <!-- 前灯（黄）+ 尾灯（灰）+ 充电口（蓝，全幅唯一焦点） -->
+    <path d="M623 444 L639 436 L646 440 L644 448 L626 451 Z" fill="#F9B845" stroke="#1A1A1A" stroke-width="2" stroke-linejoin="round"/>
+    <rect x="890" y="430" width="5" height="13" rx="2.5" fill="#656565" stroke="#1A1A1A" stroke-width="1.5"/>
+    <circle cx="866" cy="440" r="5" fill="#00A9FF" stroke="#1A1A1A" stroke-width="2"/>
+    <!-- 车轮 -->
+    <g>
+      <circle cx="675.5" cy="448" r="22" fill="#1A1A1A"/>
+      <circle cx="675.5" cy="448" r="14" fill="#1A1A1A" stroke="#C7C7C7" stroke-width="2"/>
+      <circle cx="675.5" cy="448" r="4.5" fill="#F7F7F7" stroke="#1A1A1A" stroke-width="1.5"/>
+    </g>
+    <g>
+      <circle cx="853" cy="448" r="22" fill="#1A1A1A"/>
+      <circle cx="853" cy="448" r="14" fill="#1A1A1A" stroke="#C7C7C7" stroke-width="2"/>
+      <circle cx="853" cy="448" r="4.5" fill="#F7F7F7" stroke="#1A1A1A" stroke-width="1.5"/>
+    </g>
+  </g>
+
+  <!-- L4 前景灌木 -->
+  <g id="foreground">
+    <path d="M620,548 C626,547.8 634,549.8 639,552.5 C644,555.2 649,560.2 649.6,564.5 C650.2,568.8 645,573 642,577.5 C639,582 637,588.8 630.6,591.4 C624.2,594 611,595 605,592.6 C599,590.2 598.4,582 594.4,577.4 C590.4,572.8 581.2,568 582.2,564 C583.2,560 593.6,556.6 599,554.2 C604.4,551.8 614,548.2 620,548Z"
+          fill="#B6B6B6" opacity="0.4"/>
+    <path d="M232,556 C239,556.2 246,557.4 250.6,560.2 C255.2,563 259.2,568.4 259.4,572.8 C259.6,577.2 255,582.4 250.4,585.8 C245.8,589.2 238.4,592.4 232,592.6 C225.6,592.8 216,590.4 211.8,587 C207.6,583.6 208.6,576.8 208.8,572 C209,567.2 208.4,560.4 212.4,557.4 C216.4,554.4 225,555.8 232,556Z"
+          fill="#B6B6B6" opacity="0.4"/>
+  </g>
+</svg>
