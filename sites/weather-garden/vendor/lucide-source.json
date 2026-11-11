@@ -1,0 +1,31 @@
+{
+  "repository": "https://github.com/lucide-icons/lucide",
+  "commit": "3fef7aca71a50acc54bd2f24f0cc4747c22aa6d2",
+  "icons": [
+    "sun",
+    "moon",
+    "cloud",
+    "cloud-sun",
+    "cloud-rain",
+    "cloud-snow",
+    "cloud-lightning",
+    "cloud-fog",
+    "wind",
+    "droplets",
+    "map-pin",
+    "chevron-down",
+    "chevron-right",
+    "refresh-cw",
+    "x",
+    "arrow-up-right",
+    "thermometer",
+    "sunrise",
+    "sunset",
+    "compass",
+    "umbrella",
+    "chart-line",
+    "clock",
+    "check",
+    "rotate-ccw"
+  ]
+}
