@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="64" height="64" shape-rendering="crispEdges" role="img" aria-label="小鹈与上海">
+  <rect width="32" height="32" rx="4" fill="#E8B84A"/>
+  <g fill="#155B66">
+    <rect x="24" y="3" width="2" height="20"/>
+    <rect x="22" y="7" width="6" height="5"/>
+    <rect x="23" y="14" width="5" height="5"/>
+    <rect x="21" y="21" width="10" height="2"/>
+    <rect x="19" y="23" width="14" height="1"/>
+  </g>
+  <path d="M1 26h6l2-2h5l2 2h6l2-2h7v6H1z" fill="#123F49"/>
+  <path d="M3 25h5l2-2h4" fill="none" stroke="#7CC6CB" stroke-width="1"/>
+  <g>
+    <rect x="6" y="11" width="11" height="12" fill="#6F63E8"/>
+    <rect x="7" y="9" width="9" height="3" fill="#6F63E8"/>
+    <rect x="4" y="15" width="3" height="6" fill="#6F63E8"/>
+    <rect x="2" y="16" width="4" height="3" fill="#5A50D6"/>
+    <rect x="7" y="18" width="8" height="3" fill="#5147C8"/>
+    <rect x="8" y="21" width="7" height="2" fill="#8A7FF5"/>
+    <rect x="11" y="11" width="2" height="2" fill="#17182A"/>
+    <rect x="12" y="11" width="1" height="1" fill="#ffffff"/>
+    <rect x="16" y="12" width="6" height="2" fill="#FFD86B"/>
+    <rect x="21" y="13" width="1" height="1" fill="#C6972E"/>
+    <rect x="8" y="23" width="2" height="3" fill="#F6C95C"/>
+    <rect x="13" y="23" width="2" height="3" fill="#F6C95C"/>
+    <rect x="7" y="25" width="4" height="1" fill="#F6C95C"/>
+    <rect x="12" y="25" width="4" height="1" fill="#F6C95C"/>
+  </g>
+</svg>
