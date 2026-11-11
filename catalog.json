@@ -315,6 +315,22 @@
       "tone": "ink",
       "cover": "sites/shanghai-peli/preview/cover.png",
       "previewVideo": "sites/shanghai-peli/preview/video.mp4"
+    },
+    {
+      "id": "bauhaus-paths",
+      "scene": "creative",
+      "title": {
+        "zh": "包豪斯道路 · 交互阅读",
+        "en": "Bauhaus Paths · Interactive Reading"
+      },
+      "description": {
+        "zh": "四组可翻阅跨页与三件作品的 Three.js 教学示意：观察色彩、理解构造、旋转模型；支持键盘、移动端和无脚本阅读。模型并非精密实物复刻。",
+        "en": "Four readable spreads and three illustrative Three.js design studies, with a colour exercise, keyboard navigation, model rotation and mobile/no-script reading. Models are teaching approximations, not measured replicas."
+      },
+      "dir": "sites/bauhaus-paths",
+      "tone": "ink",
+      "cover": "sites/bauhaus-paths/preview/cover.png",
+      "previewVideo": "sites/bauhaus-paths/preview/video.mp4"
     }
   ]
 }

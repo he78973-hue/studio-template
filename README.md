@@ -55,6 +55,7 @@ The exact schema is:
 | `fourier-pelican` | Creative | Dual-coordinate Fourier epicycle animation ([template notes](./sites/fourier-pelican/README.md)) |
 | `periodic-table-3d` | Creative | Offline atomic atlas with light/dark themes and Canvas fallback ([template notes](./sites/periodic-table-3d/README.md)) |
 | `shanghai-peli` | Creative | Horizontal illustrated Shanghai history, full-width pixel-pelican walks and sourced notes ([template notes](./sites/shanghai-peli/README.md)) |
+| `bauhaus-paths` | Creative | Four-spread reading folio with an equal-colour exercise and three approximate 3D design studies ([template notes](./sites/bauhaus-paths/README.md)) |
 
 Paths: `sites/<id>/` with `index.html` entry.
 
