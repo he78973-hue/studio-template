@@ -142,6 +142,22 @@
       "previewUrl": "https://kind-meadow-fcff.page.stepcloud.com/"
     },
     {
+      "id": "weather-garden",
+      "scene": "creative",
+      "title": {
+        "zh": "晴屿 · 3D 天气可视化",
+        "en": "Qingyu · Weather Garden"
+      },
+      "description": {
+        "zh": "移动端天气 Web App：Three.js 天气积木、联动小时图表、一周温差和风向/UV/日出日落，支持带日期的离线回退；公共接口仅用于非商业演示。",
+        "en": "Mobile-first Three.js weather toys, linked hourly charts, weekly ranges and wind/UV/sunlight views, with dated offline fallback; public API use is non-commercial only."
+      },
+      "dir": "sites/weather-garden",
+      "tone": "sea",
+      "cover": "sites/weather-garden/preview/cover.png",
+      "previewVideo": "sites/weather-garden/preview/video.mp4"
+    },
+    {
       "id": "step-studio",
       "scene": "sites",
       "title": {
