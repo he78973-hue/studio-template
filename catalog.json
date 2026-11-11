@@ -142,6 +142,22 @@
       "previewUrl": "https://kind-meadow-fcff.page.stepcloud.com/"
     },
     {
+      "id": "weather-garden",
+      "scene": "creative",
+      "title": {
+        "zh": "晴屿 · 3D 天气可视化",
+        "en": "Qingyu · Weather Garden"
+      },
+      "description": {
+        "zh": "移动端天气 Web App：Three.js 天气积木、联动小时图表、一周温差和风向/UV/日出日落，支持带日期的离线回退；公共接口仅用于非商业演示。",
+        "en": "Mobile-first Three.js weather toys, linked hourly charts, weekly ranges and wind/UV/sunlight views, with dated offline fallback; public API use is non-commercial only."
+      },
+      "dir": "sites/weather-garden",
+      "tone": "sea",
+      "cover": "sites/weather-garden/preview/cover.png",
+      "previewVideo": "sites/weather-garden/preview/video.mp4"
+    },
+    {
       "id": "step-studio",
       "scene": "sites",
       "title": {
@@ -188,6 +204,22 @@
       "tone": "sand",
       "cover": "sites/aurelle/preview/cover.png",
       "previewVideo": "sites/aurelle/preview/video.mp4"
+    },
+    {
+      "id": "fourier-pelican",
+      "scene": "creative",
+      "title": {
+        "zh": "傅里叶鹈鹕",
+        "en": "Fourier pelican"
+      },
+      "description": {
+        "zh": "双坐标傅里叶圆链从椭圆逐级描绘鹈鹕的长嘴、翘尾和双脚，支持播放暂停、重播与键盘跳转；无需依赖的数学可视化演示。",
+        "en": "Two Fourier epicycle chains reconstruct a pelican's bill, tail, and feet from an ellipse, with playback, replay, and keyboard seeking. A dependency-free math visualization demo."
+      },
+      "dir": "sites/fourier-pelican",
+      "tone": "ink",
+      "cover": "sites/fourier-pelican/preview/cover.png",
+      "previewVideo": "sites/fourier-pelican/preview/video.mp4"
     },
     {
       "id": "periodic-table-3d",
@@ -251,6 +283,22 @@
       "tone": "ink",
       "cover": "sites/nova-volt-deck/preview/cover.png",
       "previewVideo": "sites/nova-volt-deck/preview/video.mp4"
+    },
+    {
+      "id": "shanghai-peli",
+      "scene": "creative",
+      "title": {
+        "zh": "沿水而生 · 小鹈走过上海",
+        "en": "Along the Water · Shanghai with Peli"
+      },
+      "description": {
+        "zh": "十幅上海历史图版组成的横向互动长卷：像素小鹈用三秒从左走到右，注记自动呈现，支持键盘、拖动、时间轴导航与移动端阅读。河道与地图为叙事示意。",
+        "en": "A horizontal journey through ten illustrated chapters of Shanghai history, with a three-second pixel-pelican crossing, automatic historical notes, keyboard/drag/timeline navigation, and mobile captions. Maps are illustrative, not historical reconstructions."
+      },
+      "dir": "sites/shanghai-peli",
+      "tone": "ink",
+      "cover": "sites/shanghai-peli/preview/cover.png",
+      "previewVideo": "sites/shanghai-peli/preview/video.mp4"
     }
   ]
 }

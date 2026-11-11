@@ -1,0 +1,713 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>双坐标傅里叶圆链 · 鹈鹕轮廓重建</title>
+<style>
+  :root {
+    /* StepFun 品牌 token（new_brandskills v2.0 · 语义层，浅色主题） */
+    --bg-page: #F7F7F7;
+    --ink: #1A1A1A;
+    --grey: #656565;
+    --warm-grey: #B6B6B6;
+    --signal-blue: #00A9FF;
+    --marker-yellow: #F9B845;
+    --font-serif-cn: "Source Han Serif CN", "Source Han Serif SC", "Noto Serif SC", "Songti SC", serif;
+    --font-sans-cn: "Source Han Sans SC", "Source Han Sans CN", "Noto Sans SC", "PingFang SC", sans-serif;
+    --font-mono: "PT Mono", "SFMono-Regular", ui-monospace, Menlo, Consolas, monospace;
+    --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+    --texture-paper: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='160' height='160' filter='url(%23n)' opacity='0.035'/></svg>");
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background-color: var(--bg-page);
+    background-image: var(--texture-paper);
+    color: var(--ink);
+    font-family: var(--font-sans-cn);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    padding: 28px 16px 36px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .cap { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; justify-content: center; }
+  .cap .t { font-family: var(--font-serif-cn); font-weight: 700; font-size: 17px; letter-spacing: -0.01em; color: var(--ink); margin: 0; }
+  .cap .e { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey); margin: 0; }
+  .frame {
+    width: min(92vw, calc((100vh - 210px) * 0.8), 660px);
+    aspect-ratio: 4 / 5;
+    flex-shrink: 0;
+    position: relative;
+  }
+  canvas { width: 100%; height: 100%; display: block; }
+  .controls { display: flex; align-items: center; gap: 10px; }
+  button {
+    font-family: var(--font-sans-cn);
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    background: transparent;
+    border: 1px solid var(--grey);
+    border-radius: 4px;
+    padding: 7px 18px;
+    cursor: pointer;
+    transition: background 150ms var(--ease-out), color 150ms var(--ease-out);
+  }
+  button:hover { background: var(--ink); color: var(--bg-page); border-color: var(--ink); }
+  button:active { transform: translateY(1px); }
+  button:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px var(--bg-page), 0 0 0 6px var(--signal-blue);
+  }
+  .clock {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--grey);
+    margin-left: 6px;
+    font-variant-numeric: tabular-nums;
+  }
+  .note {
+    margin: 0;
+    max-width: 660px;
+    font-size: 12px;
+    line-height: 1.75;
+    color: var(--grey);
+    text-align: center;
+  }
+  .note b { color: var(--ink); font-weight: 600; }
+  .note .m { font-family: var(--font-mono); }
+  @media (max-width: 640px) {
+    .frame { width: min(100%, calc((100vh - 200px) * 0.8)); }
+  }
+</style>
+</head>
+<body>
+  <div class="cap">
+    <p class="t">双坐标傅里叶圆链 · 鹈鹕轮廓重建</p>
+    <p class="e">Fourier Epicycles · Pelican</p>
+  </div>
+  <div class="frame"><canvas id="cv" role="img" aria-label="两条傅里叶圆链逐级描绘参考鹈鹕的完整外轮廓，包含长嘴、翘尾和双脚。">傅里叶鹈鹕轮廓动画，需要支持 Canvas 的浏览器。</canvas></div>
+  <div class="controls">
+    <button id="btnPlay" type="button">暂停</button>
+    <button id="btnReplay" type="button">重播</button>
+    <span class="clock" id="clock">00:00 / 00:26</span>
+  </div>
+  <p class="note">
+    <b>error 口径</b>：同一等弧长参数 t 下，重建点与输入轮廓采样点的二维欧氏距离 <span class="m">RMS ÷</span> 原轮廓包围盒高度，以百分比计（<span class="m">M = 2048</span> 个等弧长采样点）。
+    右上<b>蓝</b>色圆链末端横坐标 = 笔尖横坐标，左下<b>墨</b>色圆链末端纵坐标 = 笔尖纵坐标；系数仅在加载时计算一次。
+    空格 = 播放/暂停，<span class="m">R</span> = 重播，<span class="m">←/→</span> = <span class="m">±1s</span>。
+  </p>
+
+
+<script>
+function main() {
+  'use strict';
+
+  // Single closed reference outline; illustration layers are named separately.
+  const CONTOUR_D = "M197.611 90C220.171 90 240.607 88.938 259.981 97.431C287.583 107.517 306.161 129.81 312.265 159.536L464.076 159.536C485.043 159.536 485.043 189.261 464.076 192.18C458.237 200.673 456.114 206.777 444.436 207.043C430.37 207.043 423.735 207.308 412.588 214.739C403.299 221.109 399.318 223.498 387.374 223.498L351.545 223.498C339.071 223.498 335.355 228.54 328.986 234.91C324.739 239.687 321.555 240.749 315.981 240.483C315.981 285.602 285.725 332.578 220.967 341.867L220.967 391.232C220.967 392.294 221.498 392.825 222.825 392.825L244.853 392.825C250.427 392.825 254.142 397.071 254.142 402.91L254.142 412.199C254.142 418.303 250.692 420.957 244.588 420.957L207.962 420.957C203.185 420.957 200.796 418.303 200.796 413.526L200.796 358.853C190.711 359.649 179.299 359.649 169.479 359.118L169.479 391.232C169.479 392.294 170.009 392.825 171.602 392.825L178.237 392.825C183.28 392.825 186.199 396.275 186.199 402.114L186.199 412.995C186.199 418.569 183.545 420.957 177.706 420.957L128.076 420.957C121.972 420.957 119.052 418.569 119.052 412.995L119.052 402.645C119.052 396.54 122.768 392.825 128.872 392.825L148.512 392.825C149.573 392.825 150.104 392.294 150.104 391.232L150.104 343.725C84.55 341.336 39.431 306.038 32.796 253.754C32 247.118 31.735 239.687 32.531 233.583C33.062 227.479 36.512 223.498 41.555 222.967C49.251 221.905 51.64 229.336 56.948 233.583C63.583 239.156 72.076 237.564 77.118 232.256C85.346 224.028 85.346 209.697 86.938 186.076C89.327 136.976 116.664 102.209 160.72 92.654C172.133 90.265 184.341 90 197.611 90Z";
+  const ART_DATA = typeof {"layers":[{"id":"silhouette","d":"M197.611 90C220.171 90 240.607 88.938 259.981 97.431C287.583 107.517 306.161 129.81 312.265 159.536L464.076 159.536C485.043 159.536 485.043 189.261 464.076 192.18C458.237 200.673 456.114 206.777 444.436 207.043C430.37 207.043 423.735 207.308 412.588 214.739C403.299 221.109 399.318 223.498 387.374 223.498L351.545 223.498C339.071 223.498 335.355 228.54 328.986 234.91C324.739 239.687 321.555 240.749 315.981 240.483C315.981 285.602 285.725 332.578 220.967 341.867L220.967 391.232C220.967 392.294 221.498 392.825 222.825 392.825L244.853 392.825C250.427 392.825 254.142 397.071 254.142 402.91L254.142 412.199C254.142 418.303 250.692 420.957 244.588 420.957L207.962 420.957C203.185 420.957 200.796 418.303 200.796 413.526L200.796 358.853C190.711 359.649 179.299 359.649 169.479 359.118L169.479 391.232C169.479 392.294 170.009 392.825 171.602 392.825L178.237 392.825C183.28 392.825 186.199 396.275 186.199 402.114L186.199 412.995C186.199 418.569 183.545 420.957 177.706 420.957L128.076 420.957C121.972 420.957 119.052 418.569 119.052 412.995L119.052 402.645C119.052 396.54 122.768 392.825 128.872 392.825L148.512 392.825C149.573 392.825 150.104 392.294 150.104 391.232L150.104 343.725C84.55 341.336 39.431 306.038 32.796 253.754C32 247.118 31.735 239.687 32.531 233.583C33.062 227.479 36.512 223.498 41.555 222.967C49.251 221.905 51.64 229.336 56.948 233.583C63.583 239.156 72.076 237.564 77.118 232.256C85.346 224.028 85.346 209.697 86.938 186.076C89.327 136.976 116.664 102.209 160.72 92.654C172.133 90.265 184.341 90 197.611 90Z","tone":"birdBody"},{"id":"bill","d":"M304.569 159.536L464.076 159.536C485.043 159.536 485.043 189.261 464.076 192.18C458.237 200.673 456.114 206.777 444.436 207.043C430.37 207.043 423.735 207.308 412.588 214.739C403.299 221.109 399.318 223.498 387.374 223.498L351.545 223.498C339.071 223.498 335.355 228.54 328.986 234.91C324.739 239.687 321.555 240.749 315.981 240.483L305.63 240.483C299.526 240.483 296.872 236.768 296.872 230.929L296.872 169.09C296.872 162.72 299.261 159.536 304.569 159.536Z","tone":"birdMid"},{"id":"feet","d":"M200.796 343.725L220.967 341.867L220.967 391.232C220.967 392.294 221.498 392.825 222.825 392.825L244.853 392.825C250.427 392.825 254.142 397.071 254.142 402.91L254.142 412.199C254.142 418.303 250.692 420.957 244.588 420.957L207.962 420.957C203.185 420.957 200.796 418.303 200.796 413.526L200.796 358.853ZM150.104 343.725L169.479 344.256L169.479 391.232C169.479 392.294 170.009 392.825 171.602 392.825L178.237 392.825C183.28 392.825 186.199 396.275 186.199 402.114L186.199 412.995C186.199 418.569 183.545 420.957 177.706 420.957L128.076 420.957C121.972 420.957 119.052 418.569 119.052 412.995L119.052 402.645C119.052 396.54 122.768 392.825 128.872 392.825L148.512 392.825C149.573 392.825 150.104 392.294 150.104 391.232L150.104 343.725Z","tone":"birdMid"},{"id":"eye","d":"M155.412 144.142L181.156 144.142C184.872 144.142 186.464 146 186.464 149.981L186.464 171.744C186.464 175.725 185.137 177.318 181.156 177.318L154.882 177.318C151.166 177.318 149.839 175.725 149.839 172.009L149.839 149.981C149.839 146 151.431 144.142 155.412 144.142Z","tone":"birdEye"},{"id":"eye-highlight","d":"M168.152 159.536L186.199 159.536L186.199 171.744C186.199 175.725 185.137 177.052 181.156 177.052L168.152 177.052Z","tone":"bg"}]} !== 'undefined' ? {"layers":[{"id":"silhouette","d":"M197.611 90C220.171 90 240.607 88.938 259.981 97.431C287.583 107.517 306.161 129.81 312.265 159.536L464.076 159.536C485.043 159.536 485.043 189.261 464.076 192.18C458.237 200.673 456.114 206.777 444.436 207.043C430.37 207.043 423.735 207.308 412.588 214.739C403.299 221.109 399.318 223.498 387.374 223.498L351.545 223.498C339.071 223.498 335.355 228.54 328.986 234.91C324.739 239.687 321.555 240.749 315.981 240.483C315.981 285.602 285.725 332.578 220.967 341.867L220.967 391.232C220.967 392.294 221.498 392.825 222.825 392.825L244.853 392.825C250.427 392.825 254.142 397.071 254.142 402.91L254.142 412.199C254.142 418.303 250.692 420.957 244.588 420.957L207.962 420.957C203.185 420.957 200.796 418.303 200.796 413.526L200.796 358.853C190.711 359.649 179.299 359.649 169.479 359.118L169.479 391.232C169.479 392.294 170.009 392.825 171.602 392.825L178.237 392.825C183.28 392.825 186.199 396.275 186.199 402.114L186.199 412.995C186.199 418.569 183.545 420.957 177.706 420.957L128.076 420.957C121.972 420.957 119.052 418.569 119.052 412.995L119.052 402.645C119.052 396.54 122.768 392.825 128.872 392.825L148.512 392.825C149.573 392.825 150.104 392.294 150.104 391.232L150.104 343.725C84.55 341.336 39.431 306.038 32.796 253.754C32 247.118 31.735 239.687 32.531 233.583C33.062 227.479 36.512 223.498 41.555 222.967C49.251 221.905 51.64 229.336 56.948 233.583C63.583 239.156 72.076 237.564 77.118 232.256C85.346 224.028 85.346 209.697 86.938 186.076C89.327 136.976 116.664 102.209 160.72 92.654C172.133 90.265 184.341 90 197.611 90Z","tone":"birdBody"},{"id":"bill","d":"M304.569 159.536L464.076 159.536C485.043 159.536 485.043 189.261 464.076 192.18C458.237 200.673 456.114 206.777 444.436 207.043C430.37 207.043 423.735 207.308 412.588 214.739C403.299 221.109 399.318 223.498 387.374 223.498L351.545 223.498C339.071 223.498 335.355 228.54 328.986 234.91C324.739 239.687 321.555 240.749 315.981 240.483L305.63 240.483C299.526 240.483 296.872 236.768 296.872 230.929L296.872 169.09C296.872 162.72 299.261 159.536 304.569 159.536Z","tone":"birdMid"},{"id":"feet","d":"M200.796 343.725L220.967 341.867L220.967 391.232C220.967 392.294 221.498 392.825 222.825 392.825L244.853 392.825C250.427 392.825 254.142 397.071 254.142 402.91L254.142 412.199C254.142 418.303 250.692 420.957 244.588 420.957L207.962 420.957C203.185 420.957 200.796 418.303 200.796 413.526L200.796 358.853ZM150.104 343.725L169.479 344.256L169.479 391.232C169.479 392.294 170.009 392.825 171.602 392.825L178.237 392.825C183.28 392.825 186.199 396.275 186.199 402.114L186.199 412.995C186.199 418.569 183.545 420.957 177.706 420.957L128.076 420.957C121.972 420.957 119.052 418.569 119.052 412.995L119.052 402.645C119.052 396.54 122.768 392.825 128.872 392.825L148.512 392.825C149.573 392.825 150.104 392.294 150.104 391.232L150.104 343.725Z","tone":"birdMid"},{"id":"eye","d":"M155.412 144.142L181.156 144.142C184.872 144.142 186.464 146 186.464 149.981L186.464 171.744C186.464 175.725 185.137 177.318 181.156 177.318L154.882 177.318C151.166 177.318 149.839 175.725 149.839 172.009L149.839 149.981C149.839 146 151.431 144.142 155.412 144.142Z","tone":"birdEye"},{"id":"eye-highlight","d":"M168.152 159.536L186.199 159.536L186.199 171.744C186.199 175.725 185.137 177.052 181.156 177.052L168.152 177.052Z","tone":"bg"}]} : null;
+  // 构建时由 tools/build.mjs 注入；若直接打开本模板则为 null（下方会给出明确提示）
+  const FALLBACK = typeof {"ax0":225.10124153386403,"ay0":262.4257453310206,"x":[[-3.626197,157.729159],[-26.874249,54.19989],[-8.082566,-8.096354],[10.729195,-12.963865],[-0.539659,0.068939],[0.727465,11.459426],[-1.513212,9.28425],[4.187236,-7.501551],[-2.849639,2.258738],[1.811629,-1.73694],[1.364975,-1.391175],[-5.744728,0.272839],[2.096388,1.383326],[-0.888705,-2.951556],[1.949172,2.315307],[0.309803,-1.181473],[-0.011918,0.667521],[-0.252666,-0.561568],[-0.210166,0.381128],[0.055092,-0.117659],[-0.038003,0.476787],[-0.21606,0.379111],[0.068499,-0.877197],[-0.449091,0.254137],[0.448017,-0.241866],[0.32593,-0.064372],[-0.418028,0.041337],[0.252024,0.330264],[-0.056172,-0.408599],[0.057606,0.098812],[-0.047258,0.507307],[-0.012483,-0.224833],[-0.018754,0.036868],[-0.197806,-0.36306],[0.141683,0.19483],[0.055138,-0.14537],[-0.255849,0.104156],[0.234126,0.089597],[0.127807,-0.141571],[0.106822,0.122347],[-0.248961,-0.110698],[0.092613,0.142788],[-0.159407,-0.084599],[-0.042225,0.121663],[0.138998,-0.038539],[-0.026218,-0.023766],[-0.010843,-0.091697],[0.052814,-0.097231],[-0.072255,0.098783],[0.075278,0.087918]],"y":[[-139.161276,-56.626684],[-10.853589,9.630697],[-10.837607,12.969387],[-7.457881,-7.253299],[-8.00506,10.537002],[-0.240478,-4.305809],[-8.106521,0.71636],[9.962075,-0.3459],[1.000757,-0.384431],[1.711855,-1.61516],[-1.343602,-2.260485],[-0.286799,2.353695],[0.202369,-0.157744],[1.077001,2.06352],[-0.043764,0.472443],[0.56476,0.230383],[-0.794676,-2.091232],[-0.434128,-0.754091],[-0.255675,1.324294],[0.225245,-0.190482],[0.019866,0.38683],[0.487825,-0.347863],[1.195191,0.146089],[-0.740459,-0.655556],[-0.404691,0.435029],[-0.061166,0.500443],[0.039731,-0.239122],[-0.429869,0.490906],[0.904521,-0.50737],[-0.370192,-0.252043],[0.028703,0.094555],[-0.145665,-0.092626],[-0.112925,-0.01801],[0.331915,0.355369],[0.220506,-0.180248],[-0.122074,0.412235],[-0.272146,-0.419364],[0.026073,0.106334],[0.062715,-0.191028],[-0.233196,0.335449],[0.183411,-0.066499],[0.012971,-0.319248],[-0.009687,0.15854],[0.10281,-0.118226],[0.047022,0.121659],[-0.152434,0.077433],[0.024913,0.010903],[0.065061,-0.031844],[0.008991,0.002249],[-0.151194,0.006884]],"height":330.999406467232} !== 'undefined' ? {"ax0":225.10124153386403,"ay0":262.4257453310206,"x":[[-3.626197,157.729159],[-26.874249,54.19989],[-8.082566,-8.096354],[10.729195,-12.963865],[-0.539659,0.068939],[0.727465,11.459426],[-1.513212,9.28425],[4.187236,-7.501551],[-2.849639,2.258738],[1.811629,-1.73694],[1.364975,-1.391175],[-5.744728,0.272839],[2.096388,1.383326],[-0.888705,-2.951556],[1.949172,2.315307],[0.309803,-1.181473],[-0.011918,0.667521],[-0.252666,-0.561568],[-0.210166,0.381128],[0.055092,-0.117659],[-0.038003,0.476787],[-0.21606,0.379111],[0.068499,-0.877197],[-0.449091,0.254137],[0.448017,-0.241866],[0.32593,-0.064372],[-0.418028,0.041337],[0.252024,0.330264],[-0.056172,-0.408599],[0.057606,0.098812],[-0.047258,0.507307],[-0.012483,-0.224833],[-0.018754,0.036868],[-0.197806,-0.36306],[0.141683,0.19483],[0.055138,-0.14537],[-0.255849,0.104156],[0.234126,0.089597],[0.127807,-0.141571],[0.106822,0.122347],[-0.248961,-0.110698],[0.092613,0.142788],[-0.159407,-0.084599],[-0.042225,0.121663],[0.138998,-0.038539],[-0.026218,-0.023766],[-0.010843,-0.091697],[0.052814,-0.097231],[-0.072255,0.098783],[0.075278,0.087918]],"y":[[-139.161276,-56.626684],[-10.853589,9.630697],[-10.837607,12.969387],[-7.457881,-7.253299],[-8.00506,10.537002],[-0.240478,-4.305809],[-8.106521,0.71636],[9.962075,-0.3459],[1.000757,-0.384431],[1.711855,-1.61516],[-1.343602,-2.260485],[-0.286799,2.353695],[0.202369,-0.157744],[1.077001,2.06352],[-0.043764,0.472443],[0.56476,0.230383],[-0.794676,-2.091232],[-0.434128,-0.754091],[-0.255675,1.324294],[0.225245,-0.190482],[0.019866,0.38683],[0.487825,-0.347863],[1.195191,0.146089],[-0.740459,-0.655556],[-0.404691,0.435029],[-0.061166,0.500443],[0.039731,-0.239122],[-0.429869,0.490906],[0.904521,-0.50737],[-0.370192,-0.252043],[0.028703,0.094555],[-0.145665,-0.092626],[-0.112925,-0.01801],[0.331915,0.355369],[0.220506,-0.180248],[-0.122074,0.412235],[-0.272146,-0.419364],[0.026073,0.106334],[0.062715,-0.191028],[-0.233196,0.335449],[0.183411,-0.066499],[0.012971,-0.319248],[-0.009687,0.15854],[0.10281,-0.118226],[0.047022,0.121659],[-0.152434,0.077433],[0.024913,0.010903],[0.065061,-0.031844],[0.008991,0.002249],[-0.151194,0.006884]],"height":330.999406467232} : null;
+  if (!FALLBACK || !FALLBACK.x) {
+    throw new Error('这是构建模板（tools/page.template.html）。请打开根目录的 index.html，或运行 node tools/build.mjs 生成它。');
+  }
+  // ---------- 画幅与版面（逻辑像素，4:5） ----------
+  const W = 960, H = 1200;
+  const M = 2048;               // 弧长等距采样点数
+  const KMAX = 50;              // 保留的最高谐波阶数
+  const TRACE_K = 1200;         // 每阶段轨迹预采样点数
+  const TRACE_CAP = 5 * TRACE_K;// 轨迹缓存上限（5 个阶段合计 6000 点）
+  const S = 1;
+  const PEN = { x: 555, y: 610 };
+  const GREEN = { x: PEN.x, y: 265 };   // x projection shares the pen's origin
+  const GOLD  = { x: 200, y: PEN.y };   // y projection shares the pen's origin
+  const BIRD_ART = { x: 758, y: 948, s: 0.62 };
+  const FIN = { x: 480, y: 565, s: 1.24 };
+  const PHASES = [ { N: 1, t0: 0 }, { N: 5, t0: 4 }, { N: 10, t0: 8 }, { N: 20, t0: 12 }, { N: 50, t0: 16 } ];
+  const PHASE_DUR = 4;
+  const T_FADE = 20, T_FADE_END = 23, T_END = 26;
+
+  // ---------- 颜色（StepFun 品牌 token：中性优先 + Signal Blue ≤3% + Marker Yellow ≤1%） ----------
+  const C = {
+    bg: '#F7F7F7',        // 纸底（非纯白）
+    ink: '#1A1A1A',       // Ink Black
+    grey: '#656565',      // 次级文字/结构
+    hairline: '#B6B6B6',  // Warm Grey 发丝线
+    blue: '#00A9FF',      // Signal Blue（唯一强调色：x 圆链 + 轨迹）
+    yellow: '#F9B845',    // Marker Yellow（≤1%：N 的标记）
+    birdBody: '#C9C9C9',  // 小鸟插画：身体浅灰
+    birdMid: '#9A9A9A',   // 小鸟插画：翅膀/腿脚中灰
+    birdEye: '#2E2E2E',   // 小鸟插画：眼睛近黑
+  };
+
+  const SERIF = '"Lora", Georgia, "Times New Roman", "Songti SC", serif';
+  const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+  const lerp = (a, b, t) => a + (b - a) * t;
+  const smooth = (a, b, v) => { const t = clamp((v - a) / (b - a), 0, 1); return t * t * (3 - 2 * t); };
+  const easeIO = t => t * t * (3 - 2 * t);
+
+  // ============================================================
+  // 1. 轮廓采样（等弧长）与实数傅里叶系数 —— 仅加载时计算一次
+  // ============================================================
+  function sampleContour(d, count) {
+    const NS = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(NS, 'svg');
+    svg.setAttribute('viewBox', '0 0 512 512');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.style.cssText = 'position:absolute;width:0;height:0;overflow:hidden';
+    const p = document.createElementNS(NS, 'path');
+    p.setAttribute('d', d);
+    svg.appendChild(p);
+    document.body.appendChild(svg);
+    let pts;
+    try {
+      const len = p.getTotalLength();
+      pts = new Array(count);
+      for (let i = 0; i < count; i++) {
+        const q = p.getPointAtLength((len * i) / count);
+        pts[i] = [q.x, q.y];
+      }
+    } catch (e) {
+      pts = null;
+    }
+    svg.remove();
+    return pts;
+  }
+
+  // x(t) = a0 + Σ_{k=1..K} [ A[k]·cos(2πkt) + B[k]·sin(2πkt) ]
+  function dft(vals, K) {
+    const m = vals.length;
+    let a0 = 0;
+    for (let i = 0; i < m; i++) a0 += vals[i];
+    a0 /= m;
+    const A = new Float64Array(K), B = new Float64Array(K);
+    for (let k = 1; k <= K; k++) {
+      const w = (2 * Math.PI * k) / m;
+      let a = 0, b = 0;
+      for (let i = 0; i < m; i++) {
+        const ang = w * i;
+        a += vals[i] * Math.cos(ang);
+        b += vals[i] * Math.sin(ang);
+      }
+      A[k - 1] = (2 * a) / m;
+      B[k - 1] = (2 * b) / m;
+    }
+    return { a0, A, B };
+  }
+
+  let PTS = null, CX = null, CY = null, HEIGHT = 1;
+
+  function computeCoefficients() {
+    PTS = sampleContour(CONTOUR_D.split(/(?=[Mm])/)[0], M);
+    if (!PTS) { // 极端环境回退：使用构建时预算好的同一组系数
+      CX = { a0: FALLBACK.ax0, A: Float64Array.from(FALLBACK.x.map(c => c[0])), B: Float64Array.from(FALLBACK.x.map(c => c[1])) };
+      CY = { a0: FALLBACK.ay0, A: Float64Array.from(FALLBACK.y.map(c => c[0])), B: Float64Array.from(FALLBACK.y.map(c => c[1])) };
+      HEIGHT = FALLBACK.height;
+      return;
+    }
+    let y0 = Infinity, y1 = -Infinity;
+    for (const p of PTS) { if (p[1] < y0) y0 = p[1]; if (p[1] > y1) y1 = p[1]; }
+    HEIGHT = y1 - y0;
+    CX = dft(PTS.map(p => p[0]), KMAX);
+    CY = dft(PTS.map(p => p[1]), KMAX);
+  }
+
+  // 归一化重建坐标（相对笔尖区域中心、已除缩放），t∈[0,1)
+  function reconNorm(N, t) {
+    let x = 0, y = 0;
+    for (let k = 1; k <= N; k++) {
+      const ang = 2 * Math.PI * k * t, c = Math.cos(ang), s = Math.sin(ang);
+      x += CX.A[k - 1] * c + CX.B[k - 1] * s;
+      y += CY.A[k - 1] * c + CY.B[k - 1] * s;
+    }
+    return [x, y];
+  }
+
+  // 误差：等弧长参数 t_i 下重建点与原采样点二维距离 RMS ÷ 轮廓高度
+  function rmsError(N) {
+    if (!PTS) return null;
+    let acc = 0;
+    for (let i = 0; i < M; i++) {
+      const t = i / M;
+      const [x, y] = reconNorm(N, t);
+      acc += (x + CX.a0 - PTS[i][0]) ** 2 + (y + CY.a0 - PTS[i][1]) ** 2;
+    }
+    return Math.sqrt(acc / M) / HEIGHT * 100;
+  }
+
+  // 每个阶段的预计算：归一化轨迹点 + 误差（一次性，之后每帧只查表）
+  let PHASE_DATA = [];
+  function buildPhaseData() {
+    PHASE_DATA = PHASES.map(ph => {
+      const pts = new Array(TRACE_K);
+      for (let j = 0; j < TRACE_K; j++) pts[j] = reconNorm(ph.N, j / TRACE_K);
+      return { ...ph, pts, err: rmsError(ph.N) };
+    });
+  }
+
+  // 圆链向量序列：第 k 个圆的圆心 = 前 k-1 个向量之和，半径 = |C_k|
+  function chainVectors(N, p) {
+    const out = { x: [], y: [] };
+    for (const key of ['x', 'y']) {
+      const F = key === 'x' ? CX : CY;
+      let px = 0, py = 0;
+      const arr = out[key];
+      for (let k = 1; k <= N; k++) {
+        const a = F.A[k - 1], b = F.B[k - 1];
+        const ang = 2 * Math.PI * k * p, c = Math.cos(ang), s = Math.sin(ang);
+        const vx = a * c + b * s, vy = a * s - b * c;
+        arr.push({ cx: px, cy: py, r: Math.hypot(a, b), vx, vy });
+        px += vx; py += vy;
+      }
+      out[key].end = [px, py];
+    }
+    return out;
+  }
+
+  // ============================================================
+  // 2. renderAt(time) —— 纯函数：同一时间点得到同一画面
+  // ============================================================
+  function computeState(t) {
+    const st = {
+      t, N: 50, p: 0, penX: PEN.x, penY: PEN.y,
+      green: null, gold: null,
+      aChain: 1, aLine: 1, aPen: 1, aTrace: 1, aHorse: 1,
+      ghost: null, fin: { a: 0, s: S, cx: PEN.x, cy: PEN.y }, formula: 0,
+    };
+    if (t < T_FADE) {
+      let idx = 0;
+      while (idx + 1 < PHASES.length && t >= PHASES[idx + 1].t0) idx++;
+      const ph = PHASES[idx];
+      st.N = ph.N;
+      st.p = clamp((t - ph.t0) / PHASE_DUR, 0, 1);
+      const cv = chainVectors(ph.N, st.p);
+      st.green = cv.x; st.gold = cv.y;
+      st.penX = PEN.x + S * cv.x.end[0];
+      st.penY = PEN.y + S * cv.y.end[0];
+      if (idx > 0 && t - ph.t0 < 0.35) st.ghost = { idx: idx - 1, a: 1 - (t - ph.t0) / 0.35 };
+      return st;
+    }
+    // 20–23s：圆链/辅助线/剪影淡出，完成的轮廓填色并放大居中
+    const k = clamp((t - T_FADE) / (T_FADE_END - T_FADE), 0, 1);
+    const e = easeIO(k);
+    const cv = chainVectors(50, 1);
+    st.green = cv.x; st.gold = cv.y;
+    st.penX = PEN.x + S * cv.x.end[0];
+    st.penY = PEN.y + S * cv.y.end[0];
+    const fade = 1 - smooth(0, 0.5, k);
+    st.aChain = fade; st.aLine = fade; st.aPen = fade;
+    st.aTrace = 1 - smooth(0.1, 0.6, k);
+    st.aHorse = 1 - smooth(0.05, 0.9, k);
+    st.fin = { a: smooth(0.3, 0.9, k), s: lerp(S, FIN.s, e), cx: lerp(PEN.x, FIN.x + (CX.a0 - 256) * FIN.s, e), cy: lerp(PEN.y, FIN.y + (CY.a0 - 255.5) * FIN.s, e) };
+    if (t >= T_FADE_END) st.formula = smooth(0, 0.6, (t - T_FADE_END) / (T_END - T_FADE_END));
+    return st;
+  }
+
+  // ============================================================
+  // 3. 绘制
+  // ============================================================
+  const canvas = document.getElementById('cv');
+  const ctx = canvas.getContext('2d');
+  let dpr = 1;
+
+  function resize() {
+    dpr = Math.min(2.5, window.devicePixelRatio || 1);
+    canvas.width = Math.round(W * dpr);
+    canvas.height = Math.round(H * dpr);
+    // CSS aspect-ratio owns layout; measuring during resize can use a stale scrollbar width.
+  }
+  window.addEventListener('resize', () => { resize(); dirty = true; });
+
+  // Named layers keep the second foot from being mistaken for an eye subpath.
+  let birdParts = null;
+  try {
+    birdParts = ART_DATA.layers.map(part => ({ path: new Path2D(part.d), color: C[part.tone] }));
+  } catch (e) { birdParts = null; }
+
+  // Path2D 不可用时的兜底：用等弧长采样点直接画身体外轮廓
+  function drawSilhouetteFromSamples() {
+    if (!PTS) return;
+    ctx.beginPath();
+    ctx.moveTo(PTS[0][0], PTS[0][1]);
+    for (let i = 1; i < PTS.length; i++) ctx.lineTo(PTS[i][0], PTS[i][1]);
+    ctx.closePath();
+    ctx.fillStyle = C.birdBody;
+    ctx.fill();
+  }
+
+  function tracePath(pts, count, scale, cx, cy) {
+    const path = new Path2D();
+    const n = Math.max(1, Math.min(pts.length, count));
+    for (let i = 0; i < n; i++) {
+      const X = cx + pts[i][0] * scale, Y = cy + pts[i][1] * scale;
+      if (i === 0) path.moveTo(X, Y); else path.lineTo(X, Y);
+    }
+    if (n === pts.length) { const q = pts[0]; path.lineTo(cx + q[0] * scale, cy + q[1] * scale); }
+    return path;
+  }
+
+  function drawChain(vectors, anchor, scale, color, alpha, vertical = false) {
+    if (alpha <= 0.001) return;
+    if (vertical) {
+      const end = [vectors.end[1], vectors.end[0]];
+      vectors = vectors.map(c => ({ cx: c.cy, cy: c.cx, r: c.r, vx: c.vy, vy: c.vx }));
+      vectors.end = end;
+    }
+    ctx.save();
+    ctx.globalAlpha = alpha;
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 1;
+    // 圆
+    ctx.globalAlpha = alpha * 0.42;
+    ctx.beginPath();
+    for (const c of vectors) {
+      ctx.moveTo(anchor.x + (c.cx + c.r) * scale, anchor.y + c.cy * scale);
+      ctx.arc(anchor.x + c.cx * scale, anchor.y + c.cy * scale, c.r * scale, 0, Math.PI * 2);
+    }
+    ctx.stroke();
+    // 连杆（半径向量）
+    ctx.globalAlpha = alpha * 0.85;
+    ctx.beginPath();
+    for (const c of vectors) {
+      ctx.moveTo(anchor.x + c.cx * scale, anchor.y + c.cy * scale);
+      ctx.lineTo(anchor.x + (c.cx + c.vx) * scale, anchor.y + (c.cy + c.vy) * scale);
+    }
+    ctx.stroke();
+    // 锚点与末端
+    ctx.globalAlpha = alpha * 0.9;
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.arc(anchor.x, anchor.y, 2, 0, Math.PI * 2);
+    ctx.fill();
+    const ex = anchor.x + vectors.end[0] * scale, ey = anchor.y + vectors.end[1] * scale;
+    ctx.beginPath();
+    ctx.arc(ex, ey, 2.6, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  function dashedLine(x1, y1, x2, y2, color, alpha) {
+    if (alpha <= 0.001) return;
+    ctx.save();
+    ctx.globalAlpha = alpha * 0.55;
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 1;
+    ctx.setLineDash([4, 6]);
+    ctx.beginPath();
+    ctx.moveTo(x1, y1);
+    ctx.lineTo(x2, y2);
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  // 数学公式富文本：tokens = [{t, it, sub, sup}]
+  function mathLine(tokens, cx, y, size, color, alpha) {
+    let total = 0;
+    const laid = tokens.map(tk => {
+      const f = (tk.sub || tk.sup ? size * 0.62 : size);
+      ctx.font = `${tk.it ? 'italic ' : ''}${f}px ${SERIF}`;
+      const w = ctx.measureText(tk.t).width;
+      total += w;
+      return { tk, w, f };
+    });
+    ctx.save();
+    ctx.globalAlpha = alpha;
+    ctx.fillStyle = color;
+    ctx.textBaseline = 'alphabetic';
+    let x = cx - total / 2;
+    for (const { tk, w, f } of laid) {
+      ctx.font = `${tk.it ? 'italic ' : ''}${f}px ${SERIF}`;
+      const dy = tk.sub ? f * 0.34 : tk.sup ? -f * 0.42 : 0;
+      ctx.fillText(tk.t, x, y + dy);
+      x += w;
+    }
+    ctx.restore();
+  }
+
+  function formulaTokens(v, c0, c1, c2) {
+    const s = (t, extra) => Object.assign({ t }, extra);
+    return [
+      s(v, { it: true }), s('('), s('t', { it: true }), s(') = '),
+      s(c0, { it: true }), s('0', { sub: true }), s(' + '), s('Σ'),
+      s('k=1', { sub: true }), s('50', { sup: true }), s(' [ '),
+      s(c1, { it: true }), s('k', { sub: true, it: true }), s(' cos(2πkt) + '),
+      s(c2, { it: true }), s('k', { sub: true, it: true }), s(' sin(2πkt) ]'),
+    ];
+  }
+
+  // 纸张噪点（品牌纹理：确定性 seeded PRNG，3.5% 不透明度，与 tokens.css 的 paper texture 同规格）
+  let noisePattern = null;
+  (function makeNoise() {
+    try {
+      const c = document.createElement('canvas');
+      c.width = c.height = 160;
+      const g = c.getContext('2d');
+      const img = g.createImageData(160, 160);
+      let seed = 0x9E3779B9;
+      const rnd = () => {
+        seed = (seed + 0x6D2B79F5) | 0;
+        let t = seed;
+        t = Math.imul(t ^ (t >>> 15), t | 1);
+        t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+        return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+      };
+      for (let i = 0; i < img.data.length; i += 4) {
+        img.data[i] = 26; img.data[i + 1] = 26; img.data[i + 2] = 26; img.data[i + 3] = 9;
+      }
+      g.putImageData(img, 0, 0);
+      noisePattern = ctx.createPattern(c, 'repeat');
+    } catch (e) { noisePattern = null; }
+  })();
+
+  function draw(st) {
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    // 背景：纸底 + 噪点
+    ctx.fillStyle = C.bg;
+    ctx.fillRect(0, 0, W, H);
+    if (noisePattern) { ctx.fillStyle = noisePattern; ctx.fillRect(0, 0, W, H); }
+
+    // 右下：目标小鸟（扁平灰阶插画：浅灰身体 / 中灰翅膀腿脚 / 近黑圆眼）
+    if (st.aHorse > 0.001) {
+      ctx.save();
+      ctx.globalAlpha = st.aHorse;
+      ctx.translate(BIRD_ART.x, BIRD_ART.y);
+      ctx.scale(BIRD_ART.s, BIRD_ART.s);
+      ctx.translate(-256, -256);
+      if (birdParts) {
+        for (const p of birdParts) { ctx.fillStyle = p.color; ctx.fill(p.path); }
+      } else {
+        drawSilhouetteFromSamples();
+      }
+      ctx.restore();
+    }
+
+    // 上一阶段轨迹的余晖（0.35s 内淡出，不与新轨迹相连）
+    if (st.ghost) {
+      const g = PHASE_DATA[st.ghost.idx];
+      ctx.save();
+      ctx.globalAlpha = st.ghost.a * 0.35;
+      ctx.strokeStyle = C.blue;
+      ctx.lineWidth = 1.4;
+      ctx.stroke(tracePath(g.pts, TRACE_K, S, PEN.x, PEN.y));
+      ctx.restore();
+    }
+
+    // 当前轨迹（Signal Blue）：阶段中画前缀；20s 后整体交给片尾形状前保持可见
+    if (st.aTrace > 0.001) {
+      let ph, count;
+      if (st.t < T_FADE) {
+        const i = PHASES.findIndex(p => p.N === st.N);
+        ph = PHASE_DATA[i >= 0 ? i : PHASE_DATA.length - 1];
+        count = Math.max(1, Math.round(st.p * TRACE_K));
+      } else {
+        ph = PHASE_DATA[PHASE_DATA.length - 1];
+        count = TRACE_K;
+      }
+      const path = tracePath(ph.pts, count, S, PEN.x, PEN.y);
+      ctx.save();
+      ctx.globalAlpha = st.aTrace;
+      ctx.strokeStyle = C.blue;
+      ctx.lineWidth = 2.4;
+      ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+      ctx.stroke(path);
+      ctx.restore();
+    }
+
+    // 片尾：完成的轮廓填色 + 放大居中
+    if (st.fin.a > 0.001) {
+      const ph = PHASE_DATA[PHASE_DATA.length - 1];
+      const path = tracePath(ph.pts, TRACE_K, st.fin.s, st.fin.cx, st.fin.cy);
+      ctx.save();
+      ctx.globalAlpha = st.fin.a;
+      ctx.fillStyle = 'rgba(0,169,255,0.16)';
+      ctx.fill(path);
+      ctx.strokeStyle = C.blue;
+      ctx.lineWidth = 2;
+      ctx.lineJoin = 'round';
+      ctx.stroke(path);
+      ctx.restore();
+    }
+
+    // 双圆链：右上蓝（末端 x = 笔尖 x），左下墨（末端 y = 笔尖 y）
+    drawChain(st.green, GREEN, S, C.blue, st.aChain);
+    drawChain(st.gold, GOLD, S, C.ink, st.aChain, true);
+
+    // 投影虚线：绿→竖线，黄→横线，交点 = 笔尖
+    if (st.aLine > 0.001) {
+      // 投影虚线：蓝末端（x 链正交分量决定其 y）引竖线；墨末端（y 链正交分量决定其 x）引横线；交点 = 笔尖
+      const gy = GREEN.y + st.green.end[1] * S;
+      const gx = GOLD.x + st.gold.end[1] * S;
+      dashedLine(st.penX, gy, st.penX, st.penY, C.blue, st.aLine);
+      dashedLine(gx, st.penY, st.penX, st.penY, C.ink, st.aLine);
+    }
+
+    // 笔尖（墨点 + 纸色内芯，纸面上最亮的对比）
+    if (st.aPen > 0.001) {
+      ctx.save();
+      ctx.globalAlpha = st.aPen;
+      ctx.fillStyle = C.ink;
+      ctx.beginPath();
+      ctx.arc(st.penX, st.penY, 3.6, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = C.bg;
+      ctx.beginPath();
+      ctx.arc(st.penX, st.penY, 1.1, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    }
+
+    // 左上：N（Marker Yellow 标记，≤1%）与 error（次级灰）
+    const errTxt = PHASE_DATA[PHASES.findIndex(p => p.N === st.N)]?.err;
+    ctx.save();
+    ctx.textBaseline = 'alphabetic';
+    const x0 = 48;
+    ctx.font = '44px "PT Mono", Menlo, ui-monospace, monospace';
+    const nW = ctx.measureText('N = ').width;
+    const vW = ctx.measureText(String(st.N)).width;
+    ctx.fillStyle = C.ink;
+    ctx.fillText('N = ', x0, 92);
+    // 数字下的黄色标记条（品牌 Marker Yellow，面积 <1%）
+    ctx.fillStyle = C.yellow;
+    ctx.fillRect(x0 + nW - 2, 100, vW + 4, 7);
+    ctx.fillStyle = C.ink;
+    ctx.fillText(String(st.N), x0 + nW, 92);
+    ctx.font = '18px "PT Mono", Menlo, ui-monospace, monospace';
+    ctx.fillStyle = C.grey;
+    ctx.fillText(`error = ${errTxt == null ? '—' : errTxt.toFixed(2) + '%'}`, x0, 138);
+    ctx.restore();
+
+    // 片尾公式
+    if (st.formula > 0.001) {
+      mathLine(formulaTokens('x', 'a', 'a', 'b'), W / 2, 880, 30, C.ink, st.formula);
+      mathLine(formulaTokens('y', 'c', 'c', 'd'), W / 2, 935, 30, C.ink, st.formula);
+      mathLine([
+        { t: '系数由 ' }, { t: '2048' }, { t: ' 个等弧长采样点对 x(t)、y(t) 分别做实数 DFT 得到 · N = 50' },
+      ], W / 2, 990, 17, C.grey, st.formula * 0.9);
+    }
+  }
+
+  function renderAt(t) {
+    const st = computeState(t);
+    draw(st);
+    return st;
+  }
+
+  // ============================================================
+  // 4. 播放控制（画幅之外）
+  // ============================================================
+  const btnPlay = document.getElementById('btnPlay');
+  const btnReplay = document.getElementById('btnReplay');
+  const clock = document.getElementById('clock');
+  let tCur = 0, playing = false, last = 0, dirty = true;
+
+  const fmt = s => {
+    const m = Math.floor(s / 60), r = Math.floor(s % 60);
+    return String(m).padStart(2, '0') + ':' + String(r).padStart(2, '0');
+  };
+  function syncUI() {
+    btnPlay.textContent = playing ? '暂停' : '播放';
+    clock.textContent = `${fmt(tCur)} / ${fmt(T_END)}`;
+  }
+  function frame(now) {
+    if (!last) last = now;
+    const dt = Math.min(0.1, (now - last) / 1000);
+    last = now;
+    if (playing) {
+      tCur = Math.min(T_END, tCur + dt);
+      dirty = true;
+      if (tCur >= T_END) playing = false;
+    }
+    if (playing || dirty) {
+      renderAt(tCur);
+      syncUI();
+      dirty = false;
+    }
+    requestAnimationFrame(frame);
+  }
+  function setPlaying(v) {
+    if (v && tCur >= T_END) tCur = 0;
+    playing = v;
+    last = 0;
+    dirty = true;
+    syncUI();
+  }
+  btnPlay.addEventListener('click', () => setPlaying(!playing));
+  btnReplay.addEventListener('click', () => { tCur = 0; setPlaying(true); });
+  window.addEventListener('keydown', e => {
+    if (e.altKey || e.ctrlKey || e.metaKey || e.target.closest('input, textarea, select, [contenteditable="true"]')) return;
+    if (e.code === 'Space') {
+      if (e.target.closest('button')) return;
+      e.preventDefault(); setPlaying(!playing);
+    } else if (e.key === 'r' || e.key === 'R') { tCur = 0; setPlaying(true); }
+    else if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+      e.preventDefault();
+      tCur = clamp(tCur + (e.key === 'ArrowRight' ? 1 : -1), 0, T_END);
+      renderAt(tCur); syncUI();
+    }
+  });
+
+  // ---------- 启动 ----------
+  resize();
+  computeCoefficients();
+  buildPhaseData();
+  window.renderAt = renderAt;                       // 导出/视频用：确定性渲染
+  window.__ft = {                                     // 调试与验收用
+    state: computeState, errors: PHASE_DATA.map(p => ({ N: p.N, err: p.err })),
+    coefs: { ax0: CX.a0, ay0: CY.a0 }, M, KMAX, S, PEN, GREEN, GOLD,
+    traceCap: TRACE_CAP, height: HEIGHT,
+    seek: (t) => { tCur = clamp(t, 0, T_END); playing = false; renderAt(tCur); syncUI(); },
+    isPlaying: () => playing,
+    time: () => tCur,
+  };
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  setPlaying(!reduce);
+  renderAt(tCur);
+  requestAnimationFrame(frame);
+}
+
+// 任何初始化失败都在画布上写明原因，避免"黑屏无提示"
+function showFatal(err) {
+  console.error('[fourier-pelican]', err);
+  try {
+    const cv = document.getElementById('cv');
+    const c = cv.getContext('2d');
+    const dpr = Math.min(2.5, window.devicePixelRatio || 1);
+    cv.width = Math.round(960 * dpr);
+    cv.height = Math.round(1200 * dpr);
+    c.setTransform(dpr, 0, 0, dpr, 0, 0);
+    c.fillStyle = '#F7F7F7';
+    c.fillRect(0, 0, 960, 1200);
+    c.fillStyle = '#00A9FF';
+    c.font = '26px Georgia, "Songti SC", serif';
+    c.textBaseline = 'alphabetic';
+    c.fillText('初始化失败', 60, 300);
+    c.fillStyle = '#1A1A1A';
+    c.font = '19px Georgia, "Songti SC", serif';
+    const msg = String((err && err.message) || err);
+    const lines = [msg, '请确认打开的是根目录 index.html（不要打开 tools/ 下的模板）。'].flatMap(s => {
+      const out = [];
+      let rest = s;
+      while (rest.length > 34) { out.push(rest.slice(0, 34)); rest = rest.slice(34); }
+      if (rest) out.push(rest);
+      return out;
+    });
+    lines.forEach((ln, i) => c.fillText(ln, 60, 360 + i * 34));
+    const btn = document.getElementById('btnPlay');
+    if (btn) btn.textContent = '播放';
+  } catch (e) { /* 画布也不可用时放弃 */ }
+}
+
+try {
+  main();
+} catch (err) {
+  showFatal(err);
+}
+</script>
+</body>
+</html>
