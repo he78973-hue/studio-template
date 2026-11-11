@@ -14,5 +14,6 @@ Curated **StepFun Studio** front-end demos. No third-party template bundles exce
 | `meridian-ops` | Meridian global operations dashboard | Code license not specified; Google Fonts: Archivo, Noto Sans SC and PT Mono, SIL OFL 1.1 (see [template notes](./sites/meridian-ops/README.md)) |
 | `aurelle` | AURELLE beauty brand storefront | Code license not specified; preserve page attribution; Font Awesome Free 7.3.1 SVG icons CC BY 4.0, fonts SIL OFL 1.1, code MIT (see [template notes](./sites/aurelle/README.md)) |
 | `periodic-table-3d` | ELEMENTA dual-theme periodic table and illustrative atom models | App code license not specified; Three.js r160 and OrbitControls MIT; PT Mono SIL OFL 1.1. Full dependency notices are included in the vendor directory and generated HTML (see [template notes](./sites/periodic-table-3d/README.md#许可与署名)). |
+| `shanghai-peli` | Illustrated Shanghai history with a pixel-pelican guide | App code and supplied artwork license not specified; Lucide ISC / Feather-derived icons MIT; Google Fonts under SIL OFL 1.1 (see [credits](./sites/shanghai-peli/CREDITS.md) and [icon license](./sites/shanghai-peli/licenses/lucide-LICENSE.txt)). |
 
 Refresh curated demos manually; `scripts/import-vendors.sh` is deprecated for OSS bulk import.

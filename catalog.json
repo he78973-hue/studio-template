@@ -235,6 +235,22 @@
       "tone": "ink",
       "cover": "sites/nova-volt-deck/preview/cover.png",
       "previewVideo": "sites/nova-volt-deck/preview/video.mp4"
+    },
+    {
+      "id": "shanghai-peli",
+      "scene": "creative",
+      "title": {
+        "zh": "沿水而生 · 小鹈走过上海",
+        "en": "Along the Water · Shanghai with Peli"
+      },
+      "description": {
+        "zh": "十幅上海历史图版组成的横向互动长卷：像素小鹈用三秒从左走到右，注记自动呈现，支持键盘、拖动、时间轴导航与移动端阅读。河道与地图为叙事示意。",
+        "en": "A horizontal journey through ten illustrated chapters of Shanghai history, with a three-second pixel-pelican crossing, automatic historical notes, keyboard/drag/timeline navigation, and mobile captions. Maps are illustrative, not historical reconstructions."
+      },
+      "dir": "sites/shanghai-peli",
+      "tone": "ink",
+      "cover": "sites/shanghai-peli/preview/cover.png",
+      "previewVideo": "sites/shanghai-peli/preview/video.mp4"
     }
   ]
 }
