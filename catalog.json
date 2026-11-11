@@ -267,6 +267,22 @@
       "tone": "ink",
       "cover": "sites/shanghai-peli/preview/cover.png",
       "previewVideo": "sites/shanghai-peli/preview/video.mp4"
+    },
+    {
+      "id": "umbra-one",
+      "scene": "marketing",
+      "title": {
+        "zh": "UMBRA ONE · 黑白液态玻璃落地页",
+        "en": "UMBRA ONE · Monochrome Glass Landing"
+      },
+      "description": {
+        "zh": "单文件离线产品发布页：黑白玻璃、工程栅格、衬线刊头与渐隐点阵字标，含推理控制台演示、配置切换、分期定价与 FAQ。产品、规格和反馈均为虚构演示，不收集邮箱或支付。",
+        "en": "An offline, single-file product launch page with monochrome glass, an engineering grid, editorial typography and a fading dot-matrix wordmark. Includes a simulated console, configuration and pricing toggles, and FAQ. Fictional product and data; no email collection or payments."
+      },
+      "dir": "sites/umbra-one",
+      "tone": "night",
+      "cover": "sites/umbra-one/preview/cover.png",
+      "previewVideo": "sites/umbra-one/preview/video.mp4"
     }
   ]
 }

@@ -53,6 +53,7 @@ The exact schema is:
 | `fourier-pelican` | Creative | Dual-coordinate Fourier epicycle animation ([template notes](./sites/fourier-pelican/README.md)) |
 | `periodic-table-3d` | Creative | Offline atomic atlas with light/dark themes and Canvas fallback ([template notes](./sites/periodic-table-3d/README.md)) |
 | `shanghai-peli` | Creative | Horizontal illustrated Shanghai history, full-width pixel-pelican walks and sourced notes ([template notes](./sites/shanghai-peli/README.md)) |
+| `umbra-one` | Marketing | Offline monochrome liquid-glass launch page with fictional private-compute data ([template notes](./sites/umbra-one/README.md)) |
 
 Paths: `sites/<id>/` with `index.html` entry.
 
