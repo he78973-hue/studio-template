@@ -9,6 +9,7 @@ Curated **StepFun Studio** front-end demos. No third-party template bundles exce
 | `prism-studio` | Google Material–inspired analytics dashboard (static) | StepFun Studio |
 | `atelier` | Editorial portfolio / studio site | StepFun Studio |
 | `stepfun-3d` | StepFun digital pavilion (3D gallery) | StepFun demo; Three.js MIT |
+| `weather-garden` | Qingyu mobile weather visualization | App code license not specified; Three.js MIT; Lucide ISC / inherited Feather MIT; Open-Meteo data CC BY 4.0, free API limited to non-commercial use ([template notes](./sites/weather-garden/README.md#许可与数据使用)) |
 | `plane-war` | SKY STRIKE 3D browser air-combat (Three.js) | StepFun demo; Three.js MIT; fighter glTF models CC BY 4.0 (see `sites/plane-war/CREDITS.txt`); StepFun TTS voice lines |
 | `step-studio` | Step Studio brand & digital design studio | Code license not specified; preserve page attribution (see [template notes](./sites/step-studio/README.md)); Google Fonts: Noto Serif SC, Noto Sans SC and PT Mono, SIL OFL 1.1 |
 | `meridian-ops` | Meridian global operations dashboard | Code license not specified; Google Fonts: Archivo, Noto Sans SC and PT Mono, SIL OFL 1.1 (see [template notes](./sites/meridian-ops/README.md)) |

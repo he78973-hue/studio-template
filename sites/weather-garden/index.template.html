@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#edf3f6">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>晴屿 · 把天气拿在手里</title>
+  <style>__STYLES__</style>
+</head>
+<body>
+<div class="app-shell">
+  <header class="topbar">
+    <div class="location-group"><button id="cityButton" class="city-button" aria-haspopup="dialog"><span data-icon="map-pin"></span><span id="cityName">上海</span><span data-icon="chevron-down" class="chevron"></span></button><p id="dateLabel" class="date-label">正在读取预报</p></div>
+    <div class="brand-group"><span class="wordmark">晴屿<span>WEATHER, IN PLAY</span></span><button id="refreshButton" class="icon-button" aria-label="刷新天气"><span data-icon="refresh-cw"></span></button></div>
+  </header>
+  <main>
+    <section class="weather-hero" id="today" aria-label="天气概览">
+      <div class="hero-summary">
+        <div><p id="periodLabel" class="eyebrow">当前天气</p><h1 class="temperature"><span id="temperature">—</span><span class="degree">°</span></h1></div>
+        <div class="condition-summary"><p id="conditionName">连接天空中</p><p id="highLow" class="high-low">最高 —° · 最低 —°</p><button id="returnNow" class="text-button" hidden>回到现在 <span data-icon="rotate-ccw"></span></button></div>
+      </div>
+      <div class="weather-stage" id="weatherStage">
+        <canvas id="weatherCanvas" tabindex="0" role="img" aria-label="可拖拽的3D天气积木，用方向键也能旋转" aria-describedby="sceneHint"></canvas>
+        <div class="scene-fallback" id="sceneFallback" hidden><span data-icon="cloud-sun"></span><p>3D 暂不可用，预报仍可查看</p></div>
+        <p id="sceneHint" class="scene-hint"><span class="hint-orbit"></span>拨动这片天空，松手回正</p>
+        <div class="stage-actions"><button id="windToggle" class="stage-button" aria-pressed="false" title="查看风向动画示意"><span data-icon="wind"></span><span>看见风</span></button><button id="resetScene" class="icon-button small" aria-label="重置3D视角"><span data-icon="rotate-ccw"></span></button></div>
+      </div>
+      <div class="source-status" id="sourceStatus" role="status"><span class="status-dot"></span><span id="statusText">正在获取最新预报…</span></div>
+      <div class="error-message" id="errorMessage" hidden><span id="errorText"></span><button id="retryButton" class="text-button">重试</button></div>
+      <div class="quick-metrics" id="quickMetrics"></div>
+      <button id="rainInsightButton" class="rain-insight" type="button" aria-label="查看降水趋势" aria-describedby="rainInsight"><span data-icon="umbrella"></span><span id="rainInsight">下一段天气，正在路上</span><span class="insight-arrow" data-icon="arrow-up-right"></span></button>
+    </section>
+
+    <section class="panel hourly-panel" id="hourly" aria-labelledby="hourlyTitle">
+      <div class="section-heading"><div><p class="eyebrow">READ THE RHYTHM</p><h2 id="hourlyTitle">未来 24 小时</h2></div><span class="tiny-tag">可交互</span></div>
+      <div class="metric-tabs" role="group" aria-label="图表指标"><button data-metric="temperature" aria-pressed="true">温度</button><button data-metric="precipitation" aria-pressed="false">降水</button><button data-metric="wind" aria-pressed="false">风速</button></div>
+      <div class="chart-key"><span id="chartKey"><i></i>气温 · °C</span><span id="chartRange">—</span></div>
+      <div id="hourChart" class="hour-chart"></div>
+      <label class="slider-label" for="hourRange">把时间轻轻拨向未来 <span data-icon="arrow-up-right"></span></label>
+      <input id="hourRange" class="hour-range" type="range" min="0" max="23" step="1" value="0" disabled aria-label="选择逐小时预报时间">
+      <output id="hourReadout" for="hourRange" class="hour-readout" aria-live="polite">等待逐小时预报</output>
+      <p id="metricNote" class="chart-note">点选曲线或滑动时间轴，天气积木会一起变化。</p>
+      <div id="hourAccessible" class="sr-only"></div>
+    </section>
+
+    <section class="panel week-panel" id="week" aria-labelledby="weekTitle">
+      <div class="section-heading"><div><p class="eyebrow">A LITTLE FURTHER</p><h2 id="weekTitle">一周的冷暖</h2></div><span data-icon="thermometer"></span></div>
+      <div class="week-legend"><span>日期 / 天气</span><span>最低 — 最高 · °C</span></div>
+      <div id="weekRows" class="week-rows"></div>
+      <p class="chart-note">温度条使用同一刻度，点一天看看细节。</p>
+    </section>
+
+    <div class="detail-grid">
+      <p id="detailPeriod" class="reading-period detail-period"></p>
+      <section class="panel wind-panel" aria-labelledby="windTitle"><h2 id="windTitle"><span data-icon="wind"></span>风的来信</h2><div id="windVisual"></div><p class="chart-note">箭头指向风的来向</p></section>
+      <section class="panel uv-panel" aria-labelledby="uvTitle"><h2 id="uvTitle"><span data-icon="sun"></span>光的分寸</h2><div id="uvVisual"></div><p class="chart-note">紫外线指数 · UVI</p></section>
+    </div>
+    <section class="panel sun-panel" aria-labelledby="sunTitle"><div class="section-heading"><div><p class="eyebrow">FOLLOW THE LIGHT</p><h2 id="sunTitle">太阳的行程</h2></div><span id="daylightLabel" class="soft-label">白昼 —</span></div><p id="solarPeriod" class="reading-period"></p><div id="sunVisual"></div></section>
+    <footer class="data-footer"><p>天空有变化，数据有出处。</p><a href="https://open-meteo.com/" target="_blank" rel="noreferrer">天气数据 · Open-Meteo <span data-icon="arrow-up-right"></span></a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">CC BY 4.0</a><p id="dataTimestamp"></p><small>模型预报仅供参考；3D 动效为示意，不替代官方灾害预警。</small></footer>
+  </main>
+  <nav class="bottom-nav" aria-label="页面导航"><a href="#today" aria-label="回到天气概览"><span data-icon="cloud-sun"></span><span>天气</span></a><a href="#hourly" aria-label="查看天气趋势"><span data-icon="chart-line"></span><span>趋势</span></a><button id="navCities" aria-haspopup="dialog"><span data-icon="map-pin"></span><span>城市</span></button></nav>
+</div>
+<dialog id="cityDialog" class="sheet"><div class="sheet-header"><div><p class="eyebrow">ANOTHER LITTLE SKY</p><h2>换一片天空</h2></div><button class="icon-button" data-close="cityDialog" aria-label="关闭城市选择"><span data-icon="x"></span></button></div><label class="sr-only" for="citySearch">搜索内置城市</label><input id="citySearch" type="search" placeholder="搜索内置城市" autocomplete="off"><div id="cityList" class="city-list"></div><p class="chart-note">选择城市后读取该地点的模型预报；不申请定位权限。</p></dialog>
+<dialog id="dayDialog" class="sheet"><div class="sheet-header"><div><p class="eyebrow">ONE DAY, IN DETAIL</p><h2 id="dayTitle">这一天</h2></div><button class="icon-button" data-close="dayDialog" aria-label="关闭逐日预报"><span data-icon="x"></span></button></div><div id="dayDetails"></div></dialog>
+<script type="text/plain" id="dependency-notices">__LICENSES__</script>
+<script>__BUNDLE__</script>
+</body>
+</html>

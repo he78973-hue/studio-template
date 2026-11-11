@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CAIS — Design Studio, New York / London</title>
+  <meta name="description" content="CAIS is an independent design practice making brands, publications, and digital products from studios in New York and London.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23007aff'/%3E%3Ccircle cx='16' cy='16' r='6' fill='none' stroke='white' stroke-width='2.5'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/tokens.css">
+  <link rel="stylesheet" href="assets/studio.css">
+</head>
+<body>
+
+  <!-- ======= 左侧固定栏：品牌 / 双城时钟 / About / 项目索引 ======= -->
+  <aside class="sidebar">
+    <div class="sidebar__top">
+      <button class="pill-btn" type="button" data-show-all>Show all projects</button>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark theme" aria-pressed="false"></button>
+    </div>
+
+    <h1 class="wordmark">CAIS</h1>
+
+    <div class="clock" data-clock></div>
+
+    <div class="about">
+      <p class="about__title">About us</p>
+      <p class="about__text">CAIS is an independent design practice making brands, publications, and digital products from studios in New York and London.</p>
+    </div>
+
+    <nav class="project-index" aria-label="Projects">
+      <button class="project-row" type="button" data-project="ember">
+        <img class="project-row__thumb" src="assets/img/thumb-ember.jpg" alt="">
+        <span class="project-row__body">
+          <span class="project-row__name">Ember<span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+          <span class="project-row__desc">A dating app rebuilt around the moment before the match.</span>
+        </span>
+      </button>
+      <button class="project-row" type="button" data-project="nestor">
+        <img class="project-row__thumb" src="assets/img/thumb-nestor.jpg" alt="">
+        <span class="project-row__body">
+          <span class="project-row__name">Nestor<span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+          <span class="project-row__desc">A planning tool for teams that never hold one shape for long.</span>
+        </span>
+      </button>
+      <button class="project-row" type="button" data-project="lume">
+        <img class="project-row__thumb" src="assets/img/thumb-lume.jpg" alt="">
+        <span class="project-row__body">
+          <span class="project-row__name">Museu Lume<span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+          <span class="project-row__desc">An experimental art house in a converted waterfront depot.</span>
+        </span>
+      </button>
+      <button class="project-row" type="button" data-project="mercado">
+        <img class="project-row__thumb" src="assets/img/thumb-mercado.jpg" alt="">
+        <span class="project-row__body">
+          <span class="project-row__name">Mercado<span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+          <span class="project-row__desc">A finance brand that learned to sell cotton, not charts.</span>
+        </span>
+      </button>
+      <button class="project-row" type="button" data-project="longtake">
+        <img class="project-row__thumb" src="assets/img/thumb-longtake.jpg" alt="">
+        <span class="project-row__body">
+          <span class="project-row__name">Longtake<span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+          <span class="project-row__desc">A film festival for the long take, told in one continuous line.</span>
+        </span>
+      </button>
+      <button class="project-row" type="button" data-project="fio">
+        <img class="project-row__thumb" src="assets/img/thumb-fio.svg" alt="">
+        <span class="project-row__body">
+          <span class="project-row__name">Ateliê Fio<span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+          <span class="project-row__desc">A craft publication about slow making, printed twice a year.</span>
+        </span>
+      </button>
+      <button class="project-row" type="button" data-project="bounce">
+        <img class="project-row__thumb" src="assets/img/thumb-bounce.svg" alt="">
+        <span class="project-row__body">
+          <span class="project-row__name">Bounce<span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+          <span class="project-row__desc">A toy brand built on curiosity — objects that do one surprising thing well.</span>
+        </span>
+      </button>
+      <button class="project-row" type="button" data-project="vinyl">
+        <img class="project-row__thumb" src="assets/img/thumb-vinyl.svg" alt="">
+        <span class="project-row__body">
+          <span class="project-row__name">Vinyl Club<span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+          <span class="project-row__desc">A listening society for the streaming age: one record a month, pressed small.</span>
+        </span>
+      </button>
+    </nav>
+  </aside>
+
+  <!-- ======= 右侧滚动区：Hero + 新闻瀑布流 ======= -->
+  <main class="content">
+    <figure class="hero">
+      <img src="assets/img/hero-city.jpg" alt="Aerial view of a dense city toward the skyline at golden hour">
+    </figure>
+
+    <section class="news" aria-label="Studio news">
+      <article class="news-card">
+        <img class="news-card__img" src="assets/img/news-01.jpg" alt="A narrow European alley with laundry strung between buildings">
+        <p class="news-card__date">4 November 2026</p>
+        <h2 class="news-card__title">Frame One names five studios to watch in 2027</h2>
+        <p class="news-card__text">Independent design publication Frame One shared its guide to the year ahead, covering the studios and practitioners on its radar — the studio among them.</p>
+      </article>
+
+      <article class="news-card">
+        <img class="news-card__img" src="assets/img/news-02.jpg" alt="Aerial view of a coastline with cliffs meeting the sea">
+        <p class="news-card__date">16 October 2026</p>
+        <h2 class="news-card__title">Museu Lume identity wins two Golds at the Prisma Awards</h2>
+        <p class="news-card__text">The Museu Lume brand identity took two Gold and two Silver trophies at this year&rsquo;s Prisma Awards — the most awarded project in our archive.</p>
+      </article>
+
+      <article class="news-card">
+        <img class="news-card__img" src="assets/img/news-03.jpg" alt="Studio portrait of a woman with red lipstick">
+        <p class="news-card__date">16 October 2026</p>
+        <h2 class="news-card__title">Studio work featured in Setting Press&rsquo;s new book, Mini Serif in Use</h2>
+        <p class="news-card__text">Setting Press&rsquo;s latest release follows the return of serif typefaces in contemporary design, pairing an interview with the studio alongside a selection of branding and editorial work. Available now from Setting Press.</p>
+      </article>
+
+      <article class="news-card">
+        <img class="news-card__img" src="assets/img/news-04.jpg" alt="A tractor crossing a harvested field at dusk">
+        <p class="news-card__date">15 October 2026</p>
+        <h2 class="news-card__title">Strategy Director Imani Osei interviewed by Onward Magazine</h2>
+        <p class="news-card__text">In a wide-ranging conversation, our Strategy Director talks about radical restraint — cutting a global campaign down to a single word, and building identity systems that outlive their launch.</p>
+      </article>
+
+      <article class="news-card">
+        <img class="news-card__img" src="assets/img/news-05.jpg" alt="Palm trees silhouetted against a low sun">
+        <p class="news-card__date">8 October 2026</p>
+        <h2 class="news-card__title">Priya Raman and Nico Albuquerque to speak at Litoral Festival</h2>
+        <p class="news-card__text">Design Director Priya Raman and Associate Director Nico Albuquerque take the stage at Litoral Festival in Portugal, 14–15 November 2026, on systems that hold brand and product together.</p>
+      </article>
+
+      <article class="news-card">
+        <img class="news-card__img" src="assets/img/news-06.jpg" alt="A still forest lake ringed by pines">
+        <p class="news-card__date">7 October 2026</p>
+        <h2 class="news-card__title">Sofia Marchetti named a Prisma Young Talents winner</h2>
+        <p class="news-card__text">Congratulations to senior designer Sofia Marchetti, recognised among this year&rsquo;s Prisma Young Talents for emerging voices in Latin American design.</p>
+      </article>
+
+      <article class="news-card">
+        <img class="news-card__img" src="assets/img/news-07.jpg" alt="A minimal desk with a lamp, laptop and notebook in black and white">
+        <p class="news-card__date">24 September 2026</p>
+        <h2 class="news-card__title">Studio leads to speak at Shared Table London</h2>
+        <p class="news-card__text">Business Director Ada Lindqvist and Design Director Priya Raman join the lineup at Shared Table London on 14 October, on how design craft moves culture.</p>
+      </article>
+
+      <article class="news-card">
+        <img class="news-card__img" src="assets/img/news-08.jpg" alt="A wooden boardwalk leading to a wide beach">
+        <p class="news-card__date">17 September 2026</p>
+        <h2 class="news-card__title">Nico Albuquerque joins the Prisma Young Talents 2027 jury</h2>
+        <p class="news-card__text">Associate Director Nico Albuquerque will help judge the 2027 edition, celebrating emerging creatives across design, illustration, art direction, and more.</p>
+      </article>
+
+      <article class="news-card">
+        <img class="news-card__img" src="assets/img/news-09.jpg" alt="A lone figure watching the sun set over the ocean">
+        <p class="news-card__date">13 October 2026</p>
+        <h2 class="news-card__title">CAIS named Latin Studio of the Year</h2>
+        <p class="news-card__text">For the third time, the studio has been named Latin Studio of the Year at the Prisma Awards — a moment to thank the team, our roots, and the work still to come.</p>
+      </article>
+
+      <article class="news-card">
+        <img class="news-card__img" src="assets/img/news-10.jpg" alt="Colourful garments hanging on a rack of wooden hangers">
+        <p class="news-card__date">11 September 2026</p>
+        <h2 class="news-card__title">Founders to headline MOTIF Barcelona 2027</h2>
+        <p class="news-card__text">Seven years after their first talk at MOTIF Barcelona, founders Diana Sampaio and Marcus Oyelaran return to headline the festival&rsquo;s 26th edition, 6–8 May 2027.</p>
+      </article>
+    </section>
+  </main>
+
+  <!-- ======= 覆盖层：全部项目 ======= -->
+  <div class="overlay" data-overlay="all" role="dialog" aria-modal="true" aria-labelledby="all-title">
+    <div class="overlay__panel">
+      <div class="overlay__head">
+        <h2 class="overlay__title" id="all-title">All projects</h2>
+        <button class="overlay__close" type="button" data-close>
+          Close
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+      <div class="all-grid" data-all-grid></div>
+    </div>
+  </div>
+
+  <!-- ======= 覆盖层：项目详情 ======= -->
+  <div class="overlay" data-overlay="detail" role="dialog" aria-modal="true" aria-labelledby="detail-title">
+    <div class="overlay__panel">
+      <div class="overlay__head">
+        <h2 class="overlay__title" data-detail-title id="detail-title"></h2>
+        <button class="overlay__close" type="button" data-close>
+          Close
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+      <img class="detail__img" data-detail-img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="">
+      <ul class="detail__meta" data-detail-meta></ul>
+      <div class="detail__body" data-detail-body></div>
+    </div>
+  </div>
+
+  <script src="assets/studio.js" defer></script>
+</body>
+</html>
