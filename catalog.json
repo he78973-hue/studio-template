@@ -267,6 +267,22 @@
       "tone": "ink",
       "cover": "sites/shanghai-peli/preview/cover.png",
       "previewVideo": "sites/shanghai-peli/preview/video.mp4"
+    },
+    {
+      "id": "upward-climbing",
+      "scene": "sites",
+      "title": {
+        "zh": "岩点 UPWARD · 攀岩馆预约",
+        "en": "UPWARD · Climbing Club"
+      },
+      "description": {
+        "zh": "编辑式攀岩馆网站：场馆与初攀介绍、票价和装备指南、七天课表筛选及本地预约与取消演示；支持响应式布局，不包含真实支付或预约服务。",
+        "en": "An editorial climbing-club website with first-visit, pricing and equipment guides, a filterable seven-day schedule, and local booking/cancellation demos. Responsive, with no real payments or booking service."
+      },
+      "dir": "sites/upward-climbing",
+      "tone": "sand",
+      "cover": "sites/upward-climbing/preview/cover.png",
+      "previewVideo": "sites/upward-climbing/preview/video.mp4"
     }
   ]
 }

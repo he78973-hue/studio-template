@@ -1,0 +1,232 @@
+/* UPWARD: primitive scale, semantic roles and responsive component decisions. */
+:root {
+  --paper: #f5f4ee;
+  --paper-deep: #eeede5;
+  --white: #ffffff;
+  --ink: #20231f;
+  --muted: #60655b;
+  --line: #d5d8cd;
+  --control-line: #82897c;
+  --orange: #f35430;
+  --orange-dark: #b73619;
+  --orange-tint: #fce7de;
+  --olive: #48603e;
+  --olive-tint: #e8edde;
+  --olive-line: #c6cfbd;
+  --gray-tint: #e9eae4;
+  --dark-line: #45483f;
+  --light-muted: #b4b9ad;
+  --error: #ac2b22;
+  --photo-top-scrim: #20231f33;
+  --photo-bottom-scrim: #20231fb3;
+  --photo-label-bg: #20231fb8;
+  --photo-line: #ffffffa6;
+  --overlay: #182019ad;
+  --shadow-color: #20231f26;
+
+  --font-body: 'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+  --font-display: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  --font-code: 'SFMono-Regular', Consolas, monospace;
+  --text-micro: 10px;
+  --text-caption: 11px;
+  --text-small: 12px;
+  --text-label: 13px;
+  --text-body: 14px;
+  --text-reading: 16px;
+  --text-subheading: 18px;
+  --text-title: 20px;
+  --text-lead: 24px;
+  --text-modal: 28px;
+  --text-section: 36px;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-display: 800;
+  --leading-tight: 1.12;
+  --leading-heading: 1.4;
+  --leading-label: 1.5;
+  --leading-body: 1.85;
+  --leading-display: .96;
+  --tracking-heading: -.045em;
+  --tracking-display: -.015em;
+  --tracking-hero: -.065em;
+  --tracking-label: .1em;
+  --tracking-small: .04em;
+
+  --s1: 4px;
+  --s2: 8px;
+  --s3: 12px;
+  --s4: 16px;
+  --s5: 20px;
+  --s6: 24px;
+  --s7: 28px;
+  --s8: 32px;
+  --s10: 40px;
+  --s12: 48px;
+  --s14: 56px;
+  --s16: 64px;
+  --s20: 80px;
+  --s24: 96px;
+  --s28: 112px;
+  --hairline: 1px;
+  --stroke: 2px;
+  --focus-width: 2px;
+  --focus-offset: 4px;
+  --radius-sm: 4px;
+  --radius-modal: 12px;
+  --radius-round: 50%;
+  --radius-pill: 999px;
+  --icon-xs: 16px;
+  --icon-sm: 20px;
+  --icon-md: 24px;
+  --icon-lg: 32px;
+  --icon-xl: 48px;
+  --icon-stroke: 2;
+  --brand-arrow-stroke: 4;
+  --dot-size: 6px;
+  --tap-target: 44px;
+  --control-height: 48px;
+  --control-disabled-opacity: .52;
+  --control-transition: 180ms ease;
+  --modal-duration: 200ms;
+  --loading-duration: 900ms;
+  --pressed-offset: 1px;
+  --arrow-offset: 2px;
+  --modal-blur: 5px;
+  --modal-shadow: 0 24px 80px var(--shadow-color);
+  --nav-shadow: 0 12px 24px var(--shadow-color);
+  --photo-shadow: 0 2px 12px var(--photo-bottom-scrim);
+  --ticket-shadow: 4px 4px 0 var(--ink);
+
+  --content-width: 1320px;
+  --page-gutter: 48px;
+  --header-height: 88px;
+  --announcement-height: 32px;
+  --section-space: 96px;
+  --section-gap: 80px;
+  --hero-gap: 64px;
+  --hero-title-size: clamp(72px, 6.15vw, 92px);
+  --hero-english-size: 40px;
+  --hero-photo-height: 580px;
+  --hero-arrow-size: 88px;
+  --hero-arrow-offset: 96px;
+  --hero-sticker-size: 112px;
+  --hero-sticker-overlap: 40px;
+  --hero-sticker-rotation: -12deg;
+  --brand-symbol-size: 40px;
+  --brand-name-size: 26px;
+  --brand-wordmark-size: 30px;
+  --metric-size: 58px;
+  --card-photo-height: 280px;
+  --card-heading-size: 36px;
+  --first-photo-height: 584px;
+  --first-display-size: 108px;
+  --ticket-price-size: 64px;
+  --ticket-rotation: -5deg;
+  --strip-height: 84px;
+  --strip-type-size: 52px;
+  --description-measure: 360px;
+  --month-column-width: 136px;
+  --schedule-time-width: 88px;
+  --schedule-seat-width: 80px;
+  --schedule-price-width: 92px;
+  --schedule-button-width: 104px;
+  --schedule-number-size: 32px;
+  --visit-photo-height: 520px;
+  --visit-display-size: 48px;
+  --footer-display-size: 108px;
+  --footer-button-size: 152px;
+  --footer-arrow-size: 64px;
+  --modal-width: 568px;
+}
+
+/* Breakpoints are deliberate CSS query boundaries, not component dimensions. */
+@media (max-width: 1190px) {
+  :root {
+    --page-gutter: 32px;
+    --section-gap: 48px;
+    --hero-gap: 48px;
+    --hero-title-size: 76px;
+    --hero-english-size: 36px;
+    --hero-arrow-size: 72px;
+    --hero-arrow-offset: 72px;
+    --brand-symbol-size: 32px;
+    --brand-name-size: 24px;
+    --brand-wordmark-size: 28px;
+    --card-photo-height: 240px;
+    --metric-size: 48px;
+    --text-section: 32px;
+  }
+}
+@media (max-width: 980px) {
+  :root {
+    --page-gutter: 28px;
+    --header-height: 76px;
+    --hero-gap: 32px;
+    --hero-title-size: 68px;
+    --hero-photo-height: 560px;
+    --hero-sticker-size: 96px;
+    --hero-sticker-overlap: 28px;
+    --section-space: 80px;
+    --section-gap: 40px;
+    --card-photo-height: 208px;
+    --card-heading-size: 30px;
+    --metric-size: 44px;
+    --first-display-size: 96px;
+    --footer-display-size: 92px;
+    --text-section: 28px;
+    --description-measure: 256px;
+  }
+}
+@media (max-width: 760px) {
+  :root {
+    --page-gutter: 20px;
+    --header-height: 72px;
+    --announcement-height: 28px;
+    --brand-name-size: 24px;
+    --brand-wordmark-size: 28px;
+    --section-space: 64px;
+    --section-gap: 40px;
+    --hero-title-size: clamp(64px, 12vw, 88px);
+    --hero-english-size: 28px;
+    --hero-photo-height: 440px;
+    --hero-arrow-size: 80px;
+    --hero-arrow-offset: 88px;
+    --hero-sticker-size: 100px;
+    --hero-sticker-rotation: 9deg;
+    --hero-sticker-overlap: 32px;
+    --card-photo-height: 264px;
+    --card-heading-size: 36px;
+    --first-photo-height: 416px;
+    --ticket-price-size: 56px;
+    --strip-height: 64px;
+    --strip-type-size: 40px;
+    --metric-size: 40px;
+    --text-section: 28px;
+    --description-measure: 100%;
+    --schedule-time-width: 64px;
+    --schedule-button-width: 96px;
+    --schedule-number-size: 28px;
+    --visit-photo-height: 352px;
+    --visit-display-size: 40px;
+    --footer-display-size: 68px;
+    --footer-button-size: 96px;
+    --footer-arrow-size: 44px;
+    --text-modal: 24px;
+  }
+}
+@media (max-width: 380px) {
+  :root {
+    --page-gutter: 16px;
+    --brand-symbol-size: 28px;
+    --brand-name-size: 22px;
+    --brand-wordmark-size: 24px;
+    --hero-arrow-size: 72px;
+    --hero-arrow-offset: 80px;
+    --metric-size: 36px;
+    --footer-display-size: 60px;
+    --footer-button-size: 80px;
+    --text-section: 26px;
+  }
+}
