@@ -331,6 +331,38 @@
       "tone": "ink",
       "cover": "sites/bauhaus-paths/preview/cover.png",
       "previewVideo": "sites/bauhaus-paths/preview/video.mp4"
+    },
+    {
+      "id": "umbra-one",
+      "scene": "marketing",
+      "title": {
+        "zh": "UMBRA ONE · 黑白液态玻璃落地页",
+        "en": "UMBRA ONE · Monochrome Glass Landing"
+      },
+      "description": {
+        "zh": "单文件离线产品发布页：黑白玻璃、工程栅格、衬线刊头与渐隐点阵字标，含推理控制台演示、配置切换、分期定价与 FAQ。产品、规格和反馈均为虚构演示，不收集邮箱或支付。",
+        "en": "An offline, single-file product launch page with monochrome glass, an engineering grid, editorial typography and a fading dot-matrix wordmark. Includes a simulated console, configuration and pricing toggles, and FAQ. Fictional product and data; no email collection or payments."
+      },
+      "dir": "sites/umbra-one",
+      "tone": "night",
+      "cover": "sites/umbra-one/preview/cover.png",
+      "previewVideo": "sites/umbra-one/preview/video.mp4"
+    },
+    {
+      "id": "rare-books-3d",
+      "scene": "creative",
+      "title": {
+        "zh": "珍稀古籍 · 3D 虚拟书架",
+        "en": "Rare Books 3D Bookshelf"
+      },
+      "description": {
+        "zh": "天文学珍藏主题的交互式 3D 书架：60 册古籍以 4 个 InstancedMesh 批量渲染，书脊柱图集承载低分辨率纹理，点击后按需流式加载高分辨率书脊，配合黄金时刻光影、微尘粒子与沉浸星图展开。书目为演示数据。",
+        "en": "An interactive 3D bookshelf of astronomy rarities: 60 books drawn in four InstancedMesh batches, low-resolution spine atlas in place, high-resolution spines streamed on selection, with golden-hour lighting, dust motes, and an immersive star-map spread. Book data is fictional demo content."
+      },
+      "dir": "sites/rare-books-3d",
+      "tone": "night",
+      "cover": "sites/rare-books-3d/preview/cover.png",
+      "previewVideo": "sites/rare-books-3d/preview/video.mp4"
     }
   ]
 }

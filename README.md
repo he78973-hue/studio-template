@@ -56,6 +56,8 @@ The exact schema is:
 | `periodic-table-3d` | Creative | Offline atomic atlas with light/dark themes and Canvas fallback ([template notes](./sites/periodic-table-3d/README.md)) |
 | `shanghai-peli` | Creative | Horizontal illustrated Shanghai history, full-width pixel-pelican walks and sourced notes ([template notes](./sites/shanghai-peli/README.md)) |
 | `bauhaus-paths` | Creative | Four-spread reading folio with an equal-colour exercise and three approximate 3D design studies ([template notes](./sites/bauhaus-paths/README.md)) |
+| `umbra-one` | Marketing | Offline monochrome liquid-glass launch page with fictional private-compute data ([template notes](./sites/umbra-one/README.md)) |
+| `rare-books-3d` | Creative | Interactive R3F bookshelf: 60 astronomy books in four InstancedMesh batches, spine atlas with on-demand high-res texture streaming, golden-hour lighting, immersive star-map spread ([template notes](./sites/rare-books-3d/README.md)) |
 
 Paths: `sites/<id>/` with `index.html` entry.
 
