@@ -23,3 +23,7 @@ Curated **StepFun Studio** front-end demos. No third-party template bundles exce
 | `upward-climbing` | UPWARD climbing-club website and local booking demo | App code license not specified; React / React DOM / Scheduler MIT; Lucide ISC / Feather-derived icons MIT; Barlow Condensed SIL OFL 1.1; photographs CC0, CC BY 4.0 and Pexels License (see [template notes](./sites/upward-climbing/README.md#许可与署名), [photo credits](./sites/upward-climbing/assets/SOURCES.md) and [dependency licenses](./sites/upward-climbing/licenses/)). |
 
 Refresh curated demos manually; `scripts/import-vendors.sh` is deprecated for OSS bulk import.
+
+## Particle workspace
+
+`sites/particle-workspace` contains original application code and authored SVG study covers; an overall code license has not been specified. Its StepFun-style design tokens come from the supplied brand archive, not a third-party UI template. Bundled Lucide 0.468.0 uses ISC with Feather-derived portions under MIT; preserve `assets/lucide-LICENSE`. Seven bundled example photographs are from Unsplash and retain exact source URLs in [CREDITS.md](./sites/particle-workspace/CREDITS.md). System font stacks are used; no font binaries are redistributed. Bookmarked brand names identify example destinations, not endorsements or captured copies of those sites.

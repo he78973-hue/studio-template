@@ -50,6 +50,7 @@ The exact schema is:
 | `weather-garden` | Creative | Mobile-first Three.js weather Web App; non-commercial public API demo ([template notes](./sites/weather-garden/README.md)) |
 | `step-studio` | Sites | Brand & digital design studio ([demo notes](./sites/step-studio/README.md)) |
 | `meridian-ops` | Tools | Global operations dashboard ([template notes](./sites/meridian-ops/README.md)) |
+| `particle-workspace` | Tools | Local-first design asset library with projects, portable backups and a recycle bin ([template notes](./sites/particle-workspace/README.md)) |
 | `aurelle` | Marketing | Beauty brand storefront ([template notes](./sites/aurelle/README.md)) |
 | `cais` | Sites | Porto Rocha 形式语言工作室作品集（[template notes](./sites/cais/README.md)） |
 | `fourier-pelican` | Creative | Dual-coordinate Fourier epicycle animation ([template notes](./sites/fourier-pelican/README.md)) |

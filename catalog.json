@@ -379,6 +379,22 @@
       "tone": "sand",
       "cover": "sites/upward-climbing/preview/cover.png",
       "previewVideo": "sites/upward-climbing/preview/video.mp4"
+    },
+    {
+      "id": "particle-workspace",
+      "scene": "tools",
+      "title": {
+        "zh": "粒子 · 设计师灵感工作台",
+        "en": "Particle · Design Workspace"
+      },
+      "description": {
+        "zh": "纸白与墨黑的设计师素材库：收集图片和网页、整理项目与笔记，支持本地图像调色、整库备份恢复和回收站。数据保存在当前浏览器，未接入云同步或视觉 AI。",
+        "en": "A paper-and-ink design library for images, bookmarks, projects and notes, with local image adjustments, portable backups and a recycle bin. Data stays in the current browser; cloud sync and visual AI are not connected."
+      },
+      "dir": "sites/particle-workspace",
+      "tone": "ink",
+      "cover": "sites/particle-workspace/preview/cover.png",
+      "previewVideo": "sites/particle-workspace/preview/video.mp4"
     }
   ]
 }
