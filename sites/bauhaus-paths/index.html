@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#263e73">
+  <meta name="description" content="以《包豪斯道路》和 Whitford《包豪斯》为参考的翻页阅读与三件作品三维教学示意。">
+  <title>包豪斯道路 · 交互阅读实验</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="book.css">
+  <link rel="stylesheet" href="objects.css">
+  <script src="book-state.js" defer></script>
+  <script src="icons.js" defer></script>
+  <script src="app.js" defer></script>
+  <script src="vendor/three.global.js" defer></script>
+  <script src="objects.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#reading">跳到书页内容</a>
+<header class="masthead">
+  <a class="identity" href="#spread-1" aria-label="包豪斯道路，返回第一跨页"><span class="identity-mark" data-icon="book-open" aria-hidden="true"></span><span>包豪斯道路<small>BAUHAUS / PATHS</small></span></a>
+  <p class="edition">交互阅读实验 <span>试阅本 · 01</span></p>
+  <a class="source-link" href="#sources"><span data-icon="book-open" aria-hidden="true"></span>资料与说明</a>
+</header>
+<main id="reading" tabindex="-1">
+  <h1 class="sr-only">包豪斯道路：学校与课堂</h1>
+  <div class="reading-intro"><span class="reading-tag">一所学校，几条不同的道路。</span><span class="intro-hint">翻阅，也重新观察。</span></div>
+  <div class="book-stage">
+    <div class="book" id="book" role="group" data-spread="0" aria-label="包豪斯道路，四组跨页" style="--shade:0">
+      <div class="binding" aria-hidden="true"></div>
+      <div class="paper-stack stack-left" aria-hidden="true"></div><div class="paper-stack stack-right" aria-hidden="true"></div>
+      <article class="page base-left" data-page="0" data-belongs="0" aria-labelledby="school-heading">
+        <div class="page-content">
+          <header class="running-head"><span>第一章 / 学校</span><span>1919—1933</span></header>
+          <div class="page-body school-story">
+            <p class="chapter-marker">学校不是一种风格</p>
+            <h2 id="school-heading">一所学校，<br>不止一种答案。</h2>
+            <p class="lead">当我们说“包豪斯”，<br>究竟在说一种样式，还是一种提问方式？</p>
+            <p>三任校长，带来了不同的教育重心：艺术与工艺如何联合，设计如何回应社会需要，建筑训练又应处在什么位置。</p>
+            <p>与其寻找一套固定的视觉配方，不如先沿着这些变化，理解学校走过的道路。</p>
+          </div>
+          <footer class="page-foot"><a href="#sources">读书札记 / 原书 pp.16–26</a><span>01</span></footer>
+        </div>
+      </article>
+
+      <div class="turning-leaf" data-leaf="0" style="--turn:0deg;--leaf-z:5">
+        <article class="page leaf-front" data-page="1" data-belongs="0" aria-labelledby="directors-heading">
+          <div class="page-content">
+            <header class="running-head"><span>三任校长</span><span>图 01</span></header>
+            <div class="page-body directors-page">
+              <h2 id="directors-heading">三次接力，<br>不同的重心。</h2>
+              <p class="figure-description">同一个名字之下，观念从未停止变化。</p>
+              <ol class="director-list">
+                <li><span class="tenure">1919—1928</span><div><h3>格罗皮乌斯</h3><small>Walter Gropius</small><p>让艺术、工艺与现代生产相遇。</p></div></li>
+                <li><span class="tenure">1928—1930</span><div><h3>汉内斯·迈耶</h3><small>Hannes Meyer</small><p>回应生活需要，重视功能与合作。</p></div></li>
+                <li><span class="tenure">1930—1933</span><div><h3>密斯·凡·德·罗</h3><small>Ludwig Mies van der Rohe</small><p>将教学重心进一步转向建筑训练。</p></div></li>
+              </ol>
+              <div class="historical-note"><span class="note-rule"></span><p>这是重心的变化，不是一条简单的“越来越先进”的直线。</p></div>
+            </div>
+            <footer class="page-foot"><a href="#sources">原书 pp.16、19、23</a><span>02</span></footer>
+          </div>
+        </article>
+        <article class="page leaf-back" data-page="2" data-belongs="1" aria-labelledby="foundation-heading">
+          <div class="page-content">
+            <header class="running-head"><span>第二章 / 课堂</span><span>基础课程</span></header>
+            <div class="page-body foundation-story">
+              <p class="chapter-marker">设计从观察开始</p>
+              <h2 id="foundation-heading">先学会看见，<br>再开始设计。</h2>
+              <p class="lead">材料、色彩与形式，<br>不是等待被套用的答案。</p>
+              <p>《包豪斯道路》把基础课放在理论与实践的联系中：通过视觉训练重新观察，再在工坊里学习材料与操作。</p>
+              <p>伊顿的课程关注色彩、形式和个人潜能。教学思想也随着学校的发展而调整，并非始终只有一种方法。</p>
+              <div class="lesson-route"><span>观察</span><i aria-hidden="true"></i><span>动手</span><i aria-hidden="true"></i><span>比较</span></div>
+              <p class="turn-invitation">从右页的一小块灰开始。</p>
+            </div>
+            <footer class="page-foot"><a href="#sources">读书札记 / 原书 pp.27–28</a><span>03</span></footer>
+          </div>
+        </article>
+      </div>
+      <div class="turning-leaf" data-leaf="1" style="--turn:0deg;--leaf-z:4">
+        <article class="page leaf-front" data-page="3" data-belongs="1" aria-labelledby="experiment-heading">
+        <div class="page-content">
+          <header class="running-head"><span>观察练习</span><span>图 02</span></header>
+          <div class="page-body experiment-page">
+            <h2 id="experiment-heading">同一种灰，<br>两种感受。</h2>
+            <p class="figure-description">先看一眼：中间的两块灰，哪一块更亮？</p>
+            <figure class="colour-study" id="colour-study" aria-label="相同的灰色方块，分别放在明亮和深色背景上。">
+              <div class="colour-field field-a"><span class="sample-label">A</span><span class="colour-patch"></span><code class="colour-value">#949A96</code></div>
+              <div class="colour-field field-b"><span class="sample-label">B</span><span class="colour-patch"></span><code class="colour-value">#949A96</code></div>
+              <figcaption>背景改变了观看条件；色块本身没有改变。</figcaption>
+            </figure>
+            <div class="experiment-controls enhancement"><button id="swap-colours" type="button"><span data-icon="arrow-left-right" aria-hidden="true"></span>交换背景</button><button id="show-values" type="button" aria-pressed="false">显示色值</button></div>
+            <p class="experiment-result" id="experiment-result" aria-live="polite">试着交换背景，再比较一次。</p>
+            <p class="editor-note">这是受基础课观察训练启发的当代演示，并非原书课程的逐项复刻。</p>
+          </div>
+          <footer class="page-foot"><span>观察 → 比较 → 理解</span><span>04</span></footer>
+        </div>
+      </article>
+        <article class="page leaf-back" data-page="4" data-belongs="2" aria-labelledby="forms-heading">
+          <div class="page-content">
+            <header class="running-head"><span>第三章 / 形式</span><span>基础课程</span></header>
+            <div class="page-body forms-page">
+              <p class="chapter-marker">形式与色彩</p>
+              <h2 id="forms-heading">先拆开形式，<br>再看见关系。</h2>
+              <p class="lead">形状本身很简单；<br>变化发生在它们相遇的时候。</p>
+              <p>Whitford 讨论基础课程时，把色彩、图形和观察放在一起。练习不是为了记住一种“包豪斯配色”，而是学习比较、组合与判断。</p>
+              <figure class="form-study" aria-label="圆、三角与方形并列的当代示意图">
+                <div class="form-study-shapes" aria-hidden="true"><span class="study-circle"></span><span class="study-triangle"></span><span class="study-square"></span></div>
+                <figcaption>把要素放在一起，观察比例与间距如何改变整体。此图为当代阅读示意，不是原书作品。</figcaption>
+              </figure>
+            </div>
+            <footer class="page-foot"><a href="#sources">Whitford《包豪斯》pp.106–121</a><span>05</span></footer>
+          </div>
+        </article>
+      </div>
+      <div class="turning-leaf" data-leaf="2" style="--turn:0deg;--leaf-z:3">
+        <article class="page leaf-front" data-page="5" data-belongs="2" aria-labelledby="workshop-heading">
+          <div class="page-content">
+            <header class="running-head"><span>金属工坊</span><span>图 03</span></header>
+            <div class="page-body workshop-page">
+              <h2 id="workshop-heading">一盏灯，<br>三个构造问题。</h2>
+              <p class="figure-description">把物件拆开看，才能看清材料如何服务于用途。</p>
+              <figure class="lamp-schema" aria-label="台灯的罩体、立柱和底座结构示意">
+                <div class="schema-shade" aria-hidden="true"></div><div class="schema-stem" aria-hidden="true"></div><div class="schema-base" aria-hidden="true"></div>
+                <div class="schema-labels"><span>罩体 / 引导光线</span><span>立柱 / 组织高度</span><span>底座 / 支持平衡</span></div>
+                <figcaption>结构示意并非原作图纸，也不代表实物尺寸。</figcaption>
+              </figure>
+              <p>书中收录尤克尔与瓦根费尔德设计的台灯。圆形底座、细柱与罩体的关系，比某一个单独的装饰细节更值得观察。</p>
+            </div>
+            <footer class="page-foot"><a href="#sources">Whitford《包豪斯》pp.138–139</a><span>06</span></footer>
+          </div>
+        </article>
+        <article class="page leaf-back" data-page="6" data-belongs="3" aria-labelledby="objects-story-heading">
+          <div class="page-content">
+            <header class="running-head"><span>第四章 / 作品</span><span>1923—1925</span></header>
+            <div class="page-body objects-story-page">
+              <p class="chapter-marker">从课堂走向物件</p>
+              <h2 id="objects-story-heading">同一种提问，<br>三种不同回答。</h2>
+              <p class="lead">不是寻找一种造型，<br>而是追问造型从哪里来。</p>
+              <ol class="works-index">
+                <li><span>1923—24</span><div><strong>一盏台灯</strong><p>罩、柱与底座如何协作？</p></div><small>p.139</small></li>
+                <li><span>1924</span><div><strong>一副棋具</strong><p>外形能否提示棋子的走法？</p></div><small>p.159</small></li>
+                <li><span>1925</span><div><strong>一把椅子</strong><p>钢管如何形成开放的框架？</p></div><small>p.185</small></li>
+              </ol>
+              <p class="figure-description">三件作品的用途不同，不能归结为一套固定的“包豪斯样式”。</p>
+            </div>
+            <footer class="page-foot"><a href="#sources">Whitford《包豪斯》pp.139、159、185</a><span>07</span></footer>
+          </div>
+        </article>
+      </div>
+      <article class="page base-right" data-page="7" data-belongs="3" aria-labelledby="look-heading">
+        <div class="page-content">
+          <header class="running-head"><span>读一件设计</span><span>观察提示</span></header>
+          <div class="page-body looking-page">
+            <h2 id="look-heading">换个角度，<br>再看一遍。</h2>
+            <p class="figure-description">离开正面视角，结构常常更清楚。</p>
+            <ol class="looking-steps">
+              <li><span>01</span><div><strong>看轮廓</strong><p>先辨认支撑与主体的关系。</p></div></li>
+              <li><span>02</span><div><strong>看连接</strong><p>哪些部分承担重量，哪些服务于使用？</p></div></li>
+              <li><span>03</span><div><strong>看背面</strong><p>绕过去，看看被正面遮住的构造。</p></div></li>
+            </ol>
+            <p>接下来可以旋转三件作品的教学模型。它们依据书中图像作简化重建，不用于判断原作的准确尺寸。</p>
+            <a class="study-link" href="#objects">去旋转作品模型<span data-icon="arrow-right" aria-hidden="true"></span></a>
+          </div>
+          <footer class="page-foot"><a href="#sources">Whitford《包豪斯》pp.139、159、185</a><span>08</span></footer>
+        </div>
+      </article>
+      <div class="spine" aria-hidden="true"></div>
+      <button class="page-edge edge-prev enhancement" id="edge-prev" type="button" aria-label="点击或向右拖动，返回上一跨页"><span aria-hidden="true"></span></button>
+      <button class="page-edge edge-next enhancement" id="edge-next" type="button" aria-label="点击或向左拖动，翻到下一跨页"><span aria-hidden="true"></span></button>
+    </div>
+  </div>
+  <nav class="book-controls enhancement" aria-label="翻阅控制">
+    <button id="previous" type="button"><span data-icon="arrow-left" aria-hidden="true"></span><span>上一跨页</span></button>
+    <div class="page-position"><span id="spread-name">学校与校长</span><span class="page-count"><b id="spread-number">01</b><span>/ 04</span></span></div>
+    <button id="next" type="button"><span>下一跨页</span><span data-icon="arrow-right" aria-hidden="true"></span></button>
+  </nav>
+  <p class="navigation-hint enhancement" id="navigation-hint">拖动书页边缘，或使用键盘左右方向键。</p>
+  <p class="objects-jump"><a href="#objects">继续阅读：三件作品的构造 <span class="jump-icon" data-icon="arrow-right" aria-hidden="true"></span></a></p>
+  <p class="sr-only" id="reader-status" role="status" aria-live="polite" aria-atomic="true">第1跨页，共4组：学校与校长。</p>
+  <section class="objects-chapter" id="objects" aria-labelledby="objects-heading">
+    <header class="objects-intro"><span class="objects-index">续章 / 作品研究</span><h2 id="objects-heading">从作品看见方法。</h2><p>在《包豪斯》的具体作品里，几何不只是图案：它可以变成灯的结构、棋子的走法，也可以撑起一把椅子。</p></header>
+    <div class="object-layout" id="object-layout" data-object="lamp">
+      <div class="object-viewer" id="object-viewer" tabindex="-1" role="img" aria-label="教学示意：尤克尔与瓦根费尔德台灯，可拖动查看">
+        <canvas id="object-canvas" aria-hidden="true"></canvas>
+        <svg class="object-outline" data-outline="lamp" viewBox="0 0 440 340" aria-hidden="true"><ellipse cx="220" cy="287" rx="112" ry="18" fill="#cbd2dc"/><path d="M130 280h180l-15 10H145zM205 273V145h30v128" fill="#a9b2bf"/><path d="M135 145c2-57 36-91 85-91s83 34 85 91z" fill="#eef1f4" stroke="#53627b" stroke-width="4"/></svg>
+        <svg class="object-outline" data-outline="chess" viewBox="0 0 440 340" aria-hidden="true"><path d="M65 245 238 310 391 234 219 171z" fill="#cbd2dc"/><path d="M133 223v-90h42v90zM121 133l33-37 33 37zM218 241v-80h38v80zM216 161h42l-20-37zM302 214v-60h38v60z" fill="#53627b"/></svg>
+        <svg class="object-outline" data-outline="chair" viewBox="0 0 440 340" aria-hidden="true"><g fill="none" stroke="#53627b" stroke-width="10" stroke-linejoin="round"><path d="M100 270V178l56-64h163l30 73v83M100 178h249M134 215h185M153 114v138m164-138v138"/></g><path d="M153 116h165v43H153zM134 180h187v43H134z" fill="#a9b2bf"/></svg>
+        <span class="viewer-scale" aria-hidden="true">MODEL / NOT TO SCALE</span>
+        <span class="viewer-instruction">拖动旋转 · 滚轮缩放 · 方向键转动</span>
+      </div>
+      <div class="object-sidebar">
+        <p class="object-kicker">构造与观看 <span>01 — 03</span></p>
+        <div class="object-choices" role="group" aria-label="选择作品">
+          <button type="button" data-select="lamp" aria-pressed="true"><span>01</span> 台灯 <small>1923—24</small></button>
+          <button type="button" data-select="chess" aria-pressed="false"><span>02</span> 几何棋具 <small>1924</small></button>
+          <button type="button" data-select="chair" aria-pressed="false"><span>03</span> 瓦西里椅 <small>1925</small></button>
+        </div>
+        <div class="object-notes" id="object-notes">
+          <article class="object-note" data-note="lamp"><span class="object-year">01 / 金属工坊</span><h3>台灯</h3><p class="object-credit">约斯特·尤克尔与威廉·瓦根费尔德 · 1923—24</p><p>圆形底座、纤细立柱与半球灯罩，被组织成一件用途明确的器物。转动模型，可以观察罩体与支撑之间的关系。</p><a href="#sources">Whitford《包豪斯》印刷第139页</a></article>
+          <article class="object-note" data-note="chess"><span class="object-year">02 / 形式与规则</span><h3>几何棋具</h3><p class="object-credit">约瑟夫·哈特维希 · 1924</p><p>棋子由几何形体组成；书中指出，每种棋子的外形提示了它的走法。这里用几枚放大的棋子观察这种联系，并非完整可对弈棋盘。</p><a href="#sources">Whitford《包豪斯》印刷第159页</a></article>
+          <article class="object-note" data-note="chair"><span class="object-year">03 / 家具与材料</span><h3>“瓦西里椅”</h3><p class="object-credit">马塞尔·布劳耶 · 1925</p><p>弯曲的钢管建立开放的框架，座面和靠背悬置于其中。绕到侧面，看承重轮廓如何替代厚重的实体。</p><a href="#sources">Whitford《包豪斯》印刷第185页</a></article>
+        </div>
+        <p class="object-disclaimer">三维模型为依据书中图片制作的教学示意；比例与细节未经实物测量，不是原作的精密复刻。</p>
+        <button class="object-reset" id="object-reset" type="button"><span data-icon="rotate-ccw" aria-hidden="true"></span>回到初始视角</button>
+        <p class="object-status sr-only" id="object-status" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <p>四组跨页，从课堂走到作品。<span>独立学习原型，非原书电子版。</span></p>
+  <details id="sources" class="sources">
+    <summary><span data-icon="book-open" aria-hidden="true"></span>资料来源与原型说明</summary>
+    <div class="source-content"><h2>以书为依据，不把书搬上屏幕。</h2><p>主要参考：杭间、靳埭强主编，《包豪斯道路：历史、遗泽、世界和中国》，山东美术出版社，2010年5月，第1版。</p><ul><li>学校与三任校长：书内第16—26页，重点核对第16、19、23页。</li><li>基础课与观察训练：书内第27—28页。</li><li>新增第三跨页的形式与工坊：Whitford《包豪斯》（林鹤译）书内第106—121页及第138—139页。形式图解与台灯拆解均是当代教学示意。</li><li>新增第四跨页的三件作品索引：Whitford 书内第139、159、185页；观察步骤为本原型提供的阅读提示。</li><li>网页文字为概括与编辑，不是直接引文。色彩练习为当代解释性演示。</li><li>人名译法以英文名对照；原书“汉斯·梅耶”与本页“汉内斯·迈耶”均指 Hannes Meyer。</li><li>作品研究参考 Frank Whitford《包豪斯》（林鹤译）：印刷第139页台灯、第159页哈特维希几何棋具、第185页布劳耶“瓦西里椅”。作品文字为原创概述；3D 比例未经实物测量。</li></ul><p>此版有四组跨页和三件作品的三维教学示意。未复制书籍扫描页、人物照片或原网站模型；CSS 3D 翻页不等同于真实纸张物理仿真。窄屏采用平面阅读，系统“减少动态效果”开启时即时换页。</p></div>
+  </details>
+</footer>
+<noscript><p class="noscript-note">JavaScript 未启用，已按顺序显示全部八页。仍可阅读正文与资料来源。</p></noscript>
+</body>
+</html>
