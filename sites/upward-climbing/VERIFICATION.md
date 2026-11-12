@@ -1,6 +1,6 @@
 # UPWARD template submission checks
 
-Checked on 2026-11-12 against the Gitee repository's `main` base `3d79248e563e16196b2893e69dd535895b828cbe`.
+Checked on 2026-11-12. Initially prepared against `3d79248e563e16196b2893e69dd535895b828cbe`; subsequently merged Gitee `main` at `0bd2e4fa8d5eb813773e2925d7baff1283f84c36`, preserving all new upstream entries and appending UPWARD. Catalog and diff checks were repeated after conflict resolution; template runtime and recorded presentation did not change.
 
 ## Registration and packaging
 
@@ -34,7 +34,7 @@ python3 scripts/validate-catalog.py
 ffprobe -v error -show_streams -show_format -of json sites/upward-climbing/preview/video.mp4
 ```
 
-- Catalog validator exited 0: six scenes, fifteen templates.
+- Catalog validator exited 0 after the upstream merge: six scenes, twenty-one templates.
 - The only catalog warning is the existing `step-studio` cover (1,134,675 bytes, above the recommended 1 MiB). That asset is unchanged. UPWARD has no media-size or format warning.
 - Video: H.264, yuv420p, 1280 × 900, 30 fps, 634 frames, 21.133333 seconds, 1,927,782 bytes, exactly one video stream and no audio stream. The validator confirmed `moov` before `mdat`.
 

@@ -47,12 +47,17 @@ The exact schema is:
 | `prism-studio` | Tools | Google Material–inspired dashboard |
 | `atelier` | Sites | Editorial portfolio |
 | `stepfun-3d` | Creative | 3D digital pavilion |
+| `weather-garden` | Creative | Mobile-first Three.js weather Web App; non-commercial public API demo ([template notes](./sites/weather-garden/README.md)) |
 | `step-studio` | Sites | Brand & digital design studio ([demo notes](./sites/step-studio/README.md)) |
 | `meridian-ops` | Tools | Global operations dashboard ([template notes](./sites/meridian-ops/README.md)) |
 | `aurelle` | Marketing | Beauty brand storefront ([template notes](./sites/aurelle/README.md)) |
+| `cais` | Sites | Porto Rocha 形式语言工作室作品集（[template notes](./sites/cais/README.md)） |
 | `fourier-pelican` | Creative | Dual-coordinate Fourier epicycle animation ([template notes](./sites/fourier-pelican/README.md)) |
 | `periodic-table-3d` | Creative | Offline atomic atlas with light/dark themes and Canvas fallback ([template notes](./sites/periodic-table-3d/README.md)) |
 | `shanghai-peli` | Creative | Horizontal illustrated Shanghai history, full-width pixel-pelican walks and sourced notes ([template notes](./sites/shanghai-peli/README.md)) |
+| `bauhaus-paths` | Creative | Four-spread reading folio with an equal-colour exercise and three approximate 3D design studies ([template notes](./sites/bauhaus-paths/README.md)) |
+| `umbra-one` | Marketing | Offline monochrome liquid-glass launch page with fictional private-compute data ([template notes](./sites/umbra-one/README.md)) |
+| `rare-books-3d` | Creative | Interactive R3F bookshelf: 60 astronomy books in four InstancedMesh batches, spine atlas with on-demand high-res texture streaming, golden-hour lighting, immersive star-map spread ([template notes](./sites/rare-books-3d/README.md)) |
 | `upward-climbing` | Sites | Editorial climbing-club website with pricing, equipment guides and local booking demos ([template notes](./sites/upward-climbing/README.md)) |
 
 Paths: `sites/<id>/` with `index.html` entry.

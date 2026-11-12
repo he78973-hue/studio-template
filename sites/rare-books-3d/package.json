@@ -1,0 +1,30 @@
+{
+  "name": "rare-books-3d",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "珍稀古籍 3D 虚拟书架 — 天文学珍藏。React Three Fiber InstancedMesh 书架、书脊柱图集、高分辨率纹理按需流式加载、GSAP 纯动画交互、黄金时刻光影与微尘。",
+  "scripts": {
+    "dev": "node build.mjs --dev && vite",
+    "build": "node build.mjs --dev && tsc --noEmit && vite build && node build.mjs",
+    "typecheck": "tsc --noEmit",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@react-three/drei": "^9.114.3",
+    "@react-three/fiber": "^8.17.10",
+    "gsap": "^3.12.5",
+    "lucide-react": "^1.71.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "three": "^0.169.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.1",
+    "@types/three": "^0.169.0",
+    "@vitejs/plugin-react": "^4.3.3",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.10"
+  }
+}

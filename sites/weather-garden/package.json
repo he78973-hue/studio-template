@@ -1,0 +1,11 @@
+{
+  "name": "qingyu-weather-garden",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A tactile Three.js weather visualization web app",
+  "scripts": {
+    "build": "node build.mjs",
+    "test": "node --test tests/*.test.mjs"
+  }
+}
