@@ -190,6 +190,22 @@
       "previewVideo": "sites/meridian-ops/preview/video.mp4"
     },
     {
+      "id": "trendatlas",
+      "scene": "tools",
+      "title": {
+        "zh": "观潮 · 欧美新品研究工作台",
+        "en": "TrendAtlas · Product Research Workspace"
+      },
+      "description": {
+        "zh": "暖棕色外贸新品研究看板：从社媒内容拆解产品系列与打样任务，支持欧美市场筛选、CSV调研导入、精确图表和节日倒排企划。含构造样本与本地保存，未接入实时采集。",
+        "en": "A warm-brown product research dashboard with social-to-product briefs, US/Europe filters, CSV imports, accessible charts and seasonal planning. Includes illustrative data and local storage; no live collection service."
+      },
+      "dir": "sites/trendatlas",
+      "tone": "sand",
+      "cover": "sites/trendatlas/preview/cover.png",
+      "previewVideo": "sites/trendatlas/preview/video.mp4"
+    },
+    {
       "id": "aurelle",
       "scene": "marketing",
       "title": {

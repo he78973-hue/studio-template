@@ -1,0 +1,141 @@
+:root {
+  --holiday-ink: var(--burgundy);
+  --holiday-surface: var(--burgundy-soft);
+  --content-photo-width: 146px;
+}
+
+.filter-row, .filter-controls { flex-wrap: wrap; }
+.view-count h2 { font-size: var(--text-md); font-weight: 600; }
+.holiday-tag { display: inline-flex; align-items: center; width: fit-content; padding: var(--space-1) var(--space-2); border-radius: var(--space-1); background: var(--holiday-surface); color: var(--holiday-ink); font-size: var(--text-2xs); line-height: 1.3; }
+.trend-body > .holiday-tag { margin-bottom: var(--space-2); }
+.source-ikea { --brand-ink: var(--forest); color: var(--brand-ink); }
+.source-action { --brand-ink: var(--forest); color: var(--brand-ink); }
+.overview-content-section { margin-top: var(--space-8); }
+.overview-content-section > .section-heading { margin-bottom: var(--space-4); }
+.content-research-notice { display: flex; gap: var(--space-3); align-items: flex-start; padding: var(--space-4) var(--space-5); border: 1px solid var(--border); border-radius: var(--radius-panel); background: var(--surface-tinted); color: var(--forest); }
+.content-research-notice > svg { margin-top: var(--space-1); color: var(--positive); }
+.content-research-notice p { font-size: var(--text-sm); line-height: 1.8; }
+.content-research-notice p > span { display: block; color: var(--text-secondary); font-size: var(--text-xs); margin-top: var(--space-1); }
+.platform-tabs { display: flex; align-items: center; gap: var(--space-2); border-bottom: 1px solid var(--border); margin-top: var(--space-5); }
+.platform-tabs button { padding: var(--space-3) var(--space-4); color: var(--text-secondary); border-bottom: 2px solid transparent; font-size: var(--text-sm); transition: color var(--transition), border-color var(--transition); }
+.platform-tabs button:hover { color: var(--forest); }
+.platform-tabs button.selected { border-bottom-color: var(--burgundy); color: var(--burgundy); font-weight: 600; }
+.social-content-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-5); }
+.social-content-card { display: grid; grid-template-columns: var(--content-photo-width) minmax(0, 1fr); overflow: hidden; }
+.social-reference { position: relative; background: var(--surface-tinted); min-height: 310px; overflow: hidden; }
+.social-reference > img { position: absolute; width: 100%; height: 100%; object-fit: cover; }
+.content-format-label { position: absolute; top: var(--space-3); left: var(--space-3); padding: var(--space-1) var(--space-2); color: var(--forest); background: var(--surface-tinted); border-radius: var(--space-1); font-size: var(--text-2xs); }
+.social-reference-note { position: absolute; bottom: var(--space-3); left: var(--space-2); right: var(--space-2); background: var(--forest); color: var(--text-inverse); border-radius: var(--space-1); padding: var(--space-1); text-align: center; font-size: var(--text-2xs); }
+.reference-without-photo { display: flex; align-items: center; justify-content: center; color: var(--positive); }
+.social-content-body { display: flex; flex-direction: column; min-width: 0; padding: var(--space-4); }
+.social-content-meta { display: flex; justify-content: space-between; align-items: center; gap: var(--space-2); flex-wrap: wrap; }
+.social-content-meta > span:last-child:not(.source-badge) { font-size: var(--text-2xs); color: var(--text-muted); }
+.social-content-meta .source-badge { font-size: var(--text-xs); }
+.social-hook { margin-top: var(--space-3); align-items: flex-start; gap: var(--space-2); }
+.social-hook h3 { font-size: var(--text-md); line-height: 1.8; }
+.social-hook > svg { margin-top: var(--space-1); }
+.content-observed { font-size: var(--text-2xs); color: var(--text-muted); margin-top: var(--space-1); }
+.content-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-2); padding: var(--space-4) 0; }
+.content-metrics > div { display: flex; flex-direction: column; gap: var(--space-1); }
+.content-metrics strong { font-size: var(--text-xl); font-weight: 550; font-variant-numeric: tabular-nums; }
+.content-metrics span { font-size: var(--text-2xs); color: var(--text-muted); }
+.product-transfer { display: flex; align-items: flex-start; gap: var(--space-2); background: var(--positive-soft); border-radius: var(--radius-sm); padding: var(--space-3); margin-top: auto; }
+.product-transfer > svg { color: var(--positive); margin-top: var(--space-1); }
+.product-transfer span { font-size: var(--text-2xs); color: var(--text-secondary); }
+.product-transfer p { font-size: var(--text-xs); line-height: 1.75; margin-top: var(--space-1); overflow-wrap: anywhere; }
+.social-card-actions { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); margin-top: var(--space-3); padding-top: var(--space-2); border-top: 1px solid var(--border); }
+.social-card-actions > div { display: flex; align-items: center; gap: var(--space-3); }
+.social-card-actions > div:last-child { gap: var(--space-1); }
+.social-card-actions .text-button { font-size: var(--text-2xs); gap: var(--space-1); }
+.social-card-actions .icon-button { width: 27px; height: 27px; }
+.cross-platform-note { font-size: var(--text-xs); color: var(--text-secondary); line-height: 1.8; margin: calc(var(--space-2) * -1) 0 var(--space-4); }
+.detail-context { display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4); }
+.detail-context > span:last-child { font-size: var(--text-xs); color: var(--text-secondary); }
+.product-brief-steps { display: grid; gap: var(--space-4); }
+.product-brief-steps > div { display: flex; align-items: flex-start; gap: var(--space-3); }
+.brief-step-number { display: grid; place-items: center; width: 26px; height: 26px; flex-shrink: 0; border-radius: var(--radius-sm); color: var(--positive); background: var(--surface-tinted); font-size: var(--text-xs); }
+.product-brief-steps h4 { font-size: var(--text-sm); font-weight: 600; margin: var(--space-1) 0 var(--space-2); }
+.product-brief-steps p { font-size: var(--text-sm); }
+.seasonal-calendar { padding: var(--space-6); margin-bottom: var(--space-6); }
+.seasonal-calendar-heading { display: flex; justify-content: space-between; align-items: center; gap: var(--space-5); flex-wrap: wrap; }
+.seasonal-calendar-heading .eyebrow { display: block; margin-bottom: var(--space-2); }
+.seasonal-calendar h2 { font-size: var(--text-xl); }
+.seasonal-calendar-heading p { font-size: var(--text-xs); line-height: 1.8; color: var(--text-secondary); margin-top: var(--space-2); }
+.calendar-quarter-note { font-size: var(--text-xs); color: var(--positive); background: var(--positive-soft); padding: var(--space-2) var(--space-3); border-radius: var(--radius-sm); }
+.calendar-controls { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4); margin-top: var(--space-5); padding: var(--space-4) 0; border-top: 1px solid var(--border); }
+.calendar-controls label { display: flex; align-items: center; gap: var(--space-2); font-size: var(--text-xs); color: var(--text-secondary); }
+.calendar-controls select { border: 1px solid var(--border-strong); border-radius: var(--radius-sm); background: var(--surface); padding: var(--space-2); color: var(--text); font-size: var(--text-xs); }
+.calendar-controls > span { color: var(--text-muted); font-size: var(--text-2xs); margin-left: auto; }
+.seasonal-calendar-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--space-3); }
+.holiday-window { border: 1px solid var(--border); border-radius: var(--radius-md); padding: var(--space-4); background: var(--surface-soft); }
+.holiday-window-top { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); }
+.holiday-window-top h3 { font-size: var(--text-base); }
+.holiday-window-top > span { color: var(--text-secondary); font-size: var(--text-xs); }
+.holiday-market { display: block; font-size: var(--text-2xs); color: var(--text-muted); margin-top: var(--space-2); }
+.holiday-window dl { display: grid; gap: var(--space-3); margin: var(--space-5) 0 var(--space-4); }
+.holiday-window dt { color: var(--text-secondary); font-size: var(--text-2xs); }
+.holiday-window dd { font-size: var(--text-sm); font-weight: 500; margin: var(--space-1) 0 0; font-variant-numeric: tabular-nums; }
+.holiday-window-status { display: flex; align-items: center; gap: var(--space-1); color: var(--text-secondary); font-size: var(--text-2xs); line-height: 1.6; min-height: var(--space-8); }
+.holiday-window-status > span { width: var(--space-1); height: var(--space-1); border-radius: 50%; background: currentColor; flex-shrink: 0; }
+.holiday-window .text-button { margin-top: var(--space-2); font-size: var(--text-2xs); }
+.window-passed { background: var(--holiday-surface); }
+.window-passed .holiday-window-status { color: var(--holiday-ink); }
+.window-current { border-color: var(--positive); background: var(--positive-soft); }
+.window-current .holiday-window-status { color: var(--positive); }
+.calendar-footnote { display: flex; gap: var(--space-2); margin-top: var(--space-4); color: var(--text-secondary); }
+.calendar-footnote > svg { margin-top: var(--space-1); color: var(--positive); }
+.calendar-footnote p { font-size: var(--text-2xs); line-height: 1.9; }
+.plan-card-context { display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-3); }
+.plan-card-context > span:last-child { font-size: var(--text-2xs); color: var(--text-secondary); }
+.plan-product-direction { padding-top: var(--space-3); }
+.plan-product-direction b { display: block; font-size: var(--text-2xs); font-weight: 500; color: var(--positive); margin-bottom: var(--space-1); }
+.plan-product-direction p { font-size: var(--text-xs); line-height: 1.85; color: var(--text); white-space: pre-wrap; overflow-wrap: anywhere; }
+
+@media (max-width: 1200px) {
+  .social-content-grid { grid-template-columns: 1fr; }
+  .social-content-card { grid-template-columns: 200px minmax(0, 1fr); }
+  .social-reference { min-height: 290px; }
+  .seasonal-calendar-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .calendar-controls > span { margin-left: 0; }
+}
+@media (max-width: 760px) {
+  .social-content-card { grid-template-columns: 160px minmax(0, 1fr); }
+  .seasonal-calendar { padding: var(--space-5); }
+  .seasonal-calendar-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .calendar-controls { column-gap: var(--space-3); }
+}
+@media (max-width: 560px) {
+  .filter-controls .filter-select { min-height: 36px; }
+  .filter-select select { max-width: 160px; }
+  .filter-controls { gap: var(--space-2); }
+  .social-content-card { grid-template-columns: 1fr; }
+  .social-reference { min-height: 155px; }
+  .social-reference > img { object-position: center 55%; }
+  .social-reference-note { left: auto; right: var(--space-3); width: fit-content; padding: var(--space-1) var(--space-2); }
+  .social-content-body { padding: var(--space-4); }
+  .social-hook h3 { font-size: var(--text-md); }
+  .content-metrics strong { font-size: var(--text-2xl); }
+  .product-transfer p { font-size: var(--text-sm); }
+  .social-card-actions .text-button { font-size: var(--text-xs); }
+  .social-card-actions .icon-button { width: 34px; height: 34px; }
+  .platform-tabs { gap: 0; justify-content: space-between; }
+  .platform-tabs button { font-size: var(--text-xs); padding: var(--space-3) var(--space-2); }
+  .content-research-notice { padding: var(--space-4); }
+  .content-research-notice p { font-size: var(--text-xs); }
+  .content-research-notice p > span { font-size: var(--text-2xs); }
+  .seasonal-calendar { padding: var(--space-4); }
+  .seasonal-calendar h2 { font-size: var(--text-lg); }
+  .seasonal-calendar-heading { gap: var(--space-3); }
+  .calendar-quarter-note { font-size: var(--text-2xs); }
+  .calendar-controls { gap: var(--space-3); }
+  .calendar-controls > label:first-child { flex-basis: 100%; }
+  .calendar-controls label, .calendar-controls select { font-size: var(--text-2xs); }
+  .calendar-controls > span { font-size: var(--text-2xs); }
+  .holiday-window { padding: var(--space-3); }
+  .holiday-window-top { align-items: flex-start; flex-direction: column; gap: var(--space-1); }
+  .holiday-market { line-height: 1.6; }
+  .holiday-window-status { align-items: flex-start; min-height: var(--space-10); }
+  .holiday-window-status > span { margin-top: var(--space-1); }
+  .holiday-window .text-button { gap: var(--space-1); }
+  .holiday-tag { font-size: var(--text-2xs); }
+}
