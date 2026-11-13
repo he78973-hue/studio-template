@@ -379,6 +379,22 @@
       "tone": "sand",
       "cover": "sites/upward-climbing/preview/cover.png",
       "previewVideo": "sites/upward-climbing/preview/video.mp4"
+    },
+    {
+      "id": "autumn-letter",
+      "scene": "creative",
+      "title": {
+        "zh": "秋日来信 · 3D 八音盒",
+        "en": "Autumn Letter · 3D Music Box"
+      },
+      "description": {
+        "zh": "可旋转的秋日微缩八音盒：胡桃木与黄铜底座、山林河湾、车站及环形小火车；支持发条播放、暂停、音量与视角复位，内置原创合成旋律，可离线打开。",
+        "en": "An interactive autumn miniature with a walnut-and-brass base, forest, river, station and looping train. Orbit, wind to play, pause, adjust volume and reset the view; includes an original synthesized melody and works offline."
+      },
+      "dir": "sites/autumn-letter",
+      "tone": "sand",
+      "cover": "sites/autumn-letter/preview/cover.png",
+      "previewVideo": "sites/autumn-letter/preview/video.mp4"
     }
   ]
 }

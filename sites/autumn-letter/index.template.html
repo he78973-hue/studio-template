@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f4f1e9" />
+    <meta name="description" content="秋日来信：一座可以旋转、聆听与慢慢探索的兴安岭微缩音乐盒。" />
+    <title>秋日来信 · 兴安岭音乐盒</title>
+    <script id="file-entry">
+      if (location.protocol === 'file:') {
+        location.replace(new URL('./秋日来信.html' + location.search + location.hash, location.href).href);
+      }
+    </script>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <main class="exhibition">
+      <header class="masthead">
+        <a class="wordmark" href="" aria-label="山野造物，首页"><span class="brand-symbol" aria-hidden="true">山</span><span>山野造物<small>SHAN YE STUDIO</small></span></a>
+        <span class="edition">微缩风景收藏计划 <span class="edition-line"></span> NO. 001</span>
+        <button class="reset-button" id="reset" type="button" disabled><span class="icon-slot" data-icon="reset"></span><span>初见视角</span></button>
+      </header>
+
+      <section id="stage" class="stage" aria-label="可交互的三维秋日音乐盒">
+        <canvas id="scene" tabindex="0" aria-label="三维音乐盒。拖动旋转，滚轮缩放；方向键旋转，加减键缩放，Home 键重置。"></canvas>
+        <div id="loading" class="stage-message" role="status"><span class="icon-slot loading-indicator" data-icon="loading" data-icon-size="24"></span><p>正在收藏一片秋天<span>CRAFTING YOUR LITTLE WORLD</span></p></div>
+        <div id="scene-error" class="stage-message error-message" role="alert" hidden><span class="icon-slot error-symbol" data-icon="warning" data-icon-size="32"></span><p>这片秋天暂时没能展开<span id="error-detail">请刷新页面，或使用支持 WebGL 的浏览器。</span></p><button id="retry" type="button"><span class="icon-slot" data-icon="reset"></span>重新打开</button></div>
+        <span class="stage-caption">A LITTLE WORLD. A SLOWER TIME.</span>
+        <div id="key-hint" class="key-hint" hidden><span class="icon-slot" data-icon="wind"></span>拧动发条，听见秋天</div>
+      </section>
+
+      <section class="player" aria-label="八音盒播放器" data-state="idle">
+        <button id="play" class="play-button" type="button" aria-label="播放音乐" aria-pressed="false" disabled><span id="play-icon" class="icon-slot" data-icon="play" data-icon-size="24"></span></button>
+        <div class="track-info"><span class="track-kicker"><span class="icon-slot track-note" data-icon="music"></span><span id="play-state">等一阵秋风</span></span><strong>林间慢行 <span class="track-type">/ 原创八音盒</span></strong><div class="progress-track" role="progressbar" aria-label="旋律播放进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="progress"></span></div></div>
+        <span class="music-time" id="time">00:00</span>
+        <div class="volume-control"><button id="mute" class="volume-button" type="button" aria-label="静音" aria-pressed="false" data-tooltip="静音" disabled><span id="volume-icon" class="icon-slot" data-icon="volume-high" data-icon-size="20"></span></button><input id="volume" type="range" min="0" max="100" value="55" aria-label="音量" aria-valuetext="55%" disabled /></div>
+      </section>
+      <p id="audio-status" class="audio-status" role="status" aria-live="polite"></p>
+
+      <footer class="footer"><span>为那些愿意慢下来的人而作</span><p class="interaction-hints"><span class="hint-item"><span class="icon-slot" data-icon="drag"></span><span class="desktop-hint">拖动旋转</span><span class="mobile-hint">单指旋转</span></span><span class="hint-divider" aria-hidden="true"></span><span class="hint-item"><span class="desktop-hint icon-slot" data-icon="scroll"></span><span class="mobile-hint icon-slot" data-icon="zoom"></span><span class="desktop-hint">滚轮缩放</span><span class="mobile-hint">双指缩放</span></span><span class="hint-divider" aria-hidden="true"></span><span class="hint-item"><span class="icon-slot" data-icon="wind"></span><span>点击发条聆听</span></span></p><span class="footer-number">48° N / AUTUMN EDITION</span></footer>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
