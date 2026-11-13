@@ -158,6 +158,22 @@
       "previewVideo": "sites/weather-garden/preview/video.mp4"
     },
     {
+      "id": "rainy-corner",
+      "scene": "creative",
+      "title": {
+        "zh": "听雨便利店 · 上海街角",
+        "en": "Rainy Corner · Shanghai Diorama"
+      },
+      "description": {
+        "zh": "可旋转缩放的上海街角三维微缩景观：中文便利店、柔焦陆家嘴天际线、雨水倒影与晴雨切换，包含店内陈列和自动门动画；单文件离线运行，店铺与天气均为艺术化演示。",
+        "en": "An orbitable Shanghai corner-shop diorama with Chinese signage, a soft-focus Lujiazui skyline, rainy reflections, sunshine switching, detailed shelves, and animated doors. Runs offline in one HTML file; fictional shop and weather."
+      },
+      "dir": "sites/rainy-corner",
+      "tone": "night",
+      "cover": "sites/rainy-corner/preview/cover.png",
+      "previewVideo": "sites/rainy-corner/preview/video.mp4"
+    },
+    {
       "id": "step-studio",
       "scene": "sites",
       "title": {

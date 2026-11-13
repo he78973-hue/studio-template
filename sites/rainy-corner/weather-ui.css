@@ -1,0 +1,16 @@
+:root{
+  --weather-surface:#162d3b;--weather-text:#d9e8de;--weather-selected:#b9d8c5;--weather-selected-ink:#24473e;--weather-border:#3c535b;--weather-focus:#b5e8cb;
+  --weather-inset:24px;--weather-height:48px;--weather-radius:999px;--weather-gap:8px;--weather-font:13px;--weather-icon:18px;--weather-speed:180ms;--weather-ease:cubic-bezier(.22,.61,.36,1);
+}
+body[data-weather="sunny"]{--weather-surface:#edf1e7;--weather-text:#49645b;--weather-selected:#385d50;--weather-selected-ink:#f6f4df;--weather-border:#a4b9ae;--weather-focus:#234e3c}
+body{background:#071323!important}
+body>canvas{position:fixed;inset:0;z-index:1}
+.weather-switch{position:fixed;z-index:2;right:max(var(--weather-inset),env(safe-area-inset-right));bottom:max(var(--weather-inset),env(safe-area-inset-bottom));display:inline-flex;align-items:center;min-height:var(--weather-height);padding:4px;gap:2px;border:1px solid var(--weather-border);border-radius:var(--weather-radius);background:var(--weather-surface);color:var(--weather-text);font:500 var(--weather-font)/1.2 -apple-system,BlinkMacSystemFont,"Hiragino Sans GB",sans-serif;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:background-color var(--weather-speed),border-color var(--weather-speed),transform var(--weather-speed) var(--weather-ease)}
+.weather-choice{display:inline-flex;align-items:center;justify-content:center;gap:var(--weather-gap);min-width:86px;min-height:38px;padding:0 13px;border-radius:var(--weather-radius);transition:color var(--weather-speed),background-color var(--weather-speed)}
+.weather-choice svg{display:block;width:var(--weather-icon);height:var(--weather-icon);flex:none}
+.weather-choice.is-selected{color:var(--weather-selected-ink);background:var(--weather-selected)}
+.weather-switch:focus-visible{outline:2px solid var(--weather-focus);outline-offset:4px}
+.weather-switch:active{transform:scale(.97)}
+@media(hover:hover){.weather-switch:hover{border-color:var(--weather-focus);transform:translateY(-2px)}}
+@media(max-width:600px){:root{--weather-inset:16px}}
+@media(prefers-reduced-motion:reduce){.weather-switch,.weather-choice{transition:none}}

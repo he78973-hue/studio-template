@@ -48,6 +48,7 @@ The exact schema is:
 | `atelier` | Sites | Editorial portfolio |
 | `stepfun-3d` | Creative | 3D digital pavilion |
 | `weather-garden` | Creative | Mobile-first Three.js weather Web App; non-commercial public API demo ([template notes](./sites/weather-garden/README.md)) |
+| `rainy-corner` | Creative | Offline Shanghai corner-shop diorama with Chinese signage, orbit controls and rainy/sunny weather ([template notes](./sites/rainy-corner/README.md)) |
 | `step-studio` | Sites | Brand & digital design studio ([demo notes](./sites/step-studio/README.md)) |
 | `meridian-ops` | Tools | Global operations dashboard ([template notes](./sites/meridian-ops/README.md)) |
 | `aurelle` | Marketing | Beauty brand storefront ([template notes](./sites/aurelle/README.md)) |
