@@ -49,8 +49,8 @@ The exact schema is:
 | `stepfun-3d` | Creative | 3D digital pavilion |
 | `weather-garden` | Creative | Mobile-first Three.js weather Web App; non-commercial public API demo ([template notes](./sites/weather-garden/README.md)) |
 | `step-studio` | Sites | Brand & digital design studio ([demo notes](./sites/step-studio/README.md)) |
-| `meridian-ops` | Tools | Global operations dashboard ([template notes](./sites/meridian-ops/README.md)) |
 | `trendatlas` | Tools | Warm-brown export product research workspace with CSV imports, accessible charts and seasonal planning ([template notes](./sites/trendatlas/README.md), [developer prompt](./sites/trendatlas/DEVELOPER_PROMPT.md)) |
+| `meridian-ops` | Tools | Global operations dashboard ([template notes](./sites/meridian-ops/README.md)) |
 | `aurelle` | Marketing | Beauty brand storefront ([template notes](./sites/aurelle/README.md)) |
 | `cais` | Sites | Porto Rocha 形式语言工作室作品集（[template notes](./sites/cais/README.md)） |
 | `fourier-pelican` | Creative | Dual-coordinate Fourier epicycle animation ([template notes](./sites/fourier-pelican/README.md)) |
