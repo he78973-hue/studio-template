@@ -43,6 +43,7 @@ The exact schema is:
 | ID | Scene | Notes |
 | --- | --- | --- |
 | `space-dash` | Games | Three.js NEON DASH (provided demo) |
+| `snowbound` | Games | Offline Three.js alpine skiing game with four starting landscapes and keyboard/touch controls ([template notes](./sites/snowbound/README.md)) |
 | `aurora-launch` | Marketing | Apple-inspired launch page |
 | `prism-studio` | Tools | Google Material–inspired dashboard |
 | `atelier` | Sites | Editorial portfolio |

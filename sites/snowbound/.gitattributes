@@ -1,0 +1,4 @@
+# Preserve upstream Three.js shader template strings in the generated bundle.
+assets/*.js linguist-generated=true whitespace=-blank-at-eol
+assets/*.css linguist-generated=true
+index.html linguist-generated=true
