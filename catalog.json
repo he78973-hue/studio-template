@@ -379,6 +379,22 @@
       "tone": "sand",
       "cover": "sites/upward-climbing/preview/cover.png",
       "previewVideo": "sites/upward-climbing/preview/video.mp4"
+    },
+    {
+      "id": "shanghai-on-foot",
+      "scene": "creative",
+      "title": {
+        "zh": "上海路书 · 梧桐深处",
+        "en": "Shanghai, on foot"
+      },
+      "description": {
+        "zh": "暖色微缩上海街区：九站步行路线、七处 Three.js 地标，支持旋转缩放、地点聚焦与逐站阅读，附交通和资料来源；模型与步行时间为示意和估算。",
+        "en": "A warm miniature Shanghai neighborhood with nine walking stops, seven Three.js landmarks, orbit/zoom, focused stories, and transit/source notes. Models and walking times are illustrative estimates."
+      },
+      "dir": "sites/shanghai-on-foot",
+      "tone": "sand",
+      "cover": "sites/shanghai-on-foot/preview/cover.png",
+      "previewVideo": "sites/shanghai-on-foot/preview/video.mp4"
     }
   ]
 }

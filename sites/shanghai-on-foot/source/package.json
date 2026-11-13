@@ -1,0 +1,23 @@
+{
+  "name": "shanghai-lushu",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build && node scripts/export-template.mjs",
+    "preview": "vite preview --host 0.0.0.0",
+    "assets": "node scripts/acquire-assets.mjs",
+    "refresh-map": "node scripts/acquire-tiles.mjs && node scripts/prepare-map.mjs",
+    "check": "node scripts/check-data.mjs"
+  },
+  "dependencies": {
+    "lucide": "^0.468.0",
+    "three": "^0.170.0"
+  },
+  "devDependencies": {
+    "@mapbox/vector-tile": "^2.0.4",
+    "pbf": "^4.0.1",
+    "vite": "^6.0.0"
+  }
+}
