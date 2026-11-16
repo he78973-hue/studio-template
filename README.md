@@ -65,6 +65,7 @@ The exact schema is:
 | `rare-books-3d` | Creative | Interactive R3F bookshelf: 60 astronomy books in four InstancedMesh batches, spine atlas with on-demand high-res texture streaming, golden-hour lighting, immersive star-map spread ([template notes](./sites/rare-books-3d/README.md)) |
 | `upward-climbing` | Sites | Editorial climbing-club website with pricing, equipment guides and local booking demos ([template notes](./sites/upward-climbing/README.md)) |
 | `autumn-letter` | Creative | Offline, interactive autumn music box with a miniature railway, original synthesized melody and centered player ([template notes](./sites/autumn-letter/README.md)) |
+| `shanghai-on-foot` | Creative | Warm-toned Three.js walking guide with nine stops, seven miniature landmarks and sourced neighborhood data ([template notes](./sites/shanghai-on-foot/README.md)) |
 
 Paths: `sites/<id>/` with `index.html` entry.
 
