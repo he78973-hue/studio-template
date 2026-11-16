@@ -80,6 +80,22 @@
       "previewUrl": "https://swift-otter-3b5f.page.stepcloud.com/"
     },
     {
+      "id": "snowbound",
+      "scene": "games",
+      "title": {
+        "zh": "雪境漫游 · 3D 滑雪",
+        "en": "Snowbound · Alpine Skiing"
+      },
+      "description": {
+        "zh": "在松林、雪坡、冰蓝山谷与暮色小镇间连续滑行：四个可选出发地、转向跳跃、障碍碰撞与雪痕特效，支持键盘和触屏；本地单人小游戏。",
+        "en": "Ski through pine forests, open slopes, icy valleys and an alpine town with four starting locations, steering, jumps, obstacles and snow trails. Keyboard and touch controls; a local single-player game."
+      },
+      "dir": "sites/snowbound",
+      "tone": "forest",
+      "cover": "sites/snowbound/preview/cover.png",
+      "previewVideo": "sites/snowbound/preview/video.mp4"
+    },
+    {
       "id": "aurora-launch",
       "scene": "marketing",
       "title": {

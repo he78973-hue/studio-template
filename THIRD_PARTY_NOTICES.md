@@ -5,6 +5,7 @@ Curated **StepFun Studio** front-end demos. No third-party template bundles exce
 | Site ID | Description | License |
 | --- | --- | --- |
 | `space-dash` | NEON DASH Three.js runner (user-provided demo bundle) | StepFun demo; Three.js MIT; glTF sample assets per `index.html` credits |
+| `snowbound` | Snowbound alpine skiing game with original procedural scenery | App code license not specified; Three.js 0.180.0 MIT, full notice in [template licenses](./sites/snowbound/licenses/three-LICENSE.txt); original geometry and browser-recorded preview media (see [template notes](./sites/snowbound/README.md#许可与署名)). |
 | `aurora-launch` | Apple-inspired product launch page | StepFun Studio — use freely within StepFun products |
 | `prism-studio` | Google Material–inspired analytics dashboard (static) | StepFun Studio |
 | `atelier` | Editorial portfolio / studio site | StepFun Studio |
