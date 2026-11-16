@@ -1,0 +1,10 @@
+{
+  "manifest_version": 3,
+  "name": "粒子 Particle · 灵感采集助手",
+  "version": "0.1.0",
+  "description": "右键收集图片、链接和网页到本地运行的 Particle 素材库。",
+  "permissions": ["contextMenus", "storage", "tabs"],
+  "background": { "service_worker": "background.js" },
+  "action": { "default_title": "粒子采集助手", "default_popup": "popup.html" },
+  "options_page": "popup.html"
+}

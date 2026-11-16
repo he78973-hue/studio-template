@@ -1,0 +1,308 @@
+/* ============================================================================
+   StepFun Brand Design Tokens · v2.0 (UIUX Edition)
+   ----------------------------------------------------------------------------
+   三层架构：
+     Tier 1  Primitive    原始值（色板 / 字体 / 几何基数）—— 不直接用于组件
+     Tier 2  Semantic     语义角色（浅/深双主题 + 状态）—— 组件只消费这一层
+     Tier 3  Component    组件令牌（button/input/card/table…）—— 可选覆盖
+
+   来源标注：【官方】手册原文 · 【实测】原件测量复核 · 【推演】工程扩展
+   对比度数据均为 WCAG 2.1 公式实测值（见 ui/06-accessibility.md）
+   ========================================================================== */
+
+:root {
+  /* ========================================================================
+     TIER 1 · PRIMITIVE —— 原始值
+     ======================================================================== */
+
+  /* -- 1.1 品牌色板（8 色）【官方】 ------------------------------------ */
+  --c-ink-black:     #1A1A1A;   /* 主文字/深底/点阵暗部        CMYK 85,80,78,64 */
+  --c-grey:          #656565;   /* 次级文字/结构线             CMYK 68,59,57,7  */
+  --c-warm-grey:     #B6B6B6;   /* 卡片面/分区底/禁用          CMYK 34,38,24,0  */
+  --c-white:         #F7F7F7;   /* 主背景（非纯白！）          CMYK 4,4,4,0     */
+  --c-beige:         #F3EBE1;   /* 暖色内容块/档案感           CMYK 6,9,12,0    */
+  --c-mist-cloud:    #D8E2EC;   /* 冷色内容块/数据面板         CMYK 18,9,6,0    */
+  --c-signal-blue:   #00A9FF;   /* 唯一强调色，面积≤3%         CMYK 71,23,0,0   */
+  --c-marker-yellow: #F9B845;   /* 标签徽章/局部标记，≤1%      CMYK 5,36,77,0   */
+  --c-paper:         #F7F7F7;   /* Paper Texture 是图像材质，此为降级色【官方】 */
+
+  /* -- 1.2 派生灰阶（工程用，非官方色板）【实测·提取自手册版面】 ------ */
+  --n-0: #FFFFFF;   /* 仅图片内/印刷纸白，禁止做页面底 */
+  --n-1: #EAEAEB;   /* 浅底次级面板 / 浅底噪点 */
+  --n-2: #D9D9D9;   /* 中性卡片面 */
+  --n-3: #C7C7C7;   /* 叠在 #B6B6B6 上的次级面 */
+  --n-4: #B6B6B6;   /* = Warm Grey */
+  --n-5: #959595;   /* 金属阴影侧 */
+  --n-6: #656565;   /* = Grey */
+  --n-7: #454545;   /* 深底发丝线 */
+  --n-8: #2A2A2A;   /* 深底卡片面 */
+  --n-9: #1A1A1A;   /* = Ink Black */
+  --n-dark-raised: #333333;  /* 深底浮层/悬停面【推演】 */
+
+  /* -- 1.3 状态色扩展【推演·需评审】 -----------------------------------
+     品牌色板刻意无彩，产品 UI 需要状态语义。首选方案是"中性 + 图形符号"
+     承载（见 ui/02-components.md 状态徽章）；以下两套低饱和"油墨色"仅作
+     允许的功能扩展：面积 ≤1%，必须配图标/文字，禁止做装饰。            */
+  --sf-danger:       #9B2C20;  /* 浅底文字 7.06:1 ✓  |
+  --sf-success:      #2E5E43;  /* 浅底文字 7.01:1 ✓  */
+  --sf-warning-text: #8A5A00;  /* 浅底文字 5.53:1 ✓（黄色系在浅底必须加深才可读） */
+  --sf-danger-dark:  #E8756A;  /* 深底文字 5.95:1 ✓  */
+  --sf-success-dark: #7FB069;  /* 深底文字 6.89:1 ✓  */
+
+  /* -- 1.4 字体族【官方，SIL OFL 1.1】 ---------------------------------- */
+  --font-serif-cn: "Source Han Serif CN", "Source Han Serif SC", "Noto Serif SC", "Songti SC", serif;
+  --font-sans-cn:  "Source Han Sans SC", "Source Han Sans CN", "Noto Sans SC", "PingFang SC", sans-serif;
+  --font-serif-en: "Lora", Georgia, "Times New Roman", serif;
+  --font-sans-en:  "Inter", "Helvetica Neue", Arial, sans-serif;
+  --font-mono:     "PT Mono", "SFMono-Regular", ui-monospace, Menlo, monospace;
+  /* 中英混排：中文黑体打头，英文数字落到 PT Mono【官方】 */
+  --font-body-cn: var(--font-sans-cn), var(--font-mono);
+  --font-body-en: var(--font-sans-en), var(--font-mono);
+
+  /* -- 1.5 字重 / 字距【官方】 ------------------------------------------ */
+  --fw-light: 300; --fw-regular: 400; --fw-medium: 500; --fw-semibold: 600; --fw-bold: 700;
+  --ls-tight: -0.01em;   /* 中文标题 */
+  --ls-none: 0;
+  --ls-caps: 0.04em;     /* 全大写等宽英文 */
+  --ls-label: 0.08em;    /* 小号全大写标签 */
+  --ls-dm-none: 0;       /* 点阵标题不加字距【官方】 */
+
+  /* -- 1.6 几何基数【官方 + 推演】 -------------------------------------- */
+  --canvas-w: 1920px; --canvas-h: 1080px;
+  --margin: 90px; --gutter: 24px;
+  --hairline: 1px;
+  --radius-xs: 2px;      /* tag/badge【推演】 */
+  --radius-sm: 4px;      /* input/button/checkbox【推演】 */
+  --radius-md: 8px;      /* 卡片下限【官方 8–12】 */
+  --radius-lg: 12px;     /* 卡片上限 / sheet【官方】 */
+  --radius-frame: 24px;  /* 仅章节页内框【官方】 */
+  --radius-pill: 999px;  /* 药丸按钮/标签【官方】 */
+
+  --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px;
+  --sp-5: 24px; --sp-6: 32px; --sp-7: 48px; --sp-8: 64px;
+  --sp-9: 90px; --sp-10: 122px;  /* 目录行节奏【实测】 */
+
+  /* -- 1.7 动效【推演·与视觉语言一致的安全默认】 ------------------------ */
+  --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur-fast: 150ms; --dur-base: 240ms; --dur-slow: 480ms;
+  --dm-stagger: 12ms;    /* 点阵入场逐点间隔上限 */
+
+  /* -- 1.8 纸张纹理【官方精神的数字还原】 -------------------------------- */
+  --texture-paper: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'>\
+<filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/>\
+<feColorMatrix type='saturate' values='0'/></filter>\
+<rect width='160' height='160' filter='url(%23n)' opacity='0.035'/></svg>");
+
+  /* ========================================================================
+     TIER 2 · SEMANTIC —— 语义角色（浅色主题为默认）
+     ======================================================================== */
+
+  /* -- 2.1 表面（层级不用投影，用色阶 + 发丝线） ------------------------ */
+  --bg-page:          var(--c-white);      /* L0 页面 */
+  --bg-surface:       #FFFFFF;             /* L1 卡片/面板（浅主题唯一允许纯白的地方） */
+  --bg-surface-warm:  var(--c-beige);      /* 暖色叙事块 */
+  --bg-surface-cool:  var(--c-mist-cloud); /* 冷色数据面板 */
+  --bg-surface-alt:   var(--n-1);          /* 次级面板 */
+  --bg-sunken:        var(--n-1);          /* 凹陷区：输入框底、代码块底【推演】 */
+  --bg-inverse:       var(--c-ink-black);  /* 深底区域 */
+
+  /* -- 2.2 文字 ---------------------------------------------------------- */
+  --text-primary:   var(--c-ink-black);  /* 16.25:1 on page ✓ */
+  --text-secondary: var(--c-grey);       /* 5.44:1 on page ✓ AA */
+  --text-tertiary:  var(--c-warm-grey);  /* 1.89:1 ⚠ 仅装饰/占位，不得承载唯一信息 */
+  --text-inverse:   var(--c-white);
+  --text-disabled:  var(--c-warm-grey);
+
+  /* -- 2.3 边框 ---------------------------------------------------------- */
+  --border-subtle:  var(--n-1);          /* 卡片内部分隔 */
+  --border-hairline: var(--c-warm-grey); /* 标准发丝线 */
+  --border-strong:  var(--c-grey);       /* 强分隔 / 控件描边 */
+  --border-inverse: var(--n-7);
+
+  /* -- 2.4 强调 / 交互 ---------------------------------------------------- */
+  --accent:             var(--c-signal-blue);
+  --accent-on:          var(--c-ink-black);  /* 蓝底上的文字用黑不用白（6.73:1 vs 2.41:1）【实测】 */
+  --accent-hover:       #0091E0;             /* Signal Blue -10%【推演】 */
+  --highlight:          var(--c-marker-yellow);
+  --highlight-on:       var(--c-ink-black);  /* 黄底文字黑（9.92:1） */
+
+  /* 焦点环双环制【推演·为满足 WCAG 2.2 3:1 焦点指示】
+     Signal Blue 在浅底仅 2.41:1，单蓝环不达标；外圈 Ink Black 保底，内圈蓝保品牌 */
+  --focus-ring-outer: var(--c-ink-black);
+  --focus-ring-inner: var(--c-signal-blue);
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 2px;
+
+  /* -- 2.5 状态（浅色主题） ---------------------------------------------- */
+  --status-info:        var(--c-signal-blue);
+  --status-warning:     var(--c-marker-yellow);
+  --status-warning-text: var(--sf-warning-text);
+  --status-danger:      var(--sf-danger);
+  --status-success:     var(--sf-success);
+  --status-danger-bg:   #F5E4E1;   /* 危险行底【推演：danger 与 page 的低饱和混合】 */
+  --status-success-bg:  #E4EAE4;
+
+  /* -- 2.6 密度（产品 UI 双密度）【推演】 --------------------------------- */
+  --row-h: 48px;          /* comfortable 行高 */
+  --control-h: 36px;      /* comfortable 控件高 */
+  --table-cell-px: 16px;
+
+  /* ========================================================================
+     编辑排版层（Editorial）—— 1920×1080 品牌物料专用字阶【实测】
+     产品 UI 请用下方 UI 字阶，两者不可混用
+     ======================================================================== */
+  --fs-display: 110px;  /* 目录页大标题 / 点阵 */
+  --fs-h1:       64px;  /* 内容页页面标题 · 宋体 Bold */
+  --fs-toc:      50px;  /* 目录条目 */
+  --fs-h2:       34px;  /* 区块小标题 · 宋体 Medium */
+  --fs-subtitle: 28px;  /* 英文副标题 · PT Mono/Lora */
+  --fs-h3:       24px;  /* 卡片标题 · 黑体 Bold */
+  --fs-card:     19px;
+  --fs-body:     16px;  /* 正文，行高 26px（1.625）【实测】 */
+  --fs-caption:  13px;
+  --fs-micro:    10.4px;/* {01} / Identity Guidelines */
+
+  /* -- UI 字阶（1440 桌面基准）【推演·由编辑层比例映射】 ------------------ */
+  --fs-ui-title:   32px;  /* 页面标题 · 宋体 Bold */
+  --fs-ui-h2:      20px;  /* 区块标题 · 宋体 Medium */
+  --fs-ui-h3:      16px;  /* 卡片标题 · 黑体 Bold/Semibold */
+  --fs-ui-body:    14px;  /* 正文 · 行高 22px（1.57） */
+  --fs-ui-body-lg: 16px;  /* 阅读型正文（文档站） */
+  --fs-ui-label:   12px;  /* 标签 · PT Mono 大写 0.08em */
+  --fs-ui-mono-s:  12px;  /* 行内代码/时间戳 */
+  --fs-ui-micro:   11px;  /* 角标/辅助 */
+
+  --lh-ui-tight: 1.25;
+  --lh-ui-body:  1.57;    /* 22/14 */
+  --lh-ui-label: 1.4;
+}
+
+/* ========================================================================
+   深色主题 —— 深浅只取两端【官方】：#1A1A1A 深底 / 中间调只做面不做主题
+   ======================================================================== */
+[data-theme="dark"], .theme-dark {
+  --bg-page:          var(--c-ink-black);
+  --bg-surface:       var(--n-8);          /* #2A2A2A */
+  --bg-surface-alt:   #222222;
+  --bg-sunken:        #141414;             /* 凹陷更深【推演】 */
+  --bg-inverse:       var(--c-white);
+  --bg-surface-warm:  #2A2620;             /* 暖块深色映射【推演】 */
+  --bg-surface-cool:  #20262E;             /* 冷块深色映射【推演】 */
+
+  --text-primary:   var(--c-white);        /* 16.25:1 ✓ */
+  --text-secondary: var(--c-warm-grey);    /* 7.08:1 on surface ✓ */
+  --text-tertiary:  var(--c-grey);         /* 2.99:1 ⚠ 仅装饰 */
+  --text-inverse:   var(--c-ink-black);
+  --text-disabled:  var(--c-grey);
+
+  --border-subtle:  #2A2A2A;
+  --border-hairline: var(--n-7);           /* #454545 */
+  --border-strong:  var(--c-grey);
+  --border-inverse: #2A2A2A;
+
+  --accent:            var(--c-signal-blue);  /* 深底上 6.73:1 ✓ 可做文字 */
+  --accent-on:         var(--c-ink-black);
+  --accent-hover:      #33B9FF;
+  --highlight:         var(--c-marker-yellow);
+
+  --focus-ring-outer: var(--c-signal-blue);  /* 深底上单蓝环即达标 6.73:1 */
+  --focus-ring-inner: transparent;
+
+  --status-info:        var(--c-signal-blue);
+  --status-warning:     var(--c-marker-yellow);   /* 9.92:1 on page ✓ */
+  --status-warning-text: var(--c-marker-yellow);
+  --status-danger:      var(--sf-danger-dark);
+  --status-success:     var(--sf-success-dark);
+  --status-danger-bg:   #33211E;
+  --status-success-bg:  #1E2A20;
+
+  --texture-paper: none;   /* 深底改用极淡噪点（2–4%），由 .sf-noise 提供 */
+}
+
+/* 深色底噪点（章节页规格：不透明度 2–4%）【官方】 */
+.sf-noise { position: relative; }
+.sf-noise::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image: var(--texture-noise, none);
+}
+
+/* 密度切换：compact 表格/日志/控制台场景 */
+[data-density="compact"] {
+  --row-h: 32px;
+  --control-h: 28px;
+  --table-cell-px: 12px;
+}
+
+/* ========================================================================
+   响应式降级【官方】
+   ======================================================================== */
+@media (max-width: 1439px) { :root { --margin: 64px; --fs-h1: 48px; --fs-subtitle: 22px; } }
+@media (max-width: 1023px) { :root { --margin: 40px; --fs-h1: 40px; --fs-display: 72px; --fs-toc: 36px; } }
+@media (max-width: 639px) {
+  :root {
+    --margin: 24px; --fs-h1: 32px; --fs-subtitle: 18px;
+    --fs-body: 15px; --fs-display: 52px; --fs-toc: 28px;
+  }
+  /* <640px 点阵标题必须降级为常规字体标题【官方】 */
+  .sf-dotmatrix { display: none; }
+  .sf-dotmatrix-fallback { display: block !important; }
+}
+.sf-dotmatrix-fallback { display: none; }
+
+/* ========================================================================
+   基础重置 + 品牌正文
+   ======================================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background-color: var(--bg-page);
+  background-image: var(--texture-paper);
+  color: var(--text-primary);
+  font-family: var(--font-body-cn);
+  font-size: var(--fs-ui-body);
+  line-height: var(--lh-ui-body);
+  font-weight: var(--fw-regular);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* 编辑排版组件（1920 物料用） */
+.sf-h1 { font-family: var(--font-serif-cn); font-weight: var(--fw-bold); font-size: var(--fs-h1); line-height: 1.18; letter-spacing: var(--ls-tight); color: var(--text-primary); margin: 0 0 var(--sp-3); }
+.sf-subtitle { font-family: var(--font-mono); font-size: var(--fs-subtitle); line-height: 1.3; color: var(--text-primary); margin: 0 0 var(--sp-5); }
+.sf-caption { font-family: var(--font-mono); font-size: var(--fs-caption); line-height: var(--lh-ui-label); color: var(--text-secondary); }
+.sf-label { font-family: var(--font-mono); font-size: var(--fs-ui-label); letter-spacing: var(--ls-label); text-transform: uppercase; color: var(--text-secondary); }
+.sf-index { font-family: var(--font-mono); font-size: var(--fs-subtitle); letter-spacing: var(--ls-caps); color: var(--text-primary); }
+.sf-mono, .sf-body :lang(en) { font-family: var(--font-mono); }
+
+/* 结构 */
+.sf-hairline { border: 0; border-top: var(--hairline) solid var(--border-hairline); margin: var(--sp-5) 0; }
+.sf-page { width: var(--canvas-w); height: var(--canvas-h); padding: var(--margin); background-color: var(--bg-page); background-image: var(--texture-paper); position: relative; overflow: hidden; }
+
+/* 焦点环双环：所有可交互元素统一 */
+:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-outer);
+  outline-offset: var(--focus-ring-offset);
+  box-shadow: 0 0 0 calc(var(--focus-ring-width) + var(--focus-ring-offset)) var(--bg-page),
+              0 0 0 calc(var(--focus-ring-width) * 2 + var(--focus-ring-offset)) var(--focus-ring-outer);
+}
+
+/* 屏读器 */
+.sf-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* 工具类 */
+.sf-accent { color: var(--accent); }
+.sf-muted { color: var(--text-secondary); }
+
+/* 打印：CMYK 按手册目标值出片，勿由 HEX 转换【官方】 */
+@media print {
+  :root { --texture-paper: none; }
+  body { background: #FFFFFF; }
+  .sf-card { border: var(--hairline) solid var(--border-hairline); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}

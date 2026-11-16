@@ -29,3 +29,7 @@ Curated **StepFun Studio** front-end demos. No third-party template bundles exce
 | `shanghai-on-foot` | Interactive Shanghai walking guide and seven miniature landmarks | App code license not specified; Three.js MIT; Lucide ISC / Feather-derived MIT; OpenStreetMap-derived data ODbL 1.0; photographs CC BY 4.0, CC BY 3.0 and CC BY-SA 4.0 (see [template notes](./sites/shanghai-on-foot/README.md#许可与署名), [photo credits](./sites/shanghai-on-foot/assets/CREDITS.md), [data notes](./sites/shanghai-on-foot/data/README.md) and [dependency licenses](./sites/shanghai-on-foot/licenses/)). |
 
 Refresh curated demos manually; `scripts/import-vendors.sh` is deprecated for OSS bulk import.
+
+## Particle workspace
+
+`sites/particle-workspace` contains original application code and authored SVG study covers; an overall code license has not been specified. Its StepFun-style design tokens come from the supplied brand archive, not a third-party UI template. Bundled Lucide 0.468.0 uses ISC with Feather-derived portions under MIT; preserve `assets/lucide-LICENSE`. Seven bundled example photographs are from Unsplash and retain exact source URLs in [CREDITS.md](./sites/particle-workspace/CREDITS.md). System font stacks are used; no font binaries are redistributed. Bookmarked brand names identify example destinations, not endorsements or captured copies of those sites.

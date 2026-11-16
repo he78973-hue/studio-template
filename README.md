@@ -53,6 +53,7 @@ The exact schema is:
 | `step-studio` | Sites | Brand & digital design studio ([demo notes](./sites/step-studio/README.md)) |
 | `trendatlas` | Tools | Warm-brown export product research workspace with CSV imports, accessible charts and seasonal planning ([template notes](./sites/trendatlas/README.md), [developer prompt](./sites/trendatlas/DEVELOPER_PROMPT.md)) |
 | `meridian-ops` | Tools | Global operations dashboard ([template notes](./sites/meridian-ops/README.md)) |
+| `particle-workspace` | Tools | Local-first design asset library with projects, portable backups and a recycle bin ([template notes](./sites/particle-workspace/README.md)) |
 | `aurelle` | Marketing | Beauty brand storefront ([template notes](./sites/aurelle/README.md)) |
 | `roam-outdoor` | Marketing | Photographic 2.5D outdoor outfitter with local shopping bag and demo checkout ([template notes](./sites/roam-outdoor/README.md)) |
 | `cais` | Sites | Porto Rocha 形式语言工作室作品集（[template notes](./sites/cais/README.md)） |

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#F7F7F7">
+  <meta name="description" content="粒子 Particle，把图片、链接与每一个好灵感，收进你的设计工作台。">
+  <title>粒子 Particle — 你的灵感工作台</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%231a1a1a'/%3E%3Ctext x='20' y='29' text-anchor='middle' fill='%23f7f7f7' font-family='serif' font-size='28'%3E粒%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/brand-tokens.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="assets/lucide.min.js" defer></script>
+  <script src="backup.js" defer></script>
+  <script src="storage.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到素材内容</a>
+  <div class="sidebar-backdrop" id="sidebarBackdrop" hidden></div>
+  <div class="sidebar" id="sidebar" role="complementary" aria-label="主导航">
+    <a class="brand" href="index.html#workspace" data-action="navigate" data-route="workspace" aria-label="粒子，返回工作台"><span class="brand-name">粒子<span class="brand-period">.</span></span><span class="brand-en">PARTICLE</span></a>
+    <button class="icon-button drawer-close" data-action="close-menu" aria-label="关闭导航"><i data-lucide="x"></i></button>
+    <div class="space-identity"><span class="avatar">创</span><div><strong>我的工作空间</strong><span>个人素材库</span></div><span class="local-label">LOCAL</span></div>
+    <nav id="mainNav"></nav>
+    <div class="nav-heading"><span>我的项目 <span class="mono">/ PROJECTS</span></span><button class="icon-button" data-action="new-project" aria-label="新建项目"><i data-lucide="plus"></i></button></div>
+    <nav id="projectNav" aria-label="项目导航"></nav>
+    <div class="nav-heading tag-heading"><span>常用标签 <span class="mono">/ TAGS</span></span></div>
+    <div class="sidebar-tags" id="sidebarTags"></div>
+    <div class="sidebar-bottom">
+      <button class="extension-card" data-action="extension"><span class="extension-heading"><i data-lucide="puzzle"></i> 灵感，一键入库 <i data-lucide="arrow-up-right"></i></span><span>安装浏览器扩展，随手收好喜欢的图片和网页。</span><span class="extension-link">了解采集扩展 <span>↗</span></span></button>
+      <button class="sidebar-utility" data-action="connection"><i data-lucide="cloud"></i><span>连接与同步</span><span class="subtle-dot"></span></button>
+      <button class="sidebar-utility backup-utility" data-action="backup"><i data-lucide="archive"></i><span>数据与备份</span></button>
+      <div class="sidebar-foot mono"><span>YOUR IDEAS, CONNECTED.</span><span>V 0.3</span></div>
+    </div>
+  </div>
+  <div class="app-shell">
+    <header class="topbar">
+      <button class="icon-button mobile-menu" data-action="menu" aria-label="打开导航" aria-expanded="false"><i data-lucide="menu"></i></button>
+      <div class="breadcrumb"><span>个人空间</span><i data-lucide="chevron-right"></i><strong id="breadcrumbTitle">工作台</strong></div>
+      <label class="global-search"><i data-lucide="search"></i><input id="search" type="search" placeholder="搜索全部素材、标签…" autocomplete="off" aria-label="搜索全部素材、标签或灵感"><kbd>⌘ K</kbd></label>
+      <button class="save-state" id="saveState" data-action="connection"><i data-lucide="hard-drive"></i><span>本地已保存</span></button>
+      <button class="button primary top-add" data-action="import"><i data-lucide="plus"></i><span>添加素材</span></button>
+    </header>
+    <div class="save-notice" id="saveNotice" role="status" hidden></div>
+    <main id="main" tabindex="-1"><div class="initial-loading"><span class="mono">OPENING YOUR SPACE</span><h1>每一个灵感，都有归处。</h1></div></main>
+    <footer class="page-footer"><span>把灵感收好，让创作发生。</span><span class="mono">PARTICLE · A SPACE FOR YOUR IDEAS</span></footer>
+  </div>
+  <dialog id="modal" aria-labelledby="modalTitle"><div id="modalContent"></div></dialog>
+  <div class="toast-stack" id="toasts" aria-live="polite" aria-atomic="true"></div>
+  <div class="drop-overlay" id="dropOverlay" hidden><i data-lucide="image-plus"></i><h2>松开，把灵感收进来</h2><p>支持 JPG、PNG、WebP、GIF 和 AVIF 图片</p></div>
+  <div class="context-menu" id="contextMenu" hidden role="menu"></div>
+  <input type="file" id="quickUpload" accept="image/jpeg,image/png,image/webp,image/gif,image/avif" multiple hidden>
+</body>
+</html>
