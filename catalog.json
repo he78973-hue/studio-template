@@ -206,6 +206,22 @@
       "previewVideo": "sites/aurelle/preview/video.mp4"
     },
     {
+      "id": "roam-outdoor",
+      "scene": "marketing",
+      "title": {
+        "zh": "ROAM 山行 · 徒步装备展厅",
+        "en": "ROAM · Outdoor Outfitter"
+      },
+      "description": {
+        "zh": "摄影式 2.5D 户外装备展厅：挂轨与格柜陈列、商品聚焦转场、颜色尺码选择和本地购物袋，含响应式收货表单与演示付款；不提供真实订单或支付服务。",
+        "en": "A photographic 2.5D outdoor outfitter with rails and cubbies, shared product transitions, color/size selection and a local shopping bag, plus responsive shipping and demo payment; no real ordering or payment services."
+      },
+      "dir": "sites/roam-outdoor",
+      "tone": "sea",
+      "cover": "sites/roam-outdoor/preview/cover.png",
+      "previewVideo": "sites/roam-outdoor/preview/video.mp4"
+    },
+    {
       "id": "fourier-pelican",
       "scene": "creative",
       "title": {
