@@ -28,3 +28,7 @@ Curated **StepFun Studio** front-end demos. No third-party template bundles exce
 | `autumn-letter` | Interactive autumn miniature music box with procedural scenery and original synthesized music | App code license not specified; Three.js 0.180.0 MIT; Lucide 0.468.0 ISC / Feather-derived icons MIT. Full dependency notices are committed under `licenses/` and embedded in the standalone HTML; user reference images are not bundled (see [template notes](./sites/autumn-letter/README.md#许可与署名)). |
 
 Refresh curated demos manually; `scripts/import-vendors.sh` is deprecated for OSS bulk import.
+
+## Particle workspace
+
+`sites/particle-workspace` contains original application code and authored SVG study covers; an overall code license has not been specified. Its StepFun-style design tokens come from the supplied brand archive, not a third-party UI template. Bundled Lucide 0.468.0 uses ISC with Feather-derived portions under MIT; preserve `assets/lucide-LICENSE`. Seven bundled example photographs are from Unsplash and retain exact source URLs in [CREDITS.md](./sites/particle-workspace/CREDITS.md). System font stacks are used; no font binaries are redistributed. Bookmarked brand names identify example destinations, not endorsements or captured copies of those sites.
