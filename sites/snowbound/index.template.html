@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#dce6e8" />
+    <meta name="description" content="雪境漫游：滑进松林、雪坡、冰蓝山谷与暮色小镇。在浏览器中开启一场轻盈的三维滑雪之旅。" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>雪境漫游 · Snowbound</title>
+  </head>
+  <body>
+    <main id="app">
+      <svg class="svg-defs" aria-hidden="true"><defs><symbol id="mountain-mark" viewBox="0 0 40 30"><path d="M2 26 15 5l8 13 5-8 10 16H2Z"/><path d="m10 13 5 3 4-3"/></symbol><symbol id="arrow-mark" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6"/></symbol></defs></svg>
+      <canvas id="scene" aria-label="三维滑雪场景，使用左右方向键转向，空格跳跃" tabindex="-1"></canvas>
+      <div class="vignette" aria-hidden="true"></div>
+      <header class="masthead">
+        <div class="brand"><svg viewBox="0 0 40 30" fill="none" aria-hidden="true"><use href="#mountain-mark"/></svg><span>SNOWBOUND<span class="brand-sub">AN ALPINE ESCAPE</span></span></div>
+        <span class="edition">一场山野间的自由漫游</span>
+      </header>
+      <section id="hud" class="hud" hidden aria-label="滑行信息">
+        <div class="distance"><span class="micro-label">滑行距离</span><div><span id="distance">0</span><span class="unit">m</span></div></div>
+        <div class="region"><span id="region-index" class="micro-label">CHAPTER 01</span><span id="region-name">清晨松林</span><span class="region-line"><i id="region-progress"></i></span></div>
+        <button id="pause-button" class="icon-button" aria-label="暂停滑行"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 6v12M16 6v12"/></svg></button>
+      </section>
+      <section id="welcome" class="welcome" aria-labelledby="game-title">
+        <div class="eyebrow"><span></span> 山野之间，自由滑行</div>
+        <h1 id="game-title" aria-label="雪境漫游"><span class="title-line">雪境</span><span class="title-line title-second">漫游<span class="title-dot">。</span></span></h1>
+        <p class="intro">往山下滑，<br />把自己交给下一片风景。</p>
+        <button id="start-button" class="primary-button" disabled><span>正在铺好雪道</span><svg class="button-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#arrow-mark"/></svg></button>
+        <p class="instruction desktop-instruction"><span class="key-group"><kbd>←</kbd><kbd>→</kbd><span> / A D 转向</span></span><span class="key-group"><kbd>空格</kbd><span>小跳</span></span></p>
+        <p class="instruction touch-instruction">左右拖动转向 · 轻触按钮小跳</p>
+      </section>
+      <footer id="welcome-footer" class="welcome-footer">
+        <div class="journey-summary">
+          <div class="footer-index"><span id="start-place-label">选择出发地</span><span id="selected-place" aria-live="polite">已选 · 松林</span></div>
+          <div class="journey-map" role="radiogroup" aria-labelledby="start-place-label">
+            <label class="journey-stop"><input type="radio" name="start-region" value="0" data-name="松林" aria-label="清晨松林" checked><span>松林</span></label>
+            <label class="journey-stop"><input type="radio" name="start-region" value="1" data-name="雪坡" aria-label="开阔雪坡"><span>雪坡</span></label>
+            <label class="journey-stop"><input type="radio" name="start-region" value="2" data-name="山谷" aria-label="冰蓝山谷"><span>山谷</span></label>
+            <label class="journey-stop"><input type="radio" name="start-region" value="3" data-name="小镇" aria-label="暮色山间小镇"><span>小镇</span></label>
+          </div>
+        </div>
+        <p>不必赶路，风景会慢慢展开。</p>
+        <span class="altitude">ALPINE TRAIL <span>2,840 <small>M</small></span></span>
+      </footer>
+      <section id="overlay" class="overlay" hidden aria-labelledby="overlay-title" aria-modal="true" role="dialog">
+        <div class="dialog"><div class="dialog-mark" aria-hidden="true"><svg viewBox="0 0 40 30" fill="none"><use href="#mountain-mark"/></svg></div><span id="overlay-eyebrow" class="eyebrow">TAKE A BREATH</span><h2 id="overlay-title">在雪里，停一会。</h2><p id="overlay-description">山野会在这里等你。</p><div id="result" class="result" hidden><span id="result-distance">0</span><span>米 · 本次滑行</span></div><button id="resume-button" class="primary-button"><span>继续滑行</span><svg class="button-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#arrow-mark"/></svg></button><button id="restart-button" class="secondary-button"><span id="restart-label">重新开始</span><svg class="button-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="#arrow-mark"/></svg></button><button id="location-button" class="secondary-button">换个地点</button><span id="overlay-hint" class="dialog-hint">ESC 继续 · R 重新开始</span></div>
+      </section>
+      <div id="touch-controls" class="touch-controls" hidden><span>左右拖动 · 自由转向</span><button id="jump-button" class="jump-button" aria-label="跳跃"><svg viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="m7 13 7-7 7 7M14 6v15M5 23h18"/></svg><span>小跳</span></button></div>
+      <div id="fatal-error" class="fatal-error" hidden role="alert"><h2>雪道暂时没有打开</h2><p id="error-message">请使用支持 WebGL 的浏览器并开启硬件加速。</p><button id="reload-button" class="primary-button">重新加载</button></div>
+      <p id="announcement" class="sr-only" aria-live="polite"></p>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
