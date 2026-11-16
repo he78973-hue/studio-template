@@ -126,6 +126,22 @@
       "cover": "sites/prism-studio/preview/cover.png"
     },
     {
+      "id": "muse-wardrobe",
+      "scene": "tools",
+      "title": {
+        "zh": "女神衣橱 · 沉浸式试衣室",
+        "en": "MUSE Wardrobe · Fitting Room"
+      },
+      "description": {
+        "zh": "三维试衣室、心情天气搭配与本地衣橱收藏；静态版含预生成试穿示例，完整源码支持配置图像模型服务。",
+        "en": "A 3D fitting room with mood/weather styling and a local wardrobe. The static demo includes pre-generated looks; full source supports a configurable image-model service."
+      },
+      "dir": "sites/muse-wardrobe",
+      "tone": "sand",
+      "cover": "sites/muse-wardrobe/preview/cover.png",
+      "previewVideo": "sites/muse-wardrobe/preview/video.mp4"
+    },
+    {
       "id": "atelier",
       "scene": "sites",
       "title": {

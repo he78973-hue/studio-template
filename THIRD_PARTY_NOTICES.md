@@ -8,6 +8,7 @@ Curated **StepFun Studio** front-end demos. No third-party template bundles exce
 | `snowbound` | Snowbound alpine skiing game with original procedural scenery | App code license not specified; Three.js 0.180.0 MIT, full notice in [template licenses](./sites/snowbound/licenses/three-LICENSE.txt); original geometry and browser-recorded preview media (see [template notes](./sites/snowbound/README.md#许可与署名)). |
 | `aurora-launch` | Apple-inspired product launch page | StepFun Studio — use freely within StepFun products |
 | `prism-studio` | Google Material–inspired analytics dashboard (static) | StepFun Studio |
+| `muse-wardrobe` | MUSE fitting room, wardrobe and pre-generated try-on examples | App code license not specified; React / React DOM / Scheduler / Three.js MIT; Lucide ISC / Feather-derived MIT; Node-only Sharp Apache-2.0. Photography and AI-edited references have separate rights, with product imagery not carrying an open sublicense; see [credits](./sites/muse-wardrobe/CREDITS.md) and [licenses](./sites/muse-wardrobe/licenses/). |
 | `atelier` | Editorial portfolio / studio site | StepFun Studio |
 | `stepfun-3d` | StepFun digital pavilion (3D gallery) | StepFun demo; Three.js MIT |
 | `weather-garden` | Qingyu mobile weather visualization | App code license not specified; Three.js MIT; Lucide ISC / inherited Feather MIT; Open-Meteo data CC BY 4.0, free API limited to non-commercial use ([template notes](./sites/weather-garden/README.md#许可与数据使用)) |

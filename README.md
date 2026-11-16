@@ -46,6 +46,7 @@ The exact schema is:
 | `snowbound` | Games | Offline Three.js alpine skiing game with four starting landscapes and keyboard/touch controls ([template notes](./sites/snowbound/README.md)) |
 | `aurora-launch` | Marketing | Apple-inspired launch page |
 | `prism-studio` | Tools | Google Material–inspired dashboard |
+| `muse-wardrobe` | Tools | Three.js fitting room and local wardrobe; static pre-generated looks plus optional Node image-model service ([template notes](./sites/muse-wardrobe/README.md)) |
 | `atelier` | Sites | Editorial portfolio |
 | `stepfun-3d` | Creative | 3D digital pavilion |
 | `weather-garden` | Creative | Mobile-first Three.js weather Web App; non-commercial public API demo ([template notes](./sites/weather-garden/README.md)) |

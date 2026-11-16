@@ -1,0 +1,615 @@
+/* Revision 2: the entire workspace is one 3D fitting room. */
+:root {
+  --room-panel: rgba(251, 247, 241, 0.91);
+  --room-pink-panel: rgba(249, 237, 233, 0.94);
+  --room-outline: rgba(255, 250, 243, 0.72);
+  --room-glass-shadow: 0 12px 48px rgba(70, 49, 35, 0.065);
+}
+.immersive-shell {
+  max-width: 1800px;
+}
+.immersive-shell .site-header {
+  height: 76px;
+}
+.immersive-shell .workspace-heading {
+  height: 50px;
+}
+.immersive-shell .studio-grid {
+  position: relative;
+  isolation: isolate;
+  min-height: 720px;
+  border-radius: 16px;
+  overflow: hidden;
+  padding: 24px;
+  grid-template-columns: 238px minmax(0, 1fr) 320px;
+  gap: 20px;
+  background: var(--bg-hero);
+}
+.fitting-room {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  transition: opacity 0.35s var(--ease-enter);
+}
+.fitting-room canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: pan-y;
+}
+.webgl-error {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--bg-surface);
+  padding: 20px;
+  border: 1px solid var(--border-strong);
+  z-index: 2;
+}
+.immersive-shell .context-panel {
+  padding: 20px 16px 16px;
+  min-height: 672px;
+  background: var(--room-panel);
+  border: 1px solid var(--room-outline);
+  border-radius: 12px;
+  box-shadow: var(--room-glass-shadow);
+}
+.immersive-shell .personal-note {
+  padding-top: 0;
+  padding-bottom: 22px;
+}
+.immersive-shell .personal-note p {
+  font-size: 21px;
+  line-height: 1.5;
+}
+.immersive-shell .personal-note .eyebrow {
+  font-size: 7px;
+}
+.immersive-shell .note-flower {
+  display: none;
+}
+.immersive-shell .mood-button {
+  height: 62px;
+  background: rgba(255, 252, 247, 0.5);
+}
+.immersive-shell .mood-button.selected {
+  background: var(--bg-selected);
+}
+.immersive-shell .weather-card {
+  background: rgba(225, 212, 194, 0.52);
+}
+.immersive-shell .weather-main > strong {
+  font-size: 43px;
+}
+.immersive-shell .weather-main > div {
+  gap: 4px;
+  font-size: 10px;
+}
+.immersive-shell .weather-main > div > .icon {
+  width: 30px;
+}
+.immersive-shell .weather-card > p {
+  font-size: 9px;
+}
+.immersive-shell .section-label h2 {
+  font-size: 12px;
+}
+.immersive-shell .recommend-caption {
+  font-size: 8px;
+}
+.immersive-shell .person-upload {
+  padding-top: 12px;
+}
+.immersive-shell .person-upload small {
+  font-size: 9px;
+}
+.immersive-shell .wardrobe-panel {
+  height: 672px;
+  background: var(--room-pink-panel);
+  border-color: var(--room-outline);
+  padding: 18px 16px;
+  box-shadow: var(--room-glass-shadow);
+}
+.immersive-shell .garment-image {
+  height: 96px;
+  background: rgba(255, 250, 245, 0.64);
+}
+.immersive-shell .is-selected .garment-image {
+  background: var(--bg-selected);
+  border-width: 1px;
+}
+.immersive-shell .category-tabs.compact button {
+  font-size: 10px;
+}
+.immersive-shell .wardrobe-heading h2 {
+  font-size: 23px;
+}
+.immersive-shell .stage-column {
+  pointer-events: none;
+  min-width: 0;
+}
+.immersive-stage {
+  height: 672px;
+  background: transparent;
+  overflow: visible;
+  border-radius: 0;
+  padding: 0;
+  pointer-events: none;
+}
+.immersive-stage .stage-topline {
+  padding: 0;
+  gap: 12px;
+}
+.immersive-stage .stage-topline .eyebrow {
+  font-size: 8px;
+  letter-spacing: 1.1px;
+}
+.immersive-stage .stage-topline .live-label {
+  display: flex;
+  font-size: 8px;
+}
+.immersive-stage .stage-title {
+  margin-top: 21px;
+}
+.immersive-stage .stage-title h1 {
+  font-size: 31px;
+  letter-spacing: 1px;
+}
+.immersive-stage .stage-title p {
+  font-size: 13px;
+  margin-top: 6px;
+}
+.immersive-stage .stage-scene {
+  isolation: auto;
+  flex: 1;
+  margin: 0;
+  background: transparent;
+  pointer-events: none;
+}
+.immersive-stage button,
+.immersive-shell .recommendation-note {
+  pointer-events: auto;
+}
+.immersive-stage .stage-upload {
+  right: 0;
+  top: 22px;
+  background: var(--room-panel) !important;
+  border-color: var(--room-outline) !important;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+}
+.room-instruction {
+  position: absolute;
+  bottom: 14px;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: var(--text-secondary);
+  font-size: 9px;
+  text-shadow: 0 1px var(--bg-page);
+}
+.immersive-stage .stage-controls {
+  margin-top: 14px;
+  margin-bottom: 0;
+  gap: 12px;
+}
+.immersive-stage .stage-disclaimer {
+  font-size: 8px;
+  margin-top: 10px;
+  text-align: center;
+  line-height: 1.6;
+}
+.immersive-stage .flatlay-board {
+  inset: 26px 4px 38px;
+  padding: 20px;
+  gap: 16px;
+  background: var(--room-panel);
+  border: 1px solid var(--room-outline);
+  border-radius: 12px;
+  mix-blend-mode: normal;
+}
+.immersive-stage .flatlay-item {
+  mix-blend-mode: multiply;
+}
+.immersive-stage .flatlay-item img {
+  max-height: 210px;
+}
+.tryon-status {
+  min-height: 40px;
+  margin: 0 auto;
+  max-width: 100%;
+  padding: 10px 14px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  background: var(--room-panel);
+  border: 1px solid var(--room-outline);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  pointer-events: auto;
+  color: var(--text-primary);
+}
+.tryon-status > small {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  min-width: 3ch;
+}
+.tryon-status > button {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  font-size: 10px;
+  color: var(--text-accent);
+  white-space: nowrap;
+  padding: var(--sp-1) var(--sp-2);
+  min-height: var(--sp-6);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.tryon-status.phase-pending .tryon-progress {
+  animation-delay: var(--duration-normal);
+}
+@media (pointer: coarse) {
+  .view-tools .icon-button {
+    width: var(--button-height);
+    height: var(--button-height);
+  }
+  .immersive-stage .stage-upload {
+    width: var(--button-height);
+    height: var(--button-height);
+  }
+  .modal .icon-button,
+  .tryon-status > button {
+    min-width: var(--button-height);
+    min-height: var(--button-height);
+  }
+  .view-switch button {
+    min-height: var(--button-height);
+  }
+}
+@media (max-width: 620px) {
+  .modal input,
+  .modal select {
+    font-size: var(--fs-lg);
+  }
+}
+.tryon-status.phase-error {
+  border-color: var(--status-error);
+  font-size: 10px;
+  line-height: 1.6;
+}
+.tryon-status.phase-error > span {
+  max-width: 260px;
+}
+.tryon-status.phase-complete {
+  color: var(--status-success);
+}
+.tryon-progress {
+  position: absolute;
+  bottom: 0;
+  left: -35%;
+  width: 35%;
+  height: 2px;
+  background: var(--text-accent);
+  animation: tryon-loading 1.6s linear infinite;
+}
+.immersive-shell .recommendation-note {
+  bottom: 140px;
+  left: 0;
+  right: 0;
+  font-size: 11px;
+  background: var(--room-panel);
+  border-color: var(--room-outline);
+}
+.immersive-shell .site-footer {
+  margin-top: 16px;
+}
+@keyframes tryon-loading {
+  to {
+    translate: 385% 0;
+  }
+}
+@media (min-width: 1500px) {
+  .immersive-shell .studio-grid {
+    min-height: 780px;
+    grid-template-columns: 255px minmax(0, 1fr) 350px;
+    padding: 28px;
+    gap: 28px;
+  }
+  .immersive-shell .context-panel,
+  .immersive-shell .wardrobe-panel,
+  .immersive-stage {
+    height: 724px;
+    min-height: 724px;
+  }
+  .immersive-shell .garment-image {
+    height: 116px;
+  }
+  .immersive-shell .mood-button {
+    height: 70px;
+  }
+  .immersive-shell .personal-note {
+    padding-bottom: 24px;
+  }
+}
+@media (max-width: 1200px) and (min-width: 901px) {
+  .immersive-shell .studio-grid {
+    padding: 16px;
+    gap: 14px;
+    grid-template-columns: 210px minmax(0, 1fr) 282px;
+  }
+  .immersive-stage .stage-title h1 {
+    font-size: 25px;
+  }
+  .immersive-stage .live-label {
+    display: none !important;
+  }
+  .immersive-shell .context-panel {
+    padding: 16px 12px;
+  }
+  .immersive-shell .personal-note p {
+    font-size: 19px;
+  }
+  .immersive-shell .wardrobe-panel {
+    padding: 16px 12px;
+  }
+  .immersive-shell .garment-image {
+    height: 87px;
+  }
+  .immersive-shell .garment-name {
+    font-size: 9px;
+  }
+  .immersive-shell .category-tabs.compact button {
+    font-size: 9px;
+  }
+  .tryon-status {
+    font-size: 9px;
+    padding: 10px 8px;
+    gap: 5px;
+  }
+  .immersive-stage .stage-disclaimer {
+    font-size: 7px;
+  }
+}
+@media (max-width: 900px) {
+  .immersive-shell .studio-grid {
+    grid-template-columns: 205px minmax(0, 1fr);
+    gap: 18px;
+    padding: 18px;
+  }
+  .fitting-room {
+    height: 710px;
+  }
+  .immersive-shell .context-panel,
+  .immersive-stage {
+    height: 672px;
+    min-height: 672px;
+  }
+  .immersive-shell .wardrobe-panel {
+    height: auto;
+    min-height: 0;
+    width: 100%;
+    grid-column: 1/-1;
+  }
+  .immersive-shell .garment-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+  .immersive-shell .garment-image {
+    height: 112px;
+  }
+  .immersive-stage .stage-title h1 {
+    font-size: 27px;
+  }
+  .immersive-stage .stage-topline .live-label {
+    display: none;
+  }
+  .immersive-shell .wardrobe-heading {
+    width: 40%;
+    float: left;
+  }
+  .immersive-shell .upload-garment {
+    width: 48%;
+    margin: 0 0 12px auto;
+  }
+  .immersive-shell .category-tabs.compact button {
+    font-size: 11px;
+  }
+}
+@media (max-width: 620px) {
+  .immersive-shell .site-header {
+    height: 113px;
+  }
+  .immersive-shell .studio-grid {
+    padding: 0;
+    display: flex;
+    gap: 14px;
+    overflow: visible;
+    background: transparent;
+    border-radius: 0;
+  }
+  .fitting-room {
+    top: 0;
+    height: 620px;
+    border-radius: 12px;
+    z-index: 0;
+  }
+  .immersive-shell .stage-column {
+    order: 0;
+    z-index: 1;
+    height: 620px;
+  }
+  .immersive-stage {
+    height: 620px;
+    min-height: 0;
+    padding: 18px 12px 14px;
+    overflow: hidden;
+  }
+  .immersive-stage .stage-title {
+    margin-top: 22px;
+  }
+  .immersive-stage .stage-title h1 {
+    font-size: 27px;
+    letter-spacing: 0;
+  }
+  .immersive-stage .stage-title p {
+    font-size: 12px;
+  }
+  .immersive-stage .stage-topline .eyebrow {
+    font-size: 7px;
+  }
+  .immersive-stage .stage-topline .live-label {
+    display: flex;
+    font-size: 7px;
+  }
+  .immersive-stage .stage-scene {
+    background: transparent;
+  }
+  .room-instruction {
+    font-size: 8px;
+    bottom: 16px;
+  }
+  .tryon-status {
+    font-size: 9px;
+    gap: 6px;
+    max-width: 100%;
+    padding: 10px;
+  }
+  .tryon-status > button {
+    font-size: 9px;
+  }
+  .immersive-stage .stage-controls {
+    margin-top: 12px;
+    gap: 8px;
+  }
+  .immersive-stage .stage-disclaimer {
+    font-size: 7px;
+    margin-top: 9px;
+  }
+  .immersive-shell .context-panel {
+    display: contents;
+  }
+  .immersive-shell .mood-section {
+    order: 1;
+    margin-top: 8px;
+  }
+  .immersive-shell .weather-section {
+    order: 2;
+  }
+  .immersive-shell .occasion-section {
+    order: 3;
+  }
+  .immersive-shell .recommend-button {
+    order: 4;
+  }
+  .immersive-shell .mood-button {
+    height: 65px;
+  }
+  .immersive-shell .weather-main > strong {
+    font-size: 27px;
+  }
+  .immersive-shell .weather-main > div > .icon {
+    width: 24px;
+  }
+  .immersive-shell .weather-card > p {
+    display: none;
+  }
+  .immersive-shell .person-upload {
+    order: 5;
+    padding: 12px 16px;
+  }
+  .immersive-shell .wardrobe-panel {
+    order: 6;
+    padding: 18px 16px;
+    height: auto;
+    min-height: 0;
+  }
+  .immersive-shell .wardrobe-heading {
+    float: none;
+    width: auto;
+  }
+  .immersive-shell .upload-garment {
+    width: 100%;
+    margin: 0 0 12px;
+  }
+  .immersive-shell .garment-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .immersive-shell .garment-image {
+    height: 122px;
+  }
+  .immersive-shell .recommendation-note {
+    bottom: 145px;
+    left: 12px;
+    right: 12px;
+    z-index: 5;
+  }
+  .immersive-stage .flatlay-board {
+    inset: 12px 0 30px;
+    padding: 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tryon-progress {
+    animation: none;
+    width: 100%;
+    left: 0;
+    opacity: 0.55;
+  }
+}
+
+.immersive-stage .stage-title {
+  margin-top: 14px;
+}
+.immersive-stage .stage-title h1 {
+  font-size: 28px;
+}
+.room-instruction {
+  bottom: auto;
+  top: 40%;
+  left: 0;
+  right: auto;
+  writing-mode: vertical-rl;
+  gap: 8px;
+}
+@media (min-width: 621px) and (max-width: 1499px) {
+  .immersive-shell .personal-note {
+    padding-bottom: 16px;
+  }
+  .immersive-shell .personal-note p {
+    font-size: 20px;
+    line-height: 1.4;
+  }
+  .immersive-shell .mood-button {
+    height: 56px;
+  }
+  .immersive-shell .person-upload {
+    padding-top: 8px;
+  }
+  .immersive-shell .recommend-caption {
+    padding-top: 4px;
+  }
+}
+@media (max-width: 620px) {
+  .immersive-stage .stage-title {
+    margin-top: 20px;
+  }
+  .immersive-stage .stage-title h1 {
+    font-size: 26px;
+  }
+  .room-instruction {
+    left: 2px;
+    font-size: 8px;
+  }
+}
