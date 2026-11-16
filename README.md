@@ -43,14 +43,18 @@ The exact schema is:
 | ID | Scene | Notes |
 | --- | --- | --- |
 | `space-dash` | Games | Three.js NEON DASH (provided demo) |
+| `snowbound` | Games | Offline Three.js alpine skiing game with four starting landscapes and keyboard/touch controls ([template notes](./sites/snowbound/README.md)) |
 | `aurora-launch` | Marketing | Apple-inspired launch page |
 | `prism-studio` | Tools | Google Material–inspired dashboard |
 | `atelier` | Sites | Editorial portfolio |
 | `stepfun-3d` | Creative | 3D digital pavilion |
 | `weather-garden` | Creative | Mobile-first Three.js weather Web App; non-commercial public API demo ([template notes](./sites/weather-garden/README.md)) |
+| `rainy-corner` | Creative | Offline Shanghai corner-shop diorama with Chinese signage, orbit controls and rainy/sunny weather ([template notes](./sites/rainy-corner/README.md)) |
 | `step-studio` | Sites | Brand & digital design studio ([demo notes](./sites/step-studio/README.md)) |
+| `trendatlas` | Tools | Warm-brown export product research workspace with CSV imports, accessible charts and seasonal planning ([template notes](./sites/trendatlas/README.md), [developer prompt](./sites/trendatlas/DEVELOPER_PROMPT.md)) |
 | `meridian-ops` | Tools | Global operations dashboard ([template notes](./sites/meridian-ops/README.md)) |
 | `aurelle` | Marketing | Beauty brand storefront ([template notes](./sites/aurelle/README.md)) |
+| `roam-outdoor` | Marketing | Photographic 2.5D outdoor outfitter with local shopping bag and demo checkout ([template notes](./sites/roam-outdoor/README.md)) |
 | `cais` | Sites | Porto Rocha 形式语言工作室作品集（[template notes](./sites/cais/README.md)） |
 | `fourier-pelican` | Creative | Dual-coordinate Fourier epicycle animation ([template notes](./sites/fourier-pelican/README.md)) |
 | `periodic-table-3d` | Creative | Offline atomic atlas with light/dark themes and Canvas fallback ([template notes](./sites/periodic-table-3d/README.md)) |
@@ -59,6 +63,7 @@ The exact schema is:
 | `umbra-one` | Marketing | Offline monochrome liquid-glass launch page with fictional private-compute data ([template notes](./sites/umbra-one/README.md)) |
 | `rare-books-3d` | Creative | Interactive R3F bookshelf: 60 astronomy books in four InstancedMesh batches, spine atlas with on-demand high-res texture streaming, golden-hour lighting, immersive star-map spread ([template notes](./sites/rare-books-3d/README.md)) |
 | `upward-climbing` | Sites | Editorial climbing-club website with pricing, equipment guides and local booking demos ([template notes](./sites/upward-climbing/README.md)) |
+| `autumn-letter` | Creative | Offline, interactive autumn music box with a miniature railway, original synthesized melody and centered player ([template notes](./sites/autumn-letter/README.md)) |
 | `shanghai-on-foot` | Creative | Warm-toned Three.js walking guide with nine stops, seven miniature landmarks and sourced neighborhood data ([template notes](./sites/shanghai-on-foot/README.md)) |
 
 Paths: `sites/<id>/` with `index.html` entry.
