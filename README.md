@@ -57,6 +57,7 @@ The exact schema is:
 | `particle-workspace` | Tools | Local-first design asset library with projects, portable backups and a recycle bin ([template notes](./sites/particle-workspace/README.md)) |
 | `aurelle` | Marketing | Beauty brand storefront ([template notes](./sites/aurelle/README.md)) |
 | `roam-outdoor` | Marketing | Photographic 2.5D outdoor outfitter with local shopping bag and demo checkout ([template notes](./sites/roam-outdoor/README.md)) |
+| `super-salad` | Marketing | Nine-dish food table with animated ingredient receipts, local shopping bag and order preview ([template notes](./sites/super-salad/README.md), [reusable prompt](./sites/super-salad/DEVELOPER_PROMPT.md)) |
 | `cais` | Sites | Porto Rocha 形式语言工作室作品集（[template notes](./sites/cais/README.md)） |
 | `fourier-pelican` | Creative | Dual-coordinate Fourier epicycle animation ([template notes](./sites/fourier-pelican/README.md)) |
 | `periodic-table-3d` | Creative | Offline atomic atlas with light/dark themes and Canvas fallback ([template notes](./sites/periodic-table-3d/README.md)) |
