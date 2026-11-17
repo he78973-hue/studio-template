@@ -46,6 +46,22 @@
   ],
   "templates": [
     {
+      "id": "monets-garden",
+      "scene": "creative",
+      "title": {
+        "zh": "莫奈的花园 · 走进画中",
+        "en": "Monet's Garden · Step into the Painting"
+      },
+      "description": {
+        "zh": "沿睡莲池与日本桥走进莫奈的花园，在画架旁读懂创作、晚年与浮世绘。保留原画笔触，支持滚动漫游与手机触控；场景为艺术化演绎。",
+        "en": "Walk through Monet's water-lily garden to his easel, exploring his painting, later life and Japanese influences. Original brushwork, scroll navigation and touch controls; an artistic interpretation."
+      },
+      "dir": "sites/monets-garden",
+      "tone": "forest",
+      "cover": "sites/monets-garden/preview/cover.png",
+      "previewVideo": "sites/monets-garden/preview/video.mp4"
+    },
+    {
       "id": "space-dash",
       "scene": "games",
       "title": {

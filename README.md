@@ -42,6 +42,7 @@ The exact schema is:
 
 | ID | Scene | Notes |
 | --- | --- | --- |
+| `monets-garden` | Creative | Painterly journey through Monet's water-lily garden, with five viewpoints, sourced stories and keyboard/touch navigation ([template notes](./sites/monets-garden/README.md), [reusable prompt](./sites/monets-garden/DEVELOPER_PROMPT.md)) |
 | `space-dash` | Games | Three.js NEON DASH (provided demo) |
 | `snowbound` | Games | Offline Three.js alpine skiing game with four starting landscapes and keyboard/touch controls ([template notes](./sites/snowbound/README.md)) |
 | `aurora-launch` | Marketing | Apple-inspired launch page |
