@@ -286,6 +286,22 @@
       "previewVideo": "sites/roam-outdoor/preview/video.mp4"
     },
     {
+      "id": "super-salad",
+      "scene": "marketing",
+      "title": {
+        "zh": "超级沙拉 · 新鲜食材小票",
+        "en": "Super Salad · Ingredient Receipts"
+      },
+      "description": {
+        "zh": "绿橙配色的餐饮概念店：九款餐品散铺陈列，点击放大餐盘并展开食材小票；含分类筛选、本地购物袋与订单预览，不提供真实下单或支付。",
+        "en": "A green-and-citrus food storefront with nine dishes, shared-image transitions and unfolding ingredient receipts. Includes category filters, a persistent local bag and order preview; no real ordering or payment."
+      },
+      "dir": "sites/super-salad",
+      "tone": "forest",
+      "cover": "sites/super-salad/preview/cover.png",
+      "previewVideo": "sites/super-salad/preview/video.mp4"
+    },
+    {
       "id": "fourier-pelican",
       "scene": "creative",
       "title": {

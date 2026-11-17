@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#244B2C" />
+    <meta name="description" content="超级沙拉 SUPER SALAD，为城市生活补充一碗新鲜能量。发现缤纷沙拉、能量暖碗与鲜榨果饮。" />
+    <title>超级沙拉 SUPER SALAD — 新鲜，超有能量。</title>
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="preload" as="image" href="/assets/bowl-signature.webp" />
+    <link rel="preload" as="font" href="/assets/barlow-condensed-800.woff2" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="module" src="/app.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#menu">跳到点餐菜单</a>
+    <svg class="icon-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" /></symbol>
+      <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M6 18 18 6M6 6h12v12" /></symbol>
+      <symbol id="i-bag" viewBox="0 0 24 24"><path d="M5 7h14l1 14H4L5 7ZM9 8V6a3 3 0 0 1 6 0v2" /></symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" /></symbol>
+      <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14" /></symbol>
+      <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6" /></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6" /></symbol>
+      <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M20 3C10 2 3 6 3 13a7 7 0 0 0 7 7c7 0 11-7 10-17ZM3 21 15 9M7 17v-6M7 17h6" /></symbol>
+      <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M5 19l1.5-1.5M17.5 6.5 19 5" /></symbol>
+      <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.5 4.8a5.3 5.3 0 0 0-7.5 0L12 6l-1.1-1.2a5.3 5.3 0 0 0-7.5 7.5L12 21l8.5-8.7a5.3 5.3 0 0 0 0-7.5Z" /></symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z" /><circle cx="12" cy="10" r="2.5" /></symbol>
+    </svg>
+
+    <header class="site-header">
+      <a class="brand" href="#home" aria-label="超级沙拉，返回首页">
+        <span class="brand-emblem" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M8 24c0 11 6 17 16 17s16-6 16-17H8Z" /><path d="M24 23C12 23 9 15 10 7c10 0 16 5 14 16ZM24 23C23 12 30 5 39 5c1 11-4 18-15 18Z" /><path d="M17 30c2 4 12 4 14 0" /></svg></span>
+        <span class="brand-type"><strong>超级沙拉<span class="registered">®</span></strong><span>SUPER SALAD</span></span>
+      </a>
+      <nav class="main-nav" aria-label="主导航">
+        <a class="nav-current" href="#menu">当季菜单 <span>MENU</span></a>
+        <a href="#philosophy">好食宣言 <span>OUR FOOD</span></a>
+      </nav>
+      <div class="header-actions">
+        <span class="header-note">好好吃饭，超级简单。</span>
+        <button class="bag-trigger" data-open-bag aria-label="打开购物袋，0 件商品">
+          <svg class="icon"><use href="#i-bag" /></svg><span class="bag-label">购物袋</span><span class="bag-count" data-bag-count>0</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="home" aria-labelledby="hero-title">
+        <div class="hero-atmosphere" aria-hidden="true">
+          <div class="color-field field-one"></div><div class="color-field field-two"></div><div class="color-field field-three"></div>
+          <div class="glass-ribs"></div><div class="hero-shade"></div>
+        </div>
+        <div class="hero-topline"><span>FRESH FOOD. GOOD MOOD.</span><span>一碗新鲜，一整天的好状态 <svg class="icon"><use href="#i-sun" /></svg></span></div>
+        <div class="hero-content">
+          <div class="hero-copy">
+            <div class="eyebrow hero-eyebrow"><span class="tiny-star">✳</span> YOUR DAILY DOSE OF GOOD</div>
+            <h1 id="hero-title">EAT FRESH.<br />FEEL <span class="super-word">SUPER<svg viewBox="0 0 350 25" aria-hidden="true"><path d="M4 17C105 3 245 2 345 12M23 23C151 10 254 8 327 14" /></svg></span>.</h1>
+            <h2>新鲜，超有能量。</h2>
+            <p>给忙碌的城市生活，来一碗新鲜能量。<br />认真搭配每一种食材，让健康和好吃一起发生。</p>
+            <a class="button button-pink hero-cta" href="#menu">开启我的新鲜一餐 <svg class="icon"><use href="#i-arrow-up" /></svg></a>
+          </div>
+          <div class="hero-visual">
+            <div class="bowl-orbit" aria-hidden="true"></div>
+            <div class="fresh-stamp" aria-label="百分百新鲜灵感"><span>FRESHLY MADE</span><svg class="icon"><use href="#i-sun" /></svg><strong>GOOD<br />STUFF!</strong><span>JUST FOR YOU</span></div>
+            <img class="hero-bowl" src="/assets/bowl-signature.webp" alt="盛有香烤豆腐、毛豆、玉米、番茄和紫甘蓝的新鲜沙拉碗" width="806" height="826" fetchpriority="high" />
+            <div class="ingredient-note"><svg class="icon"><use href="#i-leaf" /></svg><span>满满真食材<br /><small>REAL FOOD, REAL GOOD.</small></span></div>
+            <div class="bowl-caption"><span>MEET YOUR NEW FAVORITE</span><strong>香烤豆腐能量碗</strong><a href="#menu" aria-label="浏览香烤豆腐能量碗"><svg class="icon"><use href="#i-arrow-up" /></svg></a></div>
+          </div>
+        </div>
+        <div class="hero-bottomline"><span><span class="status-dot"></span> 为都市日常，注入自然能量</span><a href="#menu">向下发现你的那一碗 <span>↓</span></a><span>MADE WITH A LITTLE EXTRA LOVE.</span></div>
+      </section>
+
+      <div class="fresh-strip" aria-label="新鲜食材，好好吃饭，轻盈生活">
+        <div>REAL FOOD <span>真食材</span></div><span class="strip-star" aria-hidden="true">✳</span><div>FRESH EVERY DAY <span>日日新鲜</span></div><span class="strip-star" aria-hidden="true">✳</span><div>FEEL-GOOD ENERGY <span>吃出好状态</span></div><span class="strip-star" aria-hidden="true">✳</span><div>SUPER YOU <span>超级的你</span></div>
+      </div>
+
+      <section class="menu-section section-shell" id="menu" aria-labelledby="menu-title">
+        <div class="section-top">
+          <div><p class="eyebrow section-eyebrow"><span class="mini-cross">+</span> THE FRESH LINEUP</p><h2 id="menu-title">今天，想吃点<span>什么？<svg viewBox="0 0 130 12" aria-hidden="true"><path d="M3 9Q67 1 127 7" /></svg></span></h2></div>
+          <p class="section-description">每一碗都有好心情。<br />选你喜欢的，把新鲜装进日常。</p>
+        </div>
+        <div class="menu-toolbar">
+          <div class="category-tabs" role="group" aria-label="菜单分类">
+            <button class="category-button active" data-category="all" aria-pressed="true">全部美味 <span data-menu-count>09</span></button>
+            <button class="category-button" data-category="salad" aria-pressed="false">招牌沙拉</button>
+            <button class="category-button" data-category="bowl" aria-pressed="false">能量暖碗</button>
+            <button class="category-button" data-category="drink" aria-pressed="false">鲜榨果饮</button>
+          </div>
+          <span class="menu-note"><svg class="icon"><use href="#i-leaf" /></svg> 好食材，自有好味道</span>
+        </div>
+        <p class="sr-only" id="filter-status" role="status"></p>
+        <div class="food-table">
+          <div class="food-table-top"><span><svg class="icon" aria-hidden="true"><use href="#i-leaf" /></svg> THE FRESH TABLE</span><span><span class="table-desktop-hint">移到心动的那一碗，点开看看</span><span class="table-touch-hint">点一道美味，看看食材</span></span></div>
+          <div class="dish-stage" id="product-grid" role="group" aria-label="餐品陈列，点击查看食材介绍"></div>
+          <div class="food-table-bottom"><span>每一碗，都有自己的新鲜故事。</span><span>GOOD FOOD IS WORTH A CLOSER LOOK.</span></div>
+        </div>
+        <noscript><p class="noscript-notice">请启用 JavaScript 查看菜单与使用购物袋。</p></noscript>
+        <div class="menu-bottom-note"><svg class="icon"><use href="#i-heart" /></svg><span>每个人的口味都值得被照顾。食材与过敏原信息请查看餐品说明。</span><span class="small-english">A LITTLE FRESHNESS GOES A LONG WAY.</span></div>
+      </section>
+
+      <section class="philosophy section-shell" id="philosophy" aria-labelledby="philosophy-title">
+        <div class="philosophy-heading"><p class="eyebrow"><span class="mini-cross">+</span> THE SUPER WAY</p><h2 id="philosophy-title">吃得好，<br />是生活的<span>超能力。</span></h2><p>穿梭于城市，也别忘了照顾自己。<br />在逛街与忙碌之间，用一顿好饭，找回轻盈节奏。</p><a class="text-link" href="#menu">让今天新鲜一点 <svg class="icon"><use href="#i-arrow-up" /></svg></a></div>
+        <div class="food-values"><article><span class="value-index">01</span><div><h3>好食材，不藏着</h3><p>蔬菜的爽脆、谷物的醇香。<br />看得见的丰富，吃得到的满足。</p></div><svg class="icon"><use href="#i-leaf" /></svg></article><article><span class="value-index">02</span><div><h3>认真搭配，随心享用</h3><p>从多彩沙拉到暖心谷物碗，<br />给不同的日常，一样的用心。</p></div><svg class="icon"><use href="#i-sun" /></svg></article><article><span class="value-index">03</span><div><h3>健康，也要很好吃</h3><p>不必在轻盈和美味之间做选择。<br />好好吃饭，本来就该是快乐的事。</p></div><svg class="icon"><use href="#i-heart" /></svg></article></div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><div class="footer-top"><a class="footer-wordmark" href="#home" aria-label="超级沙拉，返回顶部">SUPER SALAD<span>®</span></a><p>一碗新鲜。一个更有能量的你。<br /><span>GOOD FOOD. SUPER MOOD.</span></p><a class="back-top" href="#home" aria-label="返回顶部"><svg class="icon"><use href="#i-arrow-up" /></svg></a></div><div class="footer-bottom"><span>© 2026 超级沙拉 SUPER SALAD</span><span>概念点餐页 · 菜单与价格为展示示例，图片仅供参考</span><span>STAY FRESH. STAY SUPER.</span></div></footer>
+
+    <button class="mobile-bag" data-open-bag hidden><span><svg class="icon"><use href="#i-bag" /></svg> <span data-bag-count>0</span> 份美味</span><span>查看购物袋 <strong data-bag-total>¥0</strong> <svg class="icon"><use href="#i-arrow" /></svg></span></button>
+    <div class="toast" role="status" aria-live="polite" id="toast"><svg class="icon"><use href="#i-check" /></svg><span></span></div>
+
+    <dialog class="dish-dialog" id="dish-dialog" aria-labelledby="dish-title"></dialog>
+
+    <dialog class="bag-dialog" id="bag-dialog" aria-labelledby="bag-title">
+      <div class="bag-panel">
+        <p class="sr-only" role="status" aria-live="polite" id="bag-live"></p>
+        <header class="bag-header"><div><p class="eyebrow">A BAG OF GOOD ENERGY</p><h2 id="bag-title">我的新鲜一餐 <span id="drawer-count">0</span></h2></div><button class="icon-button" id="close-bag" aria-label="关闭购物袋"><svg class="icon"><use href="#i-close" /></svg></button></header>
+        <div class="bag-body" id="bag-body"></div>
+        <footer class="bag-footer" id="bag-footer"><div class="total-row"><span>合计 <small id="total-quantity">共 0 份</small></span><strong id="bag-total">¥0</strong></div><p class="order-note">当前为概念点餐体验，可预览所选餐品。</p><button class="button button-pink checkout-button" id="preview-order" disabled>预览我的订单 <svg class="icon"><use href="#i-arrow" /></svg></button></footer>
+      </div>
+    </dialog>
+  </body>
+</html>
